@@ -6,14 +6,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9">
+<fx:root type="javafx.scene.layout.AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="600.0" prefWidth="900.0">
          <children>
             <Button layoutX="400.0" layoutY="361.0" mnemonicParsing="false" text="Quit to Desktop" />
             <Button layoutX="412.0" layoutY="319.0" mnemonicParsing="false" text="Load Game" />
-            <Button layoutX="413.0" layoutY="275.0" mnemonicParsing="false" text="New Game" />
+            <Button layoutX="413.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleNewGame" text="New Game" />
             <Text layoutX="310.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVENTURE!" textAlignment="CENTER" underline="true">
                <font>
                   <Font size="48.0" />
@@ -22,4 +21,4 @@
          </children>
       </Pane>
    </children>
-</AnchorPane>
+</fx:root>
