@@ -2,14 +2,8 @@ package application;
 	
 import controller.MainMenuController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import screens.GameScreen;
 
 //work in progress screens should be loaded in from screens classes by completion
 public class Main extends Application {
@@ -22,9 +16,7 @@ public class Main extends Application {
 		stage.setTitle("ADVENTURE!");
 		
 		MainMenuController menu = new MainMenuController();
-		stage.setScene(new Scene(menu));
-		stage.setWidth(900);
-		stage.setHeight(600);
+		stage.setScene(new Scene(menu, 900, 600));
 		stage.show();
 		
 	}

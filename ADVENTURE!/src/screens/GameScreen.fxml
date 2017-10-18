@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9">
+<fx:root type="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9">
    <left>
       <SplitPane dividerPositions="0.579064587973274" prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
         <items>
@@ -63,7 +63,7 @@
                                        <children>
                                           <Button layoutX="36.0" layoutY="47.0" mnemonicParsing="false" text="Save Game" />
                                           <Button layoutX="133.0" layoutY="47.0" mnemonicParsing="false" text="Load Game" />
-                                          <Button layoutX="230.0" layoutY="47.0" mnemonicParsing="false" text="Quit to Desktop" />
+                                          <Button layoutX="230.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleQuit" text="Quit to Desktop" />
                                        </children>
                                     </AnchorPane>
                                 </items>
@@ -77,4 +77,4 @@
         </items>
       </SplitPane>
    </left>
-</BorderPane>
+</fx:root>
