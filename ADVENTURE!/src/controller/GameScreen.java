@@ -4,12 +4,13 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class GameScreen extends BorderPane{
+public class GameScreen extends AnchorPane{
 	
 	public GameScreen() {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		
