@@ -6,10 +6,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
+import objects.Player;
 
 public class GameScreen extends AnchorPane{
+	Player player;
 	
-	public GameScreen() {
+	@FXML Text NAME;
+	@FXML Text HP;
+	@FXML Text STR;
+	@FXML Text PER;
+	@FXML Text INT;
+	@FXML Text AGI;
+	@FXML Text LUC;
+	
+	public GameScreen(Player p) {
+		this.player = p;
+		int[] initStats = player.getStats();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -19,6 +32,13 @@ public class GameScreen extends AnchorPane{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		NAME.setText(this.player.getName());
+		HP.setText(Integer.toString(this.player.getHp()));
+		STR.setText(Integer.toString(initStats[0]));
+		PER.setText(Integer.toString(initStats[1]));
+		INT.setText(Integer.toString(initStats[2]));
+		AGI.setText(Integer.toString(initStats[3]));
+		LUC.setText(Integer.toString(initStats[4]));
 	}
 	
 	@FXML
