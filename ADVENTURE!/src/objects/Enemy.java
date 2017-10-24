@@ -1,5 +1,10 @@
 package objects;
 
+/**
+ * Framework for all Enemies
+ * @author JASON
+ *
+ */
 public abstract class Enemy implements Entity{
 
 	private String name;

@@ -10,6 +10,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import objects.Player;
 
+/**
+ * Character Creation screen. Players create their characters here.
+ * @author JASON
+ *
+ */
 public class CharacterCreator extends Pane{
 	
 	Player player;
@@ -22,6 +27,9 @@ public class CharacterCreator extends Pane{
 	@FXML Text HP;
 	@FXML TextField NAME;
 	
+	/**
+	 * Load the character creator scene and initialize a new player character
+	 */
 	public CharacterCreator()
 	{
 		player = new Player();
@@ -37,6 +45,10 @@ public class CharacterCreator extends Pane{
 		}
 	}
 	
+	/**
+	 * End character creation and start the game
+	 * @param e ActionEvent begin button was clicked
+	 */
 	@FXML
 	protected void handleBegin(ActionEvent e)
 	{
@@ -46,22 +58,65 @@ public class CharacterCreator extends Pane{
 		Main.stage.show();
 	}
 	
+	/**
+	 * Rolls the statistics (stats) for a player's character
+	 * @param e ActionEvent roll button is clicked
+	 */
 	@FXML
 	protected void handleRollStats(ActionEvent e)
 	{
+		player.setHp(10); // Ensure player HP resets to initial 10 if stats are re-rolled
 		int[] stats = new int[5];
 		for(int i=0;i<stats.length;i++)
-			stats[i] = (int) (Math.random()*20+5);
-		
+		{
+			stats[i] = diceRoll();
+			stats[i] += (stats[i]-10)/2;	// (stats[i]-10)/2 is the stat modifier bonus
+		}
 		player.setStats(stats);
 		
-		STR.setText(Integer.toString(stats[0]));
-		PER.setText(Integer.toString(stats[1]));
-		INT.setText(Integer.toString(stats[2]));
-		AGI.setText(Integer.toString(stats[3]));
-		LUC.setText(Integer.toString(stats[4]));
+		STR.setText(Integer.toString(stats[0]+((stats[0]-10)/2)));
+		PER.setText(Integer.toString(stats[1]+((stats[1]-10)/2)));
+		INT.setText(Integer.toString(stats[2]+((stats[2]-10)/2)));
+		AGI.setText(Integer.toString(stats[3]+((stats[3]-10)/2)));
+		LUC.setText(Integer.toString(stats[4]+((stats[4]-10)/2)));
 		HP.setText(Integer.toString((stats[0]/2)+10));
-		player.setHp((stats[0]/2)+player.getHp());
+		player.setHp((stats[0]/2)+player.getHp()); // HP gets bonus modifier based on Strength/2
+	}
+	
+	/**
+	 * Rolls 4d6 and adds 3 highest dice
+	 * to determine a character's stat number
+	 * @return	a stat number
+	 */
+	public int diceRoll()
+	{
+		int stat = 0;
+		int[] roll = new int[4];
+		int min = 999;
+		
+		// roll 4d6 (4 six-sided die)
+		for(int i=0;i<roll.length;i++)
+			roll[i] = (int) (Math.random()*6+1);
+		
+		// find lowest rolled die
+		for(int j=0;j<roll.length;j++)
+		{
+			if(roll[j] < min )
+				min = roll[j];
+		}
+		
+		// add up 3 highest dice
+		for(int k=0;k<roll.length;k++)
+		{
+			if(roll[k] == min)
+			{
+				roll[k] = 0;	// remove lowest die
+				min = 999;		// in case lowest number occurs twice (e.g. 6,4,2,2) only remove one -> (e.g. 6,4,0,2)
+			}
+			stat += roll[k];
+		}
+		
+		return stat;
 	}
 
 }

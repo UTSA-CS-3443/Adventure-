@@ -1,5 +1,10 @@
 package objects;
 
+/**
+ * The player character
+ * @author JASON
+ *
+ */
 public class Player implements Entity{
 
 	private String name;

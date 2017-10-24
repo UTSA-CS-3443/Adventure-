@@ -9,6 +9,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import objects.Player;
 
+/**
+ * Loads Game Screen scene and handles player actions. This is where the game is played
+ * @author JASON
+ *
+ */
 public class GameScreen extends AnchorPane{
 	Player player;
 	
@@ -20,6 +25,10 @@ public class GameScreen extends AnchorPane{
 	@FXML Text AGI;
 	@FXML Text LUC;
 	
+	/**
+	 * Loads the Game Screen and initializes the player character that was created in Character Creator.
+	 * @param p Player character from Character Creator
+	 */
 	public GameScreen(Player p) {
 		this.player = p;
 		int[] initStats = player.getStats();
@@ -41,6 +50,10 @@ public class GameScreen extends AnchorPane{
 		LUC.setText(Integer.toString(initStats[4]));
 	}
 	
+	/**
+	 * Exit to Desktop
+	 * @param e ActionEvent Quit button was clicked
+	 */
 	@FXML
 	protected void handleQuit(ActionEvent e)
 	{	

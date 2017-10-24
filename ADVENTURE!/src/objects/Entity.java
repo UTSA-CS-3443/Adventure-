@@ -1,5 +1,10 @@
 package objects;
 
+/**
+ * Framework for all game world entities
+ * @author JASON
+ *
+ */
 public interface Entity {
 
 	public String getName();
