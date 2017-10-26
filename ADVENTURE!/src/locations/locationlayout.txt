@@ -1,0 +1,67 @@
+LOC Start-Screen
+LEFT WALL
+RIGHT WALL
+UP village-a1
+DOWN field-a3
+ATTR hasEnemies
+ATTR hasEvent eventType
+DESC "description of the location"
+ENDLOC
+
+LOC village-a1
+LEFT soforth
+RIGHT soon
+UP waterfront-a0
+DOWN Start-Screen
+ATTR haswater
+ATTR lol
+DESC "description of the location"
+BUTT "Text button has" <possibly extra command>
+ENDLOC
+
+
+HashMap<String, Location> locMap = new HashMap<String, Location>();
+
+
+
+At program start
+----------------
+
+Load the hashmap locMap with Location Objects pointed to by the LOC <string> for each location in the file
+
+Load the initial screen (for new games, the default screen. For loading games, whatever screen we were last on).
+		- This will require a call to, say, a LoadLocation.java which will be passed a location object
+		
+		public <returntype> loadLocation(Location location)
+		{
+			this method or class will be responsible for loading the new location to the screen
+		}
+		
+		
+		public <returntype> readLocations("file of locations")
+		{
+			while reading each line in the file
+				String attr[128] = null;
+				String name = null;
+				String desc = null;
+				String up = null;
+				String down = null;
+				String left = null;
+				String right = null;
+				so on
+				
+				
+				read name
+				read desc
+				read up
+				so on
+				
+				
+				Location location = new Location();
+				
+				
+				
+		}
+		
+		
+		
