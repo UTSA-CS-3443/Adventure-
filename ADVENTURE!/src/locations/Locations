@@ -1,6 +1,6 @@
-LOC Start-Screen
-DESC "description of the location"
-UP village-a1
+LOC\ Start-Screen
+DESC\ "description of the location"
+UP\ village-a1
 DOWN field-a3
 LEFT WALL
 RIGHT WALL

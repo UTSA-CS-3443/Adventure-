@@ -1,5 +1,3 @@
-/application/
-/controller/
-/objects/
-/screens/
+/tests/
 /locations/
+/application/

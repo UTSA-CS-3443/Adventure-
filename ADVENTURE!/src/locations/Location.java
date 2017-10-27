@@ -45,6 +45,38 @@ public class Location {
 		
 	}
 
+	public static String getLocName() {
+		return locName;
+	}
+
+	public static void setLocName(String locName) {
+		Location.locName = locName;
+	}
+
+	public static String getLocDesc() {
+		return locDesc;
+	}
+
+	public static void setLocDesc(String locDesc) {
+		Location.locDesc = locDesc;
+	}
+
+	public static String getLocImage() {
+		return locImage;
+	}
+
+	public static void setLocImage(String locImage) {
+		Location.locImage = locImage;
+	}
+
+	public static String[] getLocAttributes() {
+		return locAttributes;
+	}
+
+	public static void setLocAttributes(String locAttributes[]) {
+		Location.locAttributes = locAttributes;
+	}
+
 	//this particular block of information is being worked on currently with relation to locationlayout.txt
 	/* locations will load in data from a file to determine
 	 * what type of buttons to generate

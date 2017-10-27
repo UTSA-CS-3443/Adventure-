@@ -1,12 +1,14 @@
 package controller;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import objects.Player;
 
 /**
@@ -24,6 +26,8 @@ public class GameScreen extends AnchorPane{
 	@FXML Text INT;
 	@FXML Text AGI;
 	@FXML Text LUC;
+	
+	@FXML TextFlow DESC;
 	
 	/**
 	 * Loads the Game Screen and initializes the player character that was created in Character Creator.
@@ -48,6 +52,11 @@ public class GameScreen extends AnchorPane{
 		INT.setText(Integer.toString(initStats[2]));
 		AGI.setText(Integer.toString(initStats[3]));
 		LUC.setText(Integer.toString(initStats[4]));
+		
+		ObservableList list = DESC.getChildren();
+		Text test = new Text("THE VOID\n\nThere is nothing here for you now. All around you is blackness and were it not"
+				+ " for your sense of feeling, you could not tell your body was physically here at all.");
+		list.add(test);
 	}
 	
 	/**

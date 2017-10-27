@@ -3,6 +3,7 @@ package application;
 import controller.MainMenuController;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import locations.ReadLocations;
 import javafx.scene.Scene;
 
 /**
@@ -18,6 +19,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		this.stage = primaryStage;
 		stage.setTitle("ADVENTURE!");
+		ReadLocations rLoc = new ReadLocations();
 		
 		MainMenuController menu = new MainMenuController();
 		stage.setScene(new Scene(menu, 900, 600));
