@@ -28,7 +28,7 @@ ATTR ...
 ENDLOC
 	 
 	 */
-	public void ReadLocations()
+	public void ReadLocations(String file)
 	{		
 		String[] lineBuffer = new String[2048];
 		String[] attr = new String[128];
@@ -43,7 +43,7 @@ ENDLOC
 		
 		try 
 		{
-			in = new Scanner(new File("Locations.txt"));
+			in = new Scanner(new File(file));
 		} 
 		catch (FileNotFoundException exception) 
 		{
@@ -109,7 +109,7 @@ ENDLOC
 				
 			}
 			
-			//use location.setUp, etc to set the attributes of the location, then call load locations to put it into a hashmap as detailed in locationlayout.txt
+			//use location.setNorth, etc to set the attributes of the location, then load locations into a hashmap of locationName, Location then return that to LoadLocations
 		}
 			//close the file
 			in.close();

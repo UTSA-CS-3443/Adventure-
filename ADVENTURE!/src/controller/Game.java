@@ -6,6 +6,11 @@ import application.Main;
 import javafx.scene.Scene;
 import locations.Attribute;
 import java.util.HashMap;
+import locations.*;
+import events.*;
+import objects.*;
+import screens.*;
+import worldattributes.*;
 
 public class Game {
 
@@ -14,8 +19,7 @@ public class Game {
 	public Game() {
 		//initialize the game
 		init();
-		
-		gameLoop();
+		//gameLoop();
 	}
 	
 	public static void init()
@@ -24,6 +28,15 @@ public class Game {
 		CharacterCreator cc = new CharacterCreator();
 		Main.stage.setScene(new Scene(cc));
 		Main.stage.show();
+		
+		//load locations
+		initLoc();
+	}
+	
+	public static void initLoc()
+	{
+		String defaultFile = "locations/locations.txt"
+		LoadLocations loadLoc = new LoadLocations(defaultFile);
 	}
 	
 	public static void gameLoop()
