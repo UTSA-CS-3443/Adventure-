@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.regex.*;
+import java.util.HashMap;
 
 import java.util.ArrayList;
 public class ReadLocations {
@@ -12,15 +13,16 @@ public class ReadLocations {
 /*
 
 NOTE: LOCATIONS MUST BE IN THIS FORMAT
-
+NOTE: ATTR would reference the idea that there exists an attribute interface that some events, etc. derive from
+NOTE: there is an implication that attributes would be loaded into a submap of attributes of which each have their own sub-maps or other related information. allows easy expansion
 LOC Start-Screen
 DESC "description of the location"
-UP village-a1
-DOWN field-a3
-LEFT WALL
-RIGHT WALL
+NORTH village-a1
+SOUTH field-a3
+EAST WALL
+WEST WALL
 ATTR hasEnemies
-ATTR hasEvent eventType
+ATTR hasEvent eventType test-condition
 ATTR ...
 ...
 ENDLOC
@@ -32,10 +34,10 @@ ENDLOC
 		String[] attr = new String[128];
 		String name = "";
 		String desc = "";
-		String up = "";
-		String down = "";
-		String left = "";
-		String right = "";
+		String north = "";
+		String south = "";
+		String east = "";
+		String west = "";
 		String[] identifier;
 		Scanner in = null;
 		
@@ -68,11 +70,43 @@ ENDLOC
 					System.out.printf("%s, %s", identifier[0], identifier[1] );
 				}
 				
-				if(identifier[0].equals("UP"))
+				if(identifier[0].equals("NORTH"))
 				{
-					loc.setUp(identifier[1]);
+					loc.setNorth(identifier[1]);
 					System.out.printf("%s, %s", identifier[0], identifier[1] );
 				}
+				
+				if(identifier[0].equals("SOUTH"))
+				{
+					loc.setSouth(identifier[1]);
+					System.out.printf("%s, %s", identifier[0], identifier[1] );
+				}
+				
+				
+				if(identifier[0].equals("EAST"))
+				{
+					loc.setEast(identifier[1]);
+					System.out.printf("%s, %s", identifier[0], identifier[1] );
+				}
+				
+				
+				if(identifier[0].equals("WEST"))
+				{
+					loc.setWest(identifier[1]);
+					System.out.printf("%s, %s", identifier[0], identifier[1] );
+				}
+				
+				//for every attribute we have for the particular location, parse it
+				while(in.next("ATTR.*+") != null)
+				{
+					
+				}
+				
+				
+				
+				
+				
+				
 			}
 			
 			//use location.setUp, etc to set the attributes of the location, then call load locations to put it into a hashmap as detailed in locationlayout.txt

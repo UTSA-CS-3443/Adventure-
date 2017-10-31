@@ -1,0 +1,23 @@
+TODO
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Locations
+	- Establish all of the locations that we will be using (locations package)
+	- Establish all of the events that a location could have (events package)
+			Does the location have the chance to spawn treasure?, etc.
+	- Establish all of the world attributes a location could have (worldattribute package)
+			Is this location very hot, perhaps to the point where it hurts the user over time?
+			
+			
+Controller
+	- Fully implement the new Game class which will initialize the game
+	- Fully implement all of our screens
+	- Implement a way to display the images of a particular location on screen based on the name of the location
+	
+	
+Assets
+	- We need a world map that we can divide up into grid pictures
+	
+	
+Other stuff to come

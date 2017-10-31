@@ -37,9 +37,7 @@ public class MainMenuController extends AnchorPane{
 	@FXML
 	protected void handleNewGame(ActionEvent e)
 	{	
-		CharacterCreator cc = new CharacterCreator();
-		Main.stage.setScene(new Scene(cc));
-		Main.stage.show();
+		Game game = new Game();
 	}
 
 }

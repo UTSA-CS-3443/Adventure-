@@ -1,22 +1,21 @@
-LOC Start-Screen
-LEFT WALL
-RIGHT WALL
-UP village-a1
-DOWN field-a3
+LOC\ Start-Screen
+DESC "description of the location"
+NORTH WALL
+SOUTH WALL
+EAST village-a1
+WEST field-a3
 ATTR hasEnemies
 ATTR hasEvent eventType
-DESC "description of the location"
 ENDLOC
 
 LOC village-a1
-LEFT soforth
-RIGHT soon
-UP waterfront-a0
-DOWN Start-Screen
-ATTR haswater
-ATTR lol
 DESC "description of the location"
-BUTT "Text button has" <possibly extra command>
+NORTH soforth
+SOUTH soon
+EAST waterfront-a0
+WEST Start-Screen
+ATTR haswater
+ATTR has Button "buttonword" action
 ENDLOC
 
 
@@ -61,6 +60,19 @@ Load the initial screen (for new games, the default screen. For loading games, w
 				
 				
 				
+		}
+		
+		
+		
+		if button pressed to go north
+		{
+		
+			//set location wants a Location object
+			setLocation(locMap.get(location.relativeLoc.get("north"));
+		
+		
+		
+		
 		}
 		
 		

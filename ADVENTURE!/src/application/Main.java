@@ -6,9 +6,10 @@ import javafx.stage.Stage;
 import locations.ReadLocations;
 import javafx.scene.Scene;
 
+
 /**
  * Launches the game and begins at the Main Menu
- * @author JASON
+ * @author JASON, TYLER
  *
  */
 public class Main extends Application {

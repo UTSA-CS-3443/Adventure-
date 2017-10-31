@@ -20,29 +20,29 @@ public class Location {
 		
 	}
 	
-	public static void setUp(String value)
+	public static void setNorth(String value)
 	{
-		relativeLoc.put("up", value);
+		relativeLoc.put("north", value);
 	}
 	
-	public static void setDown(String value)
+	public static void setSouth(String value)
 	{
-		relativeLoc.put("down", value);
+		relativeLoc.put("south", value);
 
 	}
-	public static void setLeft(String value)
+	public static void setEast(String value)
 	{
-		relativeLoc.put("left", value);
+		relativeLoc.put("east", value);
 
 	}
-	public static void setRight(String value)
+	public static void setWest(String value)
 	{
-		relativeLoc.put("right", value);
+		relativeLoc.put("west", value);
 
 	}
-	public static void setAttr()
+	public static void setAttr(String[] attr)
 	{
-		
+		locAttributes = attr;
 	}
 
 	public static String getLocName() {
