@@ -1,7 +1,8 @@
-/tests/
-/locations/
 /application/
-/objects/
-/events/
-/worldattributes/
 /controller/
+/events/
+/locations/
+/objects/
+/screens/
+/tests/
+/worldattributes/

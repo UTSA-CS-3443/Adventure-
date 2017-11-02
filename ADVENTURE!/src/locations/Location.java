@@ -12,7 +12,8 @@ public class Location {
 	private static String locName; // Name of location
 	private static String locDesc; // Description of location
 	private static String locImage; // Image to use for the location
-	private static String locAttributes[]; // Array of attributes for a given location
+	private static String locEvents[]; // Array of event attributes for a given location
+	private static String locWorldAttributes[]; // Array of world attributes for a particular location
 	private static HashMap<String, String> relativeLoc = new HashMap<String, String>();
 	public Location()
 	{
@@ -40,9 +41,24 @@ public class Location {
 		relativeLoc.put("west", value);
 
 	}
-	public static void setAttr(String[] attr)
+	public static void setWorldAttributes(String[] attr)
 	{
-		locAttributes = attr;
+		locWorldAttributes = attr;
+	}
+
+	public static void setEventAttributes(String[] attr)
+	{
+		locEvents = attr;
+	}
+	
+	public static String[] getWorldAttributes()
+	{
+		return locWorldAttributes;
+	}
+
+	public static String[] getEventAttributes()
+	{
+		return locEvents;
 	}
 
 	public static String getLocName() {
@@ -69,13 +85,6 @@ public class Location {
 		Location.locImage = locImage;
 	}
 
-	public static String[] getLocAttributes() {
-		return locAttributes;
-	}
-
-	public static void setLocAttributes(String locAttributes[]) {
-		Location.locAttributes = locAttributes;
-	}
 
 	//this particular block of information is being worked on currently with relation to locationlayout.txt
 	/* locations will load in data from a file to determine
