@@ -12,18 +12,17 @@ import java.util.ArrayList;
 public class ReadLocations {
 	
 /*
-LOC\Start-Screen
-DESC\"description of the location"
-NORTH\WALL
-SOUTH\WALL
-EAST\village-a1
-WEST\field-a3
-ATTR\hasEnemies
-ATTR\hasEvent\EventType
-ATTR\...
-
+LOC>Start-Screen
+DESC>"description of the location"
+NORTH>WALL
+SOUTH>WALL
+EAST>village-a1
+WEST>field-a3
+ATTR>hasEnemies
+ATTR>hasEvent\EventType
+ATTR>...
 ...
-ENDLOC\
+ENDLOC>
 */
 
 	
