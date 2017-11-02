@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import locations.Location;
 import objects.Player;
 
 /**
@@ -54,9 +55,10 @@ public class GameScreen extends AnchorPane{
 		LUC.setText(Integer.toString(initStats[4]));
 		
 		ObservableList list = DESC.getChildren();
-		Text test = new Text("THE VOID\n\nThere is nothing here for you now. All around you is blackness and were it not"
-				+ " for your sense of feeling, you could not tell your body was physically here at all.");
-		list.add(test);
+		Text locName = new Text(Location.getLocName() + "\n");
+		Text locDesc = new Text(Location.getLocDesc());
+		list.add(locName);
+		list.add(locDesc);
 	}
 	
 	/**

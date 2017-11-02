@@ -15,10 +15,11 @@ public class Location {
 	private static String locEvents[]; // Array of event attributes for a given location
 	private static String locWorldAttributes[]; // Array of world attributes for a particular location
 	private static HashMap<String, String> relativeLoc = new HashMap<String, String>();
+	private static HashMap<String, Object> locations = new HashMap<String, Object>();
 	public Location()
 	{
 		//initialize the name, image, relative locations, and attributes of a particular location
-		
+		locations.put(locName, this);
 	}
 	
 	public static void setNorth(String value)

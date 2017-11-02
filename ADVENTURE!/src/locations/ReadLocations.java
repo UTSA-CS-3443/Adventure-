@@ -40,6 +40,7 @@ public class ReadLocations {
 		String west = "";
 		String[] identifier;
 		Scanner in = null;
+		Location loc = null;
 		
 		try 
 		{
@@ -59,63 +60,58 @@ public class ReadLocations {
 			//we will manually read in the up down left right name and description based on regex patterns then we will use another
 			//while loop to keep going as long as the next line contains ATTR at the start, then we put the stuff in
 			//the location and then start again at the top
+			identifier = null;
 			String line = in.nextLine();
 			identifier = line.split(">");
-			if(identifier[0].equals(">"))
+			if(identifier[0].equals("LOC"))
 			{
-				Location loc = new Location();
+				loc = new Location();
 				loc.setLocName(identifier[1]);
-				System.out.printf("%s, %s", identifier[0], identifier[1] );
-
-				if(identifier[0].equals("DESC"))
-				{
-					loc.setLocDesc(identifier[1]);
-					System.out.printf("%s, %s", identifier[0], identifier[1] );
-				}
-				
-				if(identifier[0].equals("NORTH"))
-				{
-					loc.setNorth(identifier[1]);
-					System.out.printf("%s, %s", identifier[0], identifier[1] );
-				}
-				
-				if(identifier[0].equals("SOUTH"))
-				{
-					loc.setSouth(identifier[1]);
-					System.out.printf("%s, %s", identifier[0], identifier[1] );
-				}
-				
-				
-				if(identifier[0].equals("EAST"))
-				{
-					loc.setEast(identifier[1]);
-					System.out.printf("%s, %s", identifier[0], identifier[1] );
-				}
-				
-				
-				if(identifier[0].equals("WEST"))
-				{
-					loc.setWest(identifier[1]);
-					System.out.printf("%s, %s", identifier[0], identifier[1] );
-				}
-				
-				//for every attribute we have for the particular location, parse it
-				while(in.next("ATTR.*+") != null)
-				{
-					
-				}
-				
-				
-				
-				
-				
-				
+				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
 			}
+
+			if(identifier[0].equals("DESC"))
+			{
+				loc.setLocDesc(identifier[1]);
+				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
+			}
+				
+			if(identifier[0].equals("NORTH"))
+			{
+				loc.setNorth(identifier[1]);
+				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
+			}
+				
+			if(identifier[0].equals("SOUTH"))
+			{
+				loc.setSouth(identifier[1]);
+				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
+			}
+				
+				
+			if(identifier[0].equals("EAST"))
+			{
+				loc.setEast(identifier[1]);
+				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
+			}
+				
+				
+			if(identifier[0].equals("WEST"))
+			{
+				loc.setWest(identifier[1]);
+				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
+			}
+				
+			//for every attribute we have for the particular location, parse it
+			if(identifier[0].equals("ATTR"))
+			{
+				System.out.printf("%s, %s\n", identifier[0], identifier[1]);
+			}
+				
+		}
 			
 			//use location.setNorth, etc to set the attributes of the location, then load locations into a hashmap of locationName, Location then return that to LoadLocations
-		}
 			//close the file
-			in.close();
+		in.close();
 	}
-
 }
