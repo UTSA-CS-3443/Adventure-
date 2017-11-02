@@ -1,4 +1,4 @@
-LOC>Start-Screen
+LOC>The Winding Road
 DESC>"You arrive along an old stone road. The village on the eastern horizon begins to slide into view and for a brief moment the fatigue from your arduous journey seems to melt away. ... But only briefly."
 NORTH>WALL
 SOUTH>WALL
@@ -9,5 +9,9 @@ ATTR>hasEvent\EventType
 ENDLOC>
 
 LOC>Davenport
-DESC>"You finally reach the Village of Davenport. You wonder how much longer that description will last, however. The advancement of technology and new opportunities have begun to transform the quaint village into a bustling town and it wouldn't be surprising if it begins to be referred to as the "City of DavenPort" in the near future. The inn should be on the North side of town."
-NORTH>
+DESC>"You finally reach the Village of Davenport. You wonder how much longer that description will last, however. The advancement of technology and new opportunities have begun to transform the quaint village into a bustling town and it wouldn't be surprising if it begins to be referred to as the "City of Davenport" in the near future. The inn should be on the North side of town."
+NORTH>Dungeons and Flagons
+SOUTH>Davenport Market
+WEST>The Winding Road
+EAST>The Davenport Docks
+ENDLOC>

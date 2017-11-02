@@ -9,83 +9,85 @@ package locations;
 import java.util.HashMap;
 public class Location {
 	
-	private static String locName; // Name of location
-	private static String locDesc; // Description of location
-	private static String locImage; // Image to use for the location
-	private static String locEvents[]; // Array of event attributes for a given location
-	private static String locWorldAttributes[]; // Array of world attributes for a particular location
-	private static HashMap<String, String> relativeLoc = new HashMap<String, String>();
-	private static HashMap<String, Object> locations = new HashMap<String, Object>();
+	private String locName; // Name of location
+	private String locDesc; // Description of location
+	private String locImage; // Image to use for the location
+	private String locEvents[]; // Array of event attributes for a given location
+	private String locWorldAttributes[]; // Array of world attributes for a particular location
+	private HashMap<String, String> relativeLoc = new HashMap<String, String>();
+	
 	public Location()
 	{
 		//initialize the name, image, relative locations, and attributes of a particular location
-		locations.put(locName, this);
+		locName = "";
+		locDesc = "";
+		locImage = "";
 	}
 	
-	public static void setNorth(String value)
+	public  void setNorth(String value)
 	{
 		relativeLoc.put("north", value);
 	}
 	
-	public static void setSouth(String value)
+	public  void setSouth(String value)
 	{
 		relativeLoc.put("south", value);
 
 	}
-	public static void setEast(String value)
+	public  void setEast(String value)
 	{
 		relativeLoc.put("east", value);
 
 	}
-	public static void setWest(String value)
+	public  void setWest(String value)
 	{
 		relativeLoc.put("west", value);
 
 	}
-	public static void setWorldAttributes(String[] attr)
+	public  void setWorldAttributes(String[] attr)
 	{
 		locWorldAttributes = attr;
 	}
 
-	public static void setEventAttributes(String[] attr)
+	public  void setEventAttributes(String[] attr)
 	{
 		locEvents = attr;
 	}
 	
-	public static String[] getWorldAttributes()
+	public  String[] getWorldAttributes()
 	{
 		return locWorldAttributes;
 	}
 
-	public static String[] getEventAttributes()
+	public  String[] getEventAttributes()
 	{
 		return locEvents;
 	}
 
-	public static String getLocName() {
+	public  String getLocName() {
 		return locName;
 	}
 
-	public static void setLocName(String locName) {
-		Location.locName = locName;
+	public  void setLocName(String locName) {
+		this.locName = locName;
 	}
 
-	public static String getLocDesc() {
+	public  String getLocDesc() {
 		return locDesc;
 	}
 
-	public static void setLocDesc(String locDesc) {
-		Location.locDesc = locDesc;
+	public  void setLocDesc(String locDesc) {
+		this.locDesc = locDesc;
 	}
 
-	public static String getLocImage() {
+	public  String getLocImage() {
 		return locImage;
 	}
 
-	public static void setLocImage(String locImage) {
-		Location.locImage = locImage;
+	public  void setLocImage(String locImage) {
+		this.locImage = locImage;
 	}
-
+	
 
 	//this particular block of information is being worked on currently with relation to locationlayout.txt
 	/* locations will load in data from a file to determine

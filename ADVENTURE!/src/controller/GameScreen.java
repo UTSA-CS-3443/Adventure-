@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import locations.Location;
+import locations.ReadLocations;
 import objects.Player;
 
 /**
@@ -55,8 +56,13 @@ public class GameScreen extends AnchorPane{
 		LUC.setText(Integer.toString(initStats[4]));
 		
 		ObservableList list = DESC.getChildren();
-		Text locName = new Text(Location.getLocName() + "\n");
-		Text locDesc = new Text(Location.getLocDesc());
+		
+		Location loc = ReadLocations.locations.get("The Winding Road");
+		System.out.println(ReadLocations.locations.get("The Winding Road"));
+		System.out.println(loc.getLocName());
+		
+		Text locName = new Text(loc.getLocName() + "\n\n");
+		Text locDesc = new Text(loc.getLocDesc());
 		list.add(locName);
 		list.add(locDesc);
 	}
