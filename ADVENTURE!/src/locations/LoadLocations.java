@@ -1,9 +1,11 @@
 package locations;
 
+import java.net.URL;
+
 public class LoadLocations {
 
-	public LoadLocations(String file) {
-		ReadLocations readLoc = new readLoc(file);
+	public LoadLocations(URL defaultFile) {
+		ReadLocations readLoc = new ReadLocations(defaultFile);
 	}
 
 }
