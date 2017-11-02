@@ -7,11 +7,9 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.regex.*;
 import java.util.HashMap;
-
 import java.util.ArrayList;
-public class ReadLocations {
 
-	/*
+/*
 
 NOTE: LOCATIONS MUST BE IN THIS FORMAT
 NOTE: ATTR would reference the idea that there exists an attribute interface that some events, etc. derive from
@@ -27,8 +25,11 @@ ATTR hasEvent eventType test-condition
 ATTR ...
 ...
 ENDLOC
-	 
-	 */
+ 
+ */
+
+public class ReadLocations {
+
 	public ReadLocations(URL defaultFile)
 	{		
 		String[] lineBuffer = new String[2048];
@@ -61,8 +62,8 @@ ENDLOC
 			//while loop to keep going as long as the next line contains ATTR at the start, then we put the stuff in
 			//the location and then start again at the top
 			String line = in.nextLine();
-			identifier = line.split("\\");
-			if(identifier[0].equals("\\"))
+			identifier = line.split(">");
+			if(identifier[0].equals(">"))
 			{
 				Location loc = new Location();
 				loc.setLocName(identifier[1]);

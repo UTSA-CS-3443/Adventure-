@@ -1,0 +1,9 @@
+LOC>Start-Screen
+DESC>"description of the location"
+NORTH>village-a1
+SOUTH>field-a3
+EAST>WALL
+WEST>WALL
+ATTR>hasEnemies
+ATTR>hasEvent eventType
+ENDLOC
