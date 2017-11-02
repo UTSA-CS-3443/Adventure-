@@ -2,13 +2,14 @@ package locations;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 import java.util.regex.*;
 import java.util.HashMap;
 
 import java.util.ArrayList;
 public class ReadLocations {
-
 	
 /*
 LOC\Start-Screen
@@ -20,12 +21,13 @@ WEST\field-a3
 ATTR\hasEnemies
 ATTR\hasEvent\EventType
 ATTR\...
+
 ...
 ENDLOC\
+*/
 
-	 
-	 */
-	public void ReadLocations(String file)
+	
+	public ReadLocations(URL defaultFile)
 	{		
 		String[] lineBuffer = new String[2048];
 		String[] attr = new String[128];
@@ -40,12 +42,15 @@ ENDLOC\
 		
 		try 
 		{
-			in = new Scanner(new File(file));
+			in = new Scanner(new File(defaultFile.toURI()));
 		} 
 		catch (FileNotFoundException exception) 
 		{
 			    System.err.println("failed to open location data");
 			    System.exit(1);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		while (in.hasNext()) 
 		{

@@ -25,7 +25,7 @@ public class ReadLocationTest {
 
 	@Test
 	public void test() throws IOException {
-		ReadLocations rLoc = new ReadLocations();
+		//ReadLocations rLoc = new ReadLocations("Locations.txt");
 		
 	}
 

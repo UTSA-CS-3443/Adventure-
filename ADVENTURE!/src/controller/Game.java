@@ -1,5 +1,6 @@
 package controller;
 
+import java.net.URL;
 import java.util.HashMap;
 
 import application.Main;
@@ -35,7 +36,7 @@ public class Game {
 	
 	public static void initLoc()
 	{
-		String defaultFile = "locations/locations.txt"
+		URL defaultFile = Game.class.getClassLoader().getResource("/locations/locations.txt");
 		LoadLocations loadLoc = new LoadLocations(defaultFile);
 	}
 	

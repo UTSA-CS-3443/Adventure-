@@ -20,7 +20,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		this.stage = primaryStage;
 		stage.setTitle("ADVENTURE!");
-		ReadLocations rLoc = new ReadLocations();
 		
 		MainMenuController menu = new MainMenuController();
 		stage.setScene(new Scene(menu, 900, 600));
