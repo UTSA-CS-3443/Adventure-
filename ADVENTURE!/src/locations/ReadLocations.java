@@ -8,22 +8,20 @@ import java.util.Scanner;
 import java.util.regex.*;
 import java.util.HashMap;
 import java.util.ArrayList;
-
+	
 /*
-
-NOTE: LOCATIONS MUST BE IN THIS FORMAT
-NOTE: ATTR would reference the idea that there exists an attribute interface that some events, etc. derive from
-NOTE: there is an implication that attributes would be loaded into a submap of attributes of which each have their own sub-maps or other related information. allows easy expansion
-LOC Start-Screen
-DESC "description of the location"
-NORTH village-a1
-SOUTH field-a3
-EAST WALL
-WEST WALL
-ATTR hasEnemies
-ATTR hasEvent eventType test-condition
-ATTR ...
+LOC>Start-Screen
+DESC>"description of the location"
+NORTH>WALL
+SOUTH>WALL
+EAST>village-a1
+WEST>field-a3
+ATTR>hasEnemies
+ATTR>hasEvent\EventType
+ATTR>...
+>>>>>>> branch 'master' of https://github.com/UTSA-CS-3443/Adventure-.git
 ...
+<<<<<<< HEAD
 ENDLOC
  
  */

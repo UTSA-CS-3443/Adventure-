@@ -1,12 +1,12 @@
-LOC\ Start-Screen
-DESC "description of the location"
-NORTH WALL
-SOUTH WALL
-EAST village-a1
-WEST field-a3
-ATTR hasEnemies
-ATTR hasEvent eventType
-ENDLOC
+LOC\Start-Screen
+DESC\"description of the location"
+NORTH\WALL
+SOUTH\WALL
+EAST\village-a1
+WEST\field-a3
+ATTR\hasEnemies
+ATTR\hasEvent\EventType
+ENDLOC\
 
 LOC village-a1
 DESC "description of the location"
