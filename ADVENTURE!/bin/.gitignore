@@ -1,1 +1,9 @@
+/application/
+/controller/
+/events/
 /locations/
+/objects/
+/screens/
+/tests/
+/worldattributes/
+/npc/
