@@ -4,7 +4,7 @@ import objects.Enemy;
 
 public class WildBeast extends Enemy {
 	
-	String name;
+	private String name;
 	
 	public WildBeast(String name) {
 		super();

@@ -4,7 +4,7 @@ import objects.NPC;
 
 public class Traveler extends NPC {
 	
-	String name;
+	private String name;
 	
 	public Traveler(String name) {
 		super();

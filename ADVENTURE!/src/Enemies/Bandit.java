@@ -4,7 +4,7 @@ import objects.Enemy;
 
 public class Bandit extends Enemy {
 	
-	String name;
+	private String name;
 	
 	public Bandit(String name) {
 		super();

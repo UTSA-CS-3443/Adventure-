@@ -4,7 +4,7 @@ import objects.Enemy;
 
 public class Orc extends Enemy {
 	
-	String name;
+	private String name;
 	
 	public Orc(String name) {
 		super();

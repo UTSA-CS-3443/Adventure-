@@ -4,7 +4,7 @@ import objects.NPC;
 
 public class ShopKeeper extends NPC {
 	
-	String name;
+	private String name;
 	
 	public ShopKeeper(String name) {
 		super();

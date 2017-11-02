@@ -4,7 +4,7 @@ import objects.Enemy;
 
 public class Goblin extends Enemy {
 	
-	String name;
+	private String name;
 	
 	public Goblin(String name) {
 		super();
