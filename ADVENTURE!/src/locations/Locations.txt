@@ -15,3 +15,19 @@ SOUTH>Davenport Market
 WEST>The Winding Road
 EAST>The Davenport Docks
 ENDLOC>
+
+LOC>Dungeons and Flagons
+DESC>"The inn seems to be alive and well. The booming economy of Davenport has drawn people from all over the country and it shows. The main room is filled to the brim with folks from a wide range of professions, be they farmers, sailors, tailors, or bakers. Rooms here cost 5 ducats.
+NORTH>Gilan the InnKeeper
+SOUTH>Davenport
+WEST>Rooms
+EAST>WALL
+ENDLOC>
+
+LOC>Davenport Market
+DESC>"The market square is crowded with shops and stalls of all manners. Perhaps you can find something that strikes your fancy?"
+NORTH>Davenport
+SOUTH>The Man-at-Arms
+WEST>The Man-of-Steel
+EAST>Davenport Goods
+ENDLOC>

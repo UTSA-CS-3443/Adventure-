@@ -14,7 +14,8 @@ public class Location {
 	private String locImage; // Image to use for the location
 	private String locEvents[]; // Array of event attributes for a given location
 	private String locWorldAttributes[]; // Array of world attributes for a particular location
-	private HashMap<String, String> relativeLoc = new HashMap<String, String>();
+	public HashMap<String, String> relativeLoc = new HashMap<String, String>();
+	private Location prevLoc;
 	
 	public Location()
 	{
@@ -22,6 +23,7 @@ public class Location {
 		locName = "";
 		locDesc = "";
 		locImage = "";
+		prevLoc = null;
 	}
 	
 	public  void setNorth(String value)
@@ -32,7 +34,6 @@ public class Location {
 	public  void setSouth(String value)
 	{
 		relativeLoc.put("south", value);
-
 	}
 	public  void setEast(String value)
 	{

@@ -1,12 +1,20 @@
 package controller;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import locations.Location;
@@ -18,8 +26,9 @@ import objects.Player;
  * @author JASON
  *
  */
-public class GameScreen extends AnchorPane{
+public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	Player player;
+	Location loc;
 	
 	@FXML Text NAME;
 	@FXML Text HP;
@@ -28,8 +37,11 @@ public class GameScreen extends AnchorPane{
 	@FXML Text INT;
 	@FXML Text AGI;
 	@FXML Text LUC;
+	Text locName;
+	Text locDesc;
 	
 	@FXML TextFlow DESC;
+	@FXML VBox CHOICES;
 	
 	/**
 	 * Loads the Game Screen and initializes the player character that was created in Character Creator.
@@ -55,16 +67,32 @@ public class GameScreen extends AnchorPane{
 		AGI.setText(Integer.toString(initStats[3]));
 		LUC.setText(Integer.toString(initStats[4]));
 		
-		ObservableList list = DESC.getChildren();
+		ObservableList<Node> list = DESC.getChildren();
 		
-		Location loc = ReadLocations.locations.get("The Winding Road");
+		loc = ReadLocations.locations.get("The Winding Road");
 		System.out.println(ReadLocations.locations.get("The Winding Road"));
 		System.out.println(loc.getLocName());
 		
-		Text locName = new Text(loc.getLocName() + "\n\n");
-		Text locDesc = new Text(loc.getLocDesc());
+		locName = new Text(loc.getLocName() + "\n\n");
+		locDesc = new Text(loc.getLocDesc());
 		list.add(locName);
 		list.add(locDesc);
+		
+		Set set = loc.relativeLoc.entrySet();
+	      Iterator iterator = set.iterator();
+	      while(iterator.hasNext()) {
+	          Map.Entry mentry = (Map.Entry)iterator.next();
+	          Button button = new Button("" + mentry.getValue());
+	          CHOICES.getChildren().add(button);
+	          button.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+					Button b = (Button)event.getSource();
+					update( b.getText() );
+				}
+	          });
+	      }
 	}
 	
 	/**
@@ -75,6 +103,36 @@ public class GameScreen extends AnchorPane{
 	protected void handleQuit(ActionEvent e)
 	{	
 		Platform.exit();
+	}
+	
+	@Override
+	public void handle(ActionEvent event) {
+		Button b = (Button)event.getSource();
+		update( b.getText() );
+	}
+	
+	public void update(String text)
+	{
+		CHOICES.getChildren().clear();
+		loc = ReadLocations.locations.get(text);
+		this.locName.setText(loc.getLocName() + "\n\n");
+		this.locDesc.setText(loc.getLocDesc());
+		
+		Set set2 = loc.relativeLoc.entrySet();
+	      Iterator iterator2 = set2.iterator();
+	      while(iterator2.hasNext()) {
+	          Map.Entry mentry2 = (Map.Entry)iterator2.next();
+	          Button button2 = new Button("" + mentry2.getValue());
+	          CHOICES.getChildren().add(button2);
+	          button2.setOnAction(new EventHandler<ActionEvent>() {
+
+					@Override
+					public void handle(ActionEvent event) {
+						Button b = (Button)event.getSource();
+						update( b.getText() );
+					}
+		          });
+	      }
 	}
 
 }
