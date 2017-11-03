@@ -1,15 +1,12 @@
 LOC>The Winding Road
 DESC>"You arrive along an old stone road. The village on the eastern horizon begins to slide into view and for a brief moment the fatigue from your arduous journey seems to melt away. ... But only briefly."
-NORTH>WALL
-SOUTH>WALL
 EAST>Davenport
-WEST>Rutger's Farm
 ATTR>hasEnemies
 ATTR>hasEvent\EventType
 ENDLOC>
 
 LOC>Davenport
-DESC>"You finally reach the Village of Davenport. You wonder how much longer that description will last, however. The advancement of technology and new opportunities have begun to transform the quaint village into a bustling town and it wouldn't be surprising if it begins to be referred to as the "City of Davenport" in the near future. The inn should be on the North side of town."
+DESC>"You finally reach the Village of Davenport. You wonder how much longer that description will last, however. The advancement of technology and new opportunities have begun to transform the quaint village into a bustling town and it wouldn't be surprising if it begins to be referred to as the "City of Davenport" in the near future. The Dungeons and Flagons inn should be on the North side of town. The Market seems to be on the South side. The Docks are to the East."
 NORTH>Dungeons and Flagons
 SOUTH>Davenport Market
 WEST>The Winding Road
@@ -20,8 +17,6 @@ LOC>Dungeons and Flagons
 DESC>"The inn seems to be alive and well. The booming economy of Davenport has drawn people from all over the country and it shows. The main room is filled to the brim with folks from a wide range of professions, be they farmers, sailors, tailors, or bakers. Rooms here cost 5 ducats.
 NORTH>Gilan the InnKeeper
 SOUTH>Davenport
-WEST>Rooms
-EAST>WALL
 ENDLOC>
 
 LOC>Davenport Market
@@ -30,4 +25,26 @@ NORTH>Davenport
 SOUTH>The Man-at-Arms
 WEST>The Man-of-Steel
 EAST>Davenport Goods
+ENDLOC>
+
+LOC>The Man-at-Arms
+DESC>"The shop is adorned wall to wall in swords, axes, spears, halberds, and weapons of all sorts. The smith welcomes you in with a wide, beaming smile."
+NORTH>Davenport Market
+SOUTH>Harry the Blacksmith
+ENDLOC>
+
+LOC>The Man-of-Steel
+DESC>"Mannequines dot the room, displaying a selection of armor from hardy steel plate, padded gambeson, nimble leather, and more. The smith welcomes you in with a wide, beaming smile."
+NORTH>Barry the Armorer
+EAST>Davenport Market
+ENDLOC>
+
+LOC>Davenport Goods
+DESC>"Books, baubles, food...just about everything seems to be sold here. There is a sign by the entrance that reads "We Buy Your Unwanted Goods!".
+NORTH>Ingrid the Shopkeep
+WEST>Davenport Market
+ENDLOC>
+
+LOC>The Davenport Docks
+DESC>"The docks appear to be very busy. Tradeships, warships, and fishing vessels deftly maneuver in and out of port and around each other. For a fee, some captains will happily ferry passengers along with them to their destinations.
 ENDLOC>
