@@ -5,6 +5,8 @@ import objects.Enemy;
 public class Goblin extends Enemy {
 	
 	private String name;
+	private int hp;
+	private int[] stats;
 	
 	public Goblin(String name) {
 		super();
@@ -19,31 +21,26 @@ public class Goblin extends Enemy {
 	@Override
 	public void setName(String name) {
 		this.name = name;
-		
 	}
 
 	@Override
 	public int getHp() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.hp;
 	}
 
 	@Override
 	public void setHp(int hp) {
-		// TODO Auto-generated method stub
-		
+		this.hp = hp;
 	}
 
 	@Override
 	public int[] getStats() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.stats;
 	}
 
 	@Override
 	public void setStats(int[] stats) {
-		// TODO Auto-generated method stub
-		
+		this.stats = stats;
 	}
 
 }
