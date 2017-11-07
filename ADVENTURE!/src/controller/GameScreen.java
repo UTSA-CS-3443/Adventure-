@@ -69,8 +69,8 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
-		loc = ReadLocations.locations.get("The Winding Road");
-		System.out.println(ReadLocations.locations.get("The Winding Road"));
+		loc = ReadLocations.locations.get(1);
+		System.out.println(ReadLocations.locations.get(1));
 		System.out.println(loc.getLocName());
 		
 		locName = new Text(loc.getLocName() + "\n\n");
@@ -114,7 +114,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	public void update(String text)
 	{
 		CHOICES.getChildren().clear();
-		loc = ReadLocations.locations.get(text);
+		loc = ReadLocations.locations.get(ReadLocations.locationIndex.get(text));
 		this.locName.setText(loc.getLocName() + "\n\n");
 		this.locDesc.setText(loc.getLocDesc());
 		

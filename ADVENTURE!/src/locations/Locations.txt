@@ -47,4 +47,5 @@ ENDLOC>
 
 LOC>The Davenport Docks
 DESC>"The docks appear to be very busy. Tradeships, warships, and fishing vessels deftly maneuver in and out of port and around each other. For a fee, some captains will happily ferry passengers along with them to their destinations.
+WEST>Davenport
 ENDLOC>

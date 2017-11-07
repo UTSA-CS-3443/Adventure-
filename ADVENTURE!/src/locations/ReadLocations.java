@@ -22,30 +22,31 @@ WEST>field-a3
 ATTR>hasEnemies
 ATTR>hasEvent\EventType
 ATTR>...
->>>>>>> branch 'master' of https://github.com/UTSA-CS-3443/Adventure-.git
-...
-<<<<<<< HEAD
-ENDLOC
- 
- */
+ENDLOC>
+*/
 
 public class ReadLocations {
 
-	public static HashMap<String, Location> locations = new HashMap<>();
+	public static HashMap<Integer, Location> locations = new HashMap<>();     // Map of locations indexed by number
+	public static HashMap<String, Integer> locationIndex = new HashMap<>();   // Map of location indexes based on Name
+																			  // Together these maps allow for custom starting location
+																			  // and this is the primary reason locationIndex exists
+	private String[] lineBuffer;
+	private String[] attr;
+	private String[] identifier;	// Parses the locations.txt file keywords to build a location
+	private Scanner in;
+	private Location loc;
+	private int locationNum;		// Gives a sort of order to the locations HashMap. Primary use is to allow for a dynamic
+									// starting location that is indexed as 1;
 	
 	public ReadLocations(URL defaultFile)
 	{		
-		String[] lineBuffer = new String[2048];
-		String[] attr = new String[128];
-		String name = "";
-		String desc = "";
-		String north = "";
-		String south = "";
-		String east = "";
-		String west = "";
-		String[] identifier;
-		Scanner in = null;
-		Location loc = null;
+		lineBuffer = new String[2048];
+		attr = new String[128];
+		identifier = new String[2];
+		in = null;
+		loc = null;
+		locationNum = 0;
 		
 		try 
 		{
@@ -62,9 +63,11 @@ public class ReadLocations {
 		while (in.hasNext()) 
 		{
 			//create a new location based on the read in data
-			//we will manually read in the up down left right name and description based on regex patterns then we will use another
+			//we will manually read in the north, south, east, west, name, and description based on regex patterns then we will use another
 			//while loop to keep going as long as the next line contains ATTR at the start, then we put the stuff in
 			//the location and then start again at the top
+			
+			//all print lines are for debug purposes and should be removed when finished
 			String line = in.nextLine();
 			identifier = line.split(">");
 			if(identifier[0].equals("LOC"))
@@ -114,7 +117,11 @@ public class ReadLocations {
 			
 			else if(identifier[0].equals("ENDLOC"))
 			{
-				locations.put(loc.getLocName(), loc);
+				locationNum++;
+				locations.put(locationNum, loc);
+				locationIndex.put(loc.getLocName(), locationNum);
+				
+				// For debug purposes, prints the locations map to see if any are missing or mapped incorrectly
 				Set set2 = locations.entrySet();
 			      Iterator iterator2 = set2.iterator();
 			      while(iterator2.hasNext()) {
