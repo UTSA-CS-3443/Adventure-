@@ -42,5 +42,5 @@ public class Player implements Entity{
 
 	public void setStats(String s, int i) {
 		stats.put(s, i);
-	}	
+	}
 }
