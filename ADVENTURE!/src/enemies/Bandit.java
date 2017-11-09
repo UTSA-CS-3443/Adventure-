@@ -1,14 +1,14 @@
-package Enemies;
+package enemies;
 
 import objects.Enemy;
 
-public class Goblin extends Enemy {
+public class Bandit extends Enemy {
 	
 	private String name;
 	private int hp;
 	private int[] stats;
 	
-	public Goblin(String name) {
+	public Bandit(String name) {
 		super();
 		this.name = name;
 	}
@@ -41,6 +41,7 @@ public class Goblin extends Enemy {
 	@Override
 	public void setStats(int[] stats) {
 		this.stats = stats;
+		
 	}
 
 }

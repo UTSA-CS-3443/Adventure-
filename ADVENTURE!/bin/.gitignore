@@ -1,6 +1,9 @@
-/screens/
+/application/
 /controller/
+/enemies/
+/events/
 /locations/
-/Enemies/
 /npc/
 /objects/
+/tests/
+/worldattributes/

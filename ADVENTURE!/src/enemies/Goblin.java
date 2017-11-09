@@ -1,14 +1,14 @@
-package Enemies;
+package enemies;
 
 import objects.Enemy;
 
-public class Orc extends Enemy {
+public class Goblin extends Enemy {
 	
 	private String name;
 	private int hp;
 	private int[] stats;
 	
-	public Orc(String name) {
+	public Goblin(String name) {
 		super();
 		this.name = name;
 	}
