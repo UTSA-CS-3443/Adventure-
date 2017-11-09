@@ -8,6 +8,7 @@ public abstract class NPC implements Entity {
 	protected int isMerchant = 0;
 	protected String name;
 	protected int hp;
+	String[] Inventory;
 	
 	public void interact(Player player)
 	{
@@ -28,7 +29,16 @@ public abstract class NPC implements Entity {
 	{
 		return this.stockAmt;
 	}
+	
+	public int getInventoryLength()
+	{
+		return this.Inventory.length;
+	}
 
+	public String getItemFromInventory(int i)
+	{
+		return this.Inventory[i];
+	}
 	
 	@Override
 	public String getName() {

@@ -141,8 +141,15 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	public VBox createPage(int index)
 	{
 		ImageView imageView = new ImageView();
-		 
-        File file = filesJpg[index];
+		String fName = ""; 
+        File[] inventoryImages = null;
+        for(int i = 0; i < npc.getInventoryLength(); i++)
+        {
+        	//load file based on npc inventory and length
+        	fName = npc.getItemFromInventory(i);
+        	//TODO still need to load image0
+        }
+		File file = inventoryImages[index];
         try {
             BufferedImage bufferedImage = ImageIO.read(file);
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
