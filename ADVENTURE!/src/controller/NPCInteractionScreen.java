@@ -1,11 +1,18 @@
 package controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
+
+import application.Main;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,25 +20,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Callback;
 import locations.Location;
 import locations.ReadLocations;
 import npc.ShopKeeper;
+import objects.NPC;
 import objects.Player;
 
 /**
  * Loads Game Screen scene and handles player actions. This is where the game is played
- * @author JASON
+ * @author Tyler Rasmussen and Jason Morales
  *
  */
-public class NPCInteractionScreen<N> extends AnchorPane implements EventHandler<ActionEvent>{
+public class NPCInteractionScreen extends AnchorPane implements EventHandler<ActionEvent>{
 
-	Location loc;
-	
+	NPC npc;
 	
 	@FXML Text NAME;
 	@FXML Text PER;
@@ -41,15 +51,15 @@ public class NPCInteractionScreen<N> extends AnchorPane implements EventHandler<
 	@FXML TextFlow DESC;
 	@FXML VBox CHOICES;
 	@FXML VBox stockImages;
-	Text locName;
-	Text locDesc;
-	
+	Text dialogue;
+		
 	/**
 	 * Load up the NPC screen for interaction with by the player
 	 * 
 	 * N is the generic NPC
 	 */
-	public NPCInteractionScreen(Player p, N npc) {
+	public NPCInteractionScreen(Player p, NPC n) {
+		this.npc = n;
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/NPCInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -59,6 +69,7 @@ public class NPCInteractionScreen<N> extends AnchorPane implements EventHandler<
 			e.printStackTrace();
 		}
 		
+		
 		NAME.setText(p.getName());
 		PER.setText(p.stats.get("Perception").toString());
 		INT.setText(p.stats.get("Intelligence").toString());
@@ -66,30 +77,15 @@ public class NPCInteractionScreen<N> extends AnchorPane implements EventHandler<
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
-		loc = ReadLocations.locations.get(1);
-		System.out.println(ReadLocations.locations.get(1));
-		System.out.println(loc.getLocName());
-		
-		locName = new Text(loc.getLocName() + "\n\n");
-		locDesc = new Text(loc.getLocDesc());
-		list.add(locName);
-		list.add(locDesc);
-		
-		Set set = loc.relativeLoc.entrySet();
-	      Iterator iterator = set.iterator();
-	      while(iterator.hasNext()) {
-	          Map.Entry mentry = (Map.Entry)iterator.next();
-	          Button button = new Button("" + mentry.getValue());
-	          CHOICES.getChildren().add(button);
-	          button.setOnAction(new EventHandler<ActionEvent>() {
+		//add some information to the readout list descriptor
+		dialogue.setText("How can I help you?");
+		list.add(dialogue);
 
-				@Override
-				public void handle(ActionEvent event) {
-					Button b = (Button)event.getSource();
-					update( b.getText() );
-				}
-	          });
-	      }
+		//initalize the pagination of item selections
+		if(npc.getMerchantStatus() == 1)
+		{
+			createPagination();
+		}
 	}
 	
 	/**
@@ -108,27 +104,59 @@ public class NPCInteractionScreen<N> extends AnchorPane implements EventHandler<
 		update( b.getText() );
 	}
 	
+	public void buy(ActionEvent event) {
+		Button b = (Button)event.getSource();
+		buyItem( b.getText() );
+	}
+	
+	public void leave(ActionEvent event) 
+	{
+		Main.stage.setScene(Main.mainGame);
+	}
+	
 	public void update(String text)
 	{
-		CHOICES.getChildren().clear();
-		loc = ReadLocations.locations.get(ReadLocations.locationIndex.get(text));
-		this.locName.setText(loc.getLocName() + "\n\n");
-		this.locDesc.setText(loc.getLocDesc());
 		
-		Set set2 = loc.relativeLoc.entrySet();
-	      Iterator iterator2 = set2.iterator();
-	      while(iterator2.hasNext()) {
-	          Map.Entry mentry2 = (Map.Entry)iterator2.next();
-	          Button button2 = new Button("" + mentry2.getValue());
-	          CHOICES.getChildren().add(button2);
-	          button2.setOnAction(new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent event) {
-						Button b = (Button)event.getSource();
-						update( b.getText() );
-					}
-		          });
-	      }
 	}
+	
+	public void buyItem(String text)
+	{
+		
+	}
+	
+	public void createPagination()
+	{
+		stock = new Pagination(npc.getStockAmt());
+		stock.setPageFactory(new Callback<Integer, Node>() 
+		{
+			@Override
+			public Node call(Integer pageIndex) 
+			{
+				return createPage(pageIndex);
+			}
+		});
+	}
+	
+	//load up the individual pages to put into the pagination of inventory
+	public VBox createPage(int index)
+	{
+		ImageView imageView = new ImageView();
+		 
+        File file = filesJpg[index];
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+            imageView.setFitWidth(400);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+        } catch (IOException ex) {
+            //some exception handling
+        }
+         
+        VBox pageBox = new VBox();
+        pageBox.getChildren().add(imageView);
+        return pageBox;
+    }
 }

@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	
 	public static GameScreen gs;
+	public static Scene mainGame;
 	public static Stage stage;
 	
 	@Override
