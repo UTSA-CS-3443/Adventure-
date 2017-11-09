@@ -53,8 +53,8 @@ public class CharacterCreator extends Pane{
 	protected void handleBegin(ActionEvent e)
 	{
 		player.setName(NAME.getText());
-		GameScreen gs = new GameScreen(player);
-		Main.stage.setScene(new Scene(gs));
+		Main.gs = new GameScreen(player);
+		Main.stage.setScene(new Scene(Main.gs));
 		Main.stage.show();
 	}
 	
@@ -72,7 +72,12 @@ public class CharacterCreator extends Pane{
 			stats[i] = diceRoll();
 			stats[i] += (stats[i]-10)/2;	// (stats[i]-10)/2 is the stat modifier bonus
 		}
-		player.setStats(stats);
+		
+		player.setStats("Strength", stats[0]);
+		player.setStats("Perception", stats[1]);
+		player.setStats("Intelligence", stats[2]);
+		player.setStats("Agility", stats[3]);
+		player.setStats("Luck", stats[4]);
 		player.setHp((stats[0]/2)+player.getHp()); // HP gets bonus modifier based on Strength/2
 		
 		STR.setText(Integer.toString(stats[0]));

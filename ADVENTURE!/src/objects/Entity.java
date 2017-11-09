@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.HashMap;
+
 /**
  * Framework for all game world entities
  * @author JASON
@@ -15,7 +17,7 @@ public interface Entity {
 
 	public void setHp(int hp);
 
-	public int[] getStats();
+	public HashMap<String, Integer> getStats();
 
-	public void setStats(int[] stats);
+	public void setStats(String s, int i);
 }

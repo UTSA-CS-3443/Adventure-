@@ -1,5 +1,7 @@
 package npc;
 
+import java.util.HashMap;
+
 import objects.NPC;
 
 public class InnKeeper extends NPC {
@@ -34,13 +36,16 @@ public class InnKeeper extends NPC {
 	}
 
 	@Override
-	public int[] getStats() {
-		return this.stats;
+	public HashMap<String, Integer> getStats() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void setStats(int[] stats) {
-		this.stats = stats;
+	public void setStats(String s, int i) {
+		// TODO Auto-generated method stub
+		
 	}
+
 
 }

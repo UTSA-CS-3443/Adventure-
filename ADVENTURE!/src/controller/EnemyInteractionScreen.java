@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import locations.Location;
 import locations.ReadLocations;
+import npc.ShopKeeper;
 import objects.Player;
 
 /**
@@ -26,7 +27,7 @@ import objects.Player;
  * @author JASON
  *
  */
-public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
+public class EnemyInteractionScreen<S> extends AnchorPane implements EventHandler<ActionEvent>{
 	Player player;
 	Location loc;
 	
@@ -45,11 +46,13 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	@FXML VBox CHOICES;
 	
 	/**
-	 * Loads the Game Screen and initializes the player character that was created in Character Creator.
-	 * @param p Player character from Character Creator
+	 * Load up the shopkeeper screen for interaction with by the player
+	 * 
+	 * S is the generic shopkeeper (shopkeeper, armorer, armsman, etc.)
 	 */
-	public GameScreen(Player p) {
+	public EnemyInteractionScreen(Player p, S keeper) {
 		this.player = p;
+		int[] initStats = player.getStats();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -61,11 +64,11 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		}
 		NAME.setText(this.player.getName());
 		HP.setText(Integer.toString(this.player.getHp()));
-		STR.setText(player.stats.get("Strength").toString());
-		PER.setText(player.stats.get("Perception").toString());
-		INT.setText(player.stats.get("Intelligence").toString());
-		AGI.setText(player.stats.get("Agility").toString());
-		LUC.setText(player.stats.get("Luck").toString());
+		STR.setText(Integer.toString(initStats[0]));
+		PER.setText(Integer.toString(initStats[1]));
+		INT.setText(Integer.toString(initStats[2]));
+		AGI.setText(Integer.toString(initStats[3]));
+		LUC.setText(Integer.toString(initStats[4]));
 		
 		ObservableList<Node> list = DESC.getChildren();
 		

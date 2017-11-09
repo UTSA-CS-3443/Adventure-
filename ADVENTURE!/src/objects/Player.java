@@ -1,21 +1,23 @@
 package objects;
 
+import java.util.HashMap;
 /**
  * The player character
  * @author JASON
  *
  */
-public class Player implements Entity{
 
+public class Player implements Entity{
+	
+	public HashMap<String, Integer> stats;
 	private String name;
 	private int hp;
-	private int[] stats;
 	
 	public Player()
 	{
 		name = "";
 		hp = 10;
-		stats = new int[5];
+		stats = new HashMap<String, Integer>();
 	}
 
 	public String getName() {
@@ -34,12 +36,11 @@ public class Player implements Entity{
 		this.hp = hp;
 	}
 
-	public int[] getStats() {
+	public HashMap<String, Integer> getStats() {
 		return stats;
 	}
 
-	public void setStats(int[] stats) {
-		this.stats = stats;
-	}
-	
+	public void setStats(String s, int i) {
+		stats.put(s, i);
+	}	
 }

@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Pagination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -19,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import locations.Location;
 import locations.ReadLocations;
+import npc.ShopKeeper;
 import objects.Player;
 
 /**
@@ -26,46 +28,41 @@ import objects.Player;
  * @author JASON
  *
  */
-public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
-	Player player;
+public class NPCInteractionScreen<N> extends AnchorPane implements EventHandler<ActionEvent>{
+
 	Location loc;
 	
 	
 	@FXML Text NAME;
-	@FXML Text HP;
-	@FXML Text STR;
 	@FXML Text PER;
 	@FXML Text INT;
-	@FXML Text AGI;
 	@FXML Text LUC;
+	@FXML Pagination stock;
+	@FXML TextFlow DESC;
+	@FXML VBox CHOICES;
+	@FXML VBox stockImages;
 	Text locName;
 	Text locDesc;
 	
-	@FXML TextFlow DESC;
-	@FXML VBox CHOICES;
-	
 	/**
-	 * Loads the Game Screen and initializes the player character that was created in Character Creator.
-	 * @param p Player character from Character Creator
+	 * Load up the NPC screen for interaction with by the player
+	 * 
+	 * N is the generic NPC
 	 */
-	public GameScreen(Player p) {
-		this.player = p;
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
+	public NPCInteractionScreen(Player p, N npc) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/NPCInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
-		
 		try {
 			loader.load();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		NAME.setText(this.player.getName());
-		HP.setText(Integer.toString(this.player.getHp()));
-		STR.setText(player.stats.get("Strength").toString());
-		PER.setText(player.stats.get("Perception").toString());
-		INT.setText(player.stats.get("Intelligence").toString());
-		AGI.setText(player.stats.get("Agility").toString());
-		LUC.setText(player.stats.get("Luck").toString());
+		
+		NAME.setText(p.getName());
+		PER.setText(p.stats.get("Perception").toString());
+		INT.setText(p.stats.get("Intelligence").toString());
+		LUC.setText(p.stats.get("Luck").toString());
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
