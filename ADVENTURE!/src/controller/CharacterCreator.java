@@ -52,9 +52,9 @@ public class CharacterCreator extends Pane{
 	@FXML
 	protected void handleBegin(ActionEvent e)
 	{
-		Main.mainGame = new Scene(Main.gs);
 		player.setName(NAME.getText());
 		Main.gs = new GameScreen(player);
+		Main.mainGame = new Scene(Main.gs);
 		Main.stage.setScene(Main.mainGame);
 		Main.stage.show();
 	}
