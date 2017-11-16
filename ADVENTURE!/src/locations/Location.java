@@ -1,5 +1,6 @@
 package locations;
 
+import java.util.ArrayList;
 /**
  * A place in the game world. A location has pointers to other locations
  * and lists actions that can be taken in the location.
@@ -14,7 +15,7 @@ public class Location {
 	private String locName; // Name of location
 	private String locDesc; // Description of location
 	private String locImage; // Image to use for the location
-	private String locEvents[]; // Array of event attributes for a given location
+	private ArrayList<String> locEvents; // Array of event attributes for a given location
 	private String locWorldAttributes[]; // Array of world attributes for a particular location
 	public HashMap<String, String> relativeLoc = new HashMap<String, String>();
 	private Location prevLoc;
@@ -27,6 +28,7 @@ public class Location {
 		locDesc = "";
 		locImage = "";
 		prevLoc = null;
+		locEvents = new ArrayList<String>();
 	}
 	
 	public void setImage(Image img)
@@ -63,9 +65,9 @@ public class Location {
 		locWorldAttributes = attr;
 	}
 
-	public  void setEventAttributes(String[] attr)
+	public  void setEvents(String event)
 	{
-		locEvents = attr;
+		locEvents.add(event);
 	}
 	
 	public  String[] getWorldAttributes()
@@ -73,7 +75,7 @@ public class Location {
 		return locWorldAttributes;
 	}
 
-	public  String[] getEventAttributes()
+	public  ArrayList getEventAttributes()
 	{
 		return locEvents;
 	}

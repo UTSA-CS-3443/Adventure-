@@ -20,6 +20,7 @@ DESC>"The inn seems to be alive and well. The booming economy of Davenport has d
 IMG>placeholder.jpg
 NORTH>Gilan the InnKeeper
 SOUTH>Davenport
+EVENT>Donut
 ENDLOC>
 
 LOC>Davenport Market
