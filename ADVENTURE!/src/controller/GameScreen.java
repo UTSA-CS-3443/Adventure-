@@ -27,7 +27,7 @@ import objects.Player;
  *
  */
 public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
-	Player player;
+	public static Player player;
 	Location loc;
 	
 	

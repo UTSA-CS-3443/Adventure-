@@ -43,7 +43,15 @@ public class Player implements Entity{
 	}
 
 	public void setStats(String s, int i) {
-		stats.put(s, i);
+		if(stats.containsKey(s))
+			stats.replace(s, i);
+		else
+			stats.put(s, i);
+	}
+	
+	public Player getPlayer()
+	{
+		return this;
 	}
 	
 	public void setWalletAmt(int i)

@@ -50,7 +50,7 @@ public class EventReader	{
 			}
 			else if(identifier[0].equals("CHOICE"))
 			{
-				event.setChoices(identifier[1], Integer.parseInt(identifier[2]));
+				event.setChoices(identifier[1], identifier[2]);
 			}
 			else if(identifier[0].equals("ENDEVENT"))
 			{
