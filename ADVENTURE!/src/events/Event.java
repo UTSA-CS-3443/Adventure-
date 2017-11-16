@@ -57,7 +57,6 @@ public class Event	{
 	
 	public void outcomes(String text)
 	{
-		HashMap<String, Integer> playerStats = new HashMap<>();
 		String outcome = choices.get(text);
 		String[] outcomeParser = outcome.split("~");
 		String[] operation = null;

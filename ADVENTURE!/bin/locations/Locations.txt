@@ -17,6 +17,7 @@ LOC>Dungeons and Flagons
 DESC>"The inn seems to be alive and well. The booming economy of Davenport has drawn people from all over the country and it shows. The main room is filled to the brim with folks from a wide range of professions, be they farmers, sailors, tailors, or bakers. Rooms here cost 5 ducats.
 NORTH>Gilan the InnKeeper
 SOUTH>Davenport
+EVENT>Donut
 ENDLOC>
 
 LOC>Davenport Market
