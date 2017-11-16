@@ -14,8 +14,10 @@ public class Event	{
 	private boolean completed;
 	HashMap<String, String> choices = new HashMap<>();
 	HashMap<String, Integer> stats = new HashMap<>();
+	HashMap<String, Integer> statMods = new HashMap<>();
 	private int hp;
 	Player player;
+	boolean failedCheck;
 	
 	public Event() {
 		eventName = "";
@@ -23,7 +25,9 @@ public class Event	{
 		completed = false;
 		player = Main.gs.player.getPlayer();
 		stats = player.getStats();
+		statMods = player.getStatMods();
 		hp = player.getHp();
+		failedCheck = false;
 	}
 	
 	public String getName()
@@ -71,7 +75,7 @@ public class Event	{
 					}
 					else if(operation[0].equals("-"))
 					{
-						player.setStats(operation[0], stats.get(operation[0]) - Integer.valueOf(operation[3]);
+						player.setStats(operation[0], stats.get(operation[0]) - Integer.valueOf(operation[3]));
 					}
 					else
 						break;
@@ -91,9 +95,27 @@ public class Event	{
 				}
 				else if(operation[0].equals("ROLL"))
 				{
-					int die = (int) (Math.random()*20+1) ;
+					int die = (int) (Math.random()*20+1);
+					
+					if(die == 20)
+					{
+						failedCheck = false;
+					}
+					else if(die == 1)
+					{
+						failedCheck = true;
+						break;
+					}
+					else if(die + statMods.get(operation[1]) < Integer.valueOf(operation[3]))
+					{
+						failedCheck = true;
+						break;
+					}
 				}
 			}
+			
+			if(failedCheck)
+				break;
 		}
 		
 		

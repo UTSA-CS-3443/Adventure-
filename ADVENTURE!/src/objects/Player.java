@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class Player implements Entity{
 	
 	public HashMap<String, Integer> stats;
+	public HashMap<String, Integer> statMods;
 	private String name;
 	private int hp;
 	private int walletAmt;
@@ -20,6 +21,7 @@ public class Player implements Entity{
 		name = "";
 		hp = 10;
 		stats = new HashMap<String, Integer>();
+		statMods = new HashMap<>();
 	}
 
 	public String getName() {
@@ -44,9 +46,20 @@ public class Player implements Entity{
 
 	public void setStats(String s, int i) {
 		if(stats.containsKey(s))
+		{
 			stats.replace(s, i);
+			statMods.replace(s, ((i - 10)/2));
+		}
 		else
+		{
 			stats.put(s, i);
+			statMods.put(s, ((i - 10)/2));
+		}
+	}
+	
+	public HashMap<String, Integer> getStatMods()
+	{
+		return statMods;
 	}
 	
 	public Player getPlayer()
