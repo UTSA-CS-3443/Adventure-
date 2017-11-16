@@ -7,6 +7,9 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.*;
+
+import javafx.scene.image.Image;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -38,6 +41,7 @@ public class ReadLocations {
 	private Location loc;
 	private int locationNum;		// Gives a sort of order to the locations HashMap. Primary use is to allow for a dynamic
 									// starting location that is indexed as 1;
+	Image img;
 	
 	public ReadLocations(URL defaultFile)
 	{		
@@ -47,6 +51,7 @@ public class ReadLocations {
 		in = null;
 		loc = null;
 		locationNum = 0;
+		String directory;
 		
 		try 
 		{
@@ -81,6 +86,14 @@ public class ReadLocations {
 			{
 				loc.setLocDesc(identifier[1]);
 				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
+			}
+			
+			else if(identifier[0].equals("IMG"))
+			{
+				//load the image specified by IMG+
+				directory = String.format("/images/%s", identifier[1]);
+				img = new Image(directory);
+				loc.setImage(img);
 			}
 				
 			else if(identifier[0].equals("NORTH"))

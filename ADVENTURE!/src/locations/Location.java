@@ -7,6 +7,8 @@ package locations;
  *
  */
 import java.util.HashMap;
+
+import javafx.scene.image.Image;
 public class Location {
 	
 	private String locName; // Name of location
@@ -16,6 +18,7 @@ public class Location {
 	private String locWorldAttributes[]; // Array of world attributes for a particular location
 	public HashMap<String, String> relativeLoc = new HashMap<String, String>();
 	private Location prevLoc;
+	private Image image;
 	
 	public Location()
 	{
@@ -24,6 +27,16 @@ public class Location {
 		locDesc = "";
 		locImage = "";
 		prevLoc = null;
+	}
+	
+	public void setImage(Image img)
+	{
+		this.image = img;
+	}
+	
+	public Image getImage()
+	{
+		return this.image;
 	}
 	
 	public  void setNorth(String value)

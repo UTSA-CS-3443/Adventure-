@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -38,6 +39,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	@FXML Text INT;
 	@FXML Text AGI;
 	@FXML Text LUC;
+	@FXML ImageView IMAGE;
 	Text locName;
 	Text locDesc;
 	
@@ -53,7 +55,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
-		
+		IMAGE.setImage(loc.getImage());
 		try {
 			loader.load();
 		} catch (Exception e) {
@@ -117,6 +119,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		loc = ReadLocations.locations.get(ReadLocations.locationIndex.get(text));
 		this.locName.setText(loc.getLocName() + "\n\n");
 		this.locDesc.setText(loc.getLocDesc());
+		IMAGE.setImage(loc.getImage());
 		
 		Set set2 = loc.relativeLoc.entrySet();
 	      Iterator iterator2 = set2.iterator();
