@@ -55,7 +55,6 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
-		IMAGE.setImage(loc.getImage());
 		try {
 			loader.load();
 		} catch (Exception e) {
@@ -79,7 +78,8 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		locDesc = new Text(loc.getLocDesc());
 		list.add(locName);
 		list.add(locDesc);
-		
+		IMAGE.setImage(loc.getImage());
+
 		Set set = loc.relativeLoc.entrySet();
 	      Iterator iterator = set.iterator();
 	      while(iterator.hasNext()) {
