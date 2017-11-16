@@ -1,12 +1,14 @@
 package npc;
 
+import java.util.HashMap;
+
 import objects.NPC;
 
 public class Traveler extends NPC {
 	
 	private String name;
 	private int hp;
-	private int[] stats;
+	private HashMap<String, Integer> stats;
 	
 	public Traveler(String name) {
 		super();
@@ -32,15 +34,15 @@ public class Traveler extends NPC {
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
-
+	
 	@Override
-	public int[] getStats() {
+	public HashMap<String, Integer> getStats() {
 		return this.stats;
 	}
 
 	@Override
-	public void setStats(int[] stats) {
-		this.stats = stats;
+	public void setStats(String s, int i) {
+		stats.put(s, i);
 	}
 
 }

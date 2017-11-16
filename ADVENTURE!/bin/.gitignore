@@ -1,6 +1,13 @@
 /images/
 /controller/
 /objects/
+<<<<<<< HEAD
 /npc/
 /events/
 /application/
+=======
+/tests/
+/worldattributes/
+/screens/
+>>>>>>> branch 'master' of https://github.com/UTSA-CS-3443/Adventure-
+/enemies/
