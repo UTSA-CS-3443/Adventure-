@@ -1,5 +1,6 @@
 package application;
 	
+import controller.Game;
 import controller.GameScreen;
 import controller.MainMenuController;
 import javafx.application.Application;
@@ -18,6 +19,7 @@ public class Main extends Application {
 	public static GameScreen gs;
 	public static Scene mainGame;
 	public static Stage stage;
+	public static Game game;
 	
 	@Override
 	public void start(Stage primaryStage) {

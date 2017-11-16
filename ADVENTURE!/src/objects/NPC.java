@@ -1,6 +1,7 @@
 package objects;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public abstract class NPC implements Entity {
 	
@@ -8,16 +9,31 @@ public abstract class NPC implements Entity {
 	protected int isMerchant = 0;
 	protected String name;
 	protected int hp;
-	String[] Inventory;
+	protected String description;
+	protected String speech;
+	ArrayList<String> InventoryItems = new ArrayList<String>();
+	HashMap<String, Integer> Inventory = new HashMap<String, Integer>(); 
 	
 	public void interact(Player player)
 	{
 		
 	}
-
+	
+	public int getCost(String item)
+	{
+		return Inventory.get(item);
+	}
+	public void addItemToInventory(String name, int cost)
+	{
+		Inventory.put(name, cost);
+	}
 	public int getMerchantStatus()
 	{
 		return isMerchant;
+	}
+	public void setMerchantStatus(int i)
+	{
+		isMerchant = i;
 	}
 	
 	public void setStockAmt(int i)
@@ -32,12 +48,37 @@ public abstract class NPC implements Entity {
 	
 	public int getInventoryLength()
 	{
-		return this.Inventory.length;
+		return this.Inventory.size();
 	}
 
 	public String getItemFromInventory(int i)
 	{
-		return this.Inventory[i];
+		return this.InventoryItems.get(i);
+	}
+	
+	public void addInventoryItems(String name)
+	{
+		InventoryItems.add(name); 
+	}
+	
+	public void setSpeech(String speech)
+	{
+		this.speech = speech;
+	}
+	
+	public String getSpeech()
+	{
+		return this.speech;
+	}
+	
+	public void setDescription(String desc)
+	{
+		this.description = desc;
+	}
+	
+	public String getDescription()
+	{
+		return this.description;
 	}
 	
 	@Override

@@ -29,7 +29,7 @@ public class EventReader	{
 		try {
 			in = new Scanner(new File(events.toURI()));
 		} catch(FileNotFoundException exception){
-			System.err.println("failed to open location data");
+			System.err.println("failed to open event data");
 		    System.exit(1);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
