@@ -17,7 +17,6 @@ public abstract class Enemy implements Entity{
 	{
 		name = "";
 		hp = 5;
-		stats = new int[5];
 	}
 	
 	public abstract String getName();

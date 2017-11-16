@@ -8,6 +8,7 @@ public abstract class NPC implements Entity {
 	protected int isMerchant = 0;
 	protected String name;
 	protected int hp;
+	private HashMap<String, Integer> stats;
 	String[] Inventory;
 	
 	public void interact(Player player)
@@ -62,13 +63,12 @@ public abstract class NPC implements Entity {
 
 	@Override
 	public HashMap<String, Integer> getStats() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.stats;
 	}
 
 	@Override
 	public void setStats(String s, int i) {
-		// TODO Auto-generated method stub
+		stats.put(s, i);
 		
 	}
 
