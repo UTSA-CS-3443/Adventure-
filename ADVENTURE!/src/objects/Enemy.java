@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.HashMap;
+
 /**
  * Framework for all Enemies
  * @author JASON
@@ -9,7 +11,7 @@ public abstract class Enemy implements Entity{
 
 	private String name;
 	private int hp;
-	private int[] stats;
+	private HashMap<String, Integer> stats;
 	
 	public Enemy()
 	{
@@ -26,8 +28,6 @@ public abstract class Enemy implements Entity{
 	
 	public abstract void setHp(int hp);
 	
-	public abstract int[] getStats();
-	
-	public abstract void setStats(int[] stats);
-	
+	public abstract HashMap<String, Integer> getStats();
+		
 }

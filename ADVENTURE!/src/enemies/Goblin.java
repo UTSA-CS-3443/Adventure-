@@ -1,12 +1,14 @@
 package enemies;
 
+import java.util.HashMap;
+
 import objects.Enemy;
 
 public class Goblin extends Enemy {
 	
 	private String name;
 	private int hp;
-	private int[] stats;
+	private HashMap<String, Integer> stats;
 	
 	public Goblin(String name) {
 		super();
@@ -33,14 +35,16 @@ public class Goblin extends Enemy {
 		this.hp = hp;
 	}
 
+
 	@Override
-	public int[] getStats() {
+	public HashMap<String, Integer> getStats() {
 		return this.stats;
 	}
 
 	@Override
-	public void setStats(int[] stats) {
-		this.stats = stats;
+	public void setStats(String s, int i) {
+		stats.put(s, i);
+		
 	}
 
 }
