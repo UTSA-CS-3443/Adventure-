@@ -4,6 +4,7 @@ import java.util.HashMap;
 /**
  * The player character
  * @author JASON
+ * @author Tyler
  *
  */
 
@@ -12,6 +13,7 @@ public class Player implements Entity{
 	public HashMap<String, Integer> stats;
 	private String name;
 	private int hp;
+	private int walletAmt;
 	
 	public Player()
 	{
@@ -43,4 +45,15 @@ public class Player implements Entity{
 	public void setStats(String s, int i) {
 		stats.put(s, i);
 	}
+	
+	public void setWalletAmt(int i)
+	{
+		walletAmt = i;
+	}
+	
+	public int getWalletAmt()
+	{
+		return walletAmt;
+	}
+	
 }
