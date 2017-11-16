@@ -1,0 +1,65 @@
+EVENT>Donut
+DESC>"You find a half eaten donut on the ground. Do you take a bite?"
+CHOICE>Eat it>HP - 1ROLL LUC 5~HP + 3
+CHOICE>Dont eat it
+ENDEVENT>
+
+EVENT>Tree Falling
+DESC>"Tree falls on you in a forest. You can either dodge and hope it misses, or you can try to push it off of you if you're strong enough."
+CHOICE>Roll for Agil>HP - 2~ROLL AGI 10~HP + 2
+CHOICE>Roll for strth>HP - 4~ROLL STR 10~HP + 4
+ENDEVENT>
+
+EVENT>Found Sword
+DESC>"You've found a fairly nice sword laying about. It looks like it would help you out, but it might be someones. Will you take it?"
+CHOICE>Take the Sword>STR + 1
+CHOICE>Dont take the Sword
+ENDEVENT>
+
+EVENT>Good Book
+DESC>"A passing scholar shoves a book in your hand and encourages you to read it before running off, chasing someone else. Do you read it?"
+CHOICE>Read it>ROLL PER 10~INT + 1
+CHOICE>Forget Reading!
+ENDEVENT>
+
+EVENT>Knight
+DESC>"A kid run pasts you down a hallway. You suddenly see a shining figure in the distance to find a massive, armor clad Knight approaching you. He asks if you've seen a thief nearby who has stolen his money"
+CHOICE>I'm not a Snitch!
+CHOICE>He went that way>LUC + 1
+ENDEVENT>
+
+EVENT>Mage
+DESC>"You approach an arrogant, traveling mage who tells you to either bow down to his might or be cursed."
+CHOICE>You bow down>HP + 3
+CHOICE>Ignore him>LUC - 2~ROLL LUC 10~LUC + 2
+ENDEVENT>
+
+EVENT>Spirit
+DESC>"A sudden fog overcomes you. You hear noises and whispering near your ear. You turn around to find a spooky ghost right next to you! It looks terrifying!"
+CHOICE>Run and Hide!>HP - 2~ROLL AGI 10~HP + 2
+CHOICE>Try to shoo it away>HP - 3~ROLL INT 10~HP + 2
+ENDEVENT>
+
+EVENT>Magic amulet
+DESC>"You find a magic amulet half buried in the ground! It may give you powers, or it could give you a curse."
+CHOICE>Pick it up>HP - 2~ROLL LUC 5~HP + 2~PER + 2
+CHOICE>Leave it
+ENDEVENT>
+
+EVENT>Coin Pouch
+DESC>"You find a lump of dirt that looks awfully suspicious. Do you investigate it?"
+CHOICE>You dig>ROLL LUC 8~MON + 25
+CHOICE>Forget it!
+ENDEVENT>
+
+EVENT>Thief
+DESC>"You're walking along when suddenly a small child runs into you from behind. He says sorry and runs off, and you think nothing of it for the moment, until you realize your coins are missing!"
+CHOICE>Run after him!>MON - 5~ROLL AGI 10~MON + 5
+CHOICE>Accept the loss>MON - 5
+ENDEVENT>
+
+EVENT>Donation
+DESC>"Youre sitting down for a few moments to rest when a man in fancy clothes walks by. He says to you, "Oh you poor thing, living out on the street. Let me help you!" and hands you 10 coins."
+CHOICE>Take it>MON + 10
+CHOICE>Im not homeless!
+ENDEVENT>
