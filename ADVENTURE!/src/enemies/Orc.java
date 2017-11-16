@@ -1,12 +1,14 @@
 package enemies;
 
+import java.util.HashMap;
+
 import objects.Enemy;
 
 public class Orc extends Enemy {
 	
 	private String name;
 	private int hp;
-	private int[] stats;
+	private HashMap<String, Integer> stats;
 	
 	public Orc(String name) {
 		super();
@@ -34,13 +36,14 @@ public class Orc extends Enemy {
 	}
 
 	@Override
-	public int[] getStats() {
-		return this.stats;
+	public void setStats(String s, int i) {
+		stats.put(s, i);
 	}
 
 	@Override
-	public void setStats(int[] stats) {
-		this.stats = stats;
+	public HashMap<String, Integer> getStats() {
+		return this.stats;
 	}
+
 
 }

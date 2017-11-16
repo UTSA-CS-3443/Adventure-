@@ -1,23 +1,20 @@
-package npc;
+package items;
 
 import java.util.HashMap;
 
-import objects.NPC;
-
-public class ShopKeeper extends NPC {
+public class Dagger implements Weapon {
 	
 	private String name;
-	private int hp;
 	private HashMap<String, Integer> stats;
 	
-	public ShopKeeper(String name) {
+	public Dagger(String name) {
 		super();
 		this.name = name;
 	}
-	
+
 	@Override
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	@Override
@@ -26,22 +23,13 @@ public class ShopKeeper extends NPC {
 	}
 
 	@Override
-	public int getHp() {
-		return this.hp;
-	}
-
-	@Override
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
-
-	@Override
 	public HashMap<String, Integer> getStats() {
-		return this.stats;
+		return stats;
 	}
 
 	@Override
-	public void setStats(String s, int i) {
+	public void setStats(String s, Integer i) {
 		stats.put(s, i);
 	}
+
 }

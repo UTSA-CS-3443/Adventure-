@@ -42,11 +42,13 @@ import objects.Player;
 public class NPCInteractionScreen extends AnchorPane implements EventHandler<ActionEvent>{
 
 	NPC npc;
+	Player player;
 	
 	@FXML Text NAME;
 	@FXML Text PER;
 	@FXML Text INT;
 	@FXML Text LUC;
+	@FXML Text WALLET;
 	@FXML Pagination stock;
 	@FXML TextFlow DESC;
 	@FXML VBox CHOICES;
@@ -60,6 +62,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	 */
 	public NPCInteractionScreen(Player p, NPC n) {
 		this.npc = n;
+		this.player = p;
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/NPCInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -74,12 +77,17 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		PER.setText(p.stats.get("Perception").toString());
 		INT.setText(p.stats.get("Intelligence").toString());
 		LUC.setText(p.stats.get("Luck").toString());
+		WALLET.setText(String.valueOf(p.getWalletAmt())); 
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
 		//add some information to the readout list descriptor
 		dialogue.setText("How can I help you?");
 		list.add(dialogue);
+		list.add(NAME);
+		list.add(PER);
+		list.add(LUC);
+		list.add(WALLET);
 
 		//initalize the pagination of item selections
 		if(npc.getMerchantStatus() == 1)
@@ -121,7 +129,8 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	
 	public void buyItem(String text)
 	{
-		
+		int cost = 0;
+		player.setWalletAmt(player.getWalletAmt() - cost);
 	}
 	
 	public void createPagination()
@@ -138,11 +147,13 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	}
 	
 	//load up the individual pages to put into the pagination of inventory
+	//example code found online and modified to suit our use case
 	public VBox createPage(int index)
 	{
 		ImageView imageView = new ImageView();
 		String fName = ""; 
         File[] inventoryImages = null;
+        //load our files into an array
         for(int i = 0; i < npc.getInventoryLength(); i++)
         {
         	//load file based on npc inventory and length

@@ -1,12 +1,14 @@
 package npc;
 
+import java.util.HashMap;
+
 import objects.NPC;
 
 public class Guide extends NPC {
 	
-	String name;
+	private String name;
 	private int hp;
-	private int[] stats;
+	private HashMap<String, Integer> stats;
 	
 	public Guide(String name) {
 		super();
@@ -34,13 +36,13 @@ public class Guide extends NPC {
 	}
 
 	@Override
-	public int[] getStats() {
+	public HashMap<String, Integer> getStats() {
 		return this.stats;
 	}
 
 	@Override
-	public void setStats(int[] stats) {
-		this.stats = stats;
+	public void setStats(String s, int i) {
+		stats.put(s, i);
 	}
 
 }
