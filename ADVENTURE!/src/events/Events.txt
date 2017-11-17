@@ -1,6 +1,6 @@
 EVENT>Donut
 DESC>"You find a half eaten donut on the ground. Do you take a bite?"
-CHOICE>Eat it>HP - 1ROLL LUC 5~HP + 3
+CHOICE>Eat it>HP - 1~ROLL LUC 5~HP + 3
 CHOICE>Dont eat it
 ENDEVENT>
 
