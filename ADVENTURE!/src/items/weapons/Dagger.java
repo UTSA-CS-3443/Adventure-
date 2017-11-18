@@ -1,13 +1,13 @@
-package items;
+package items.weapons;
 
 import java.util.HashMap;
 
-public class Sword extends Weapon {
+public class Dagger extends Weapon {
 	
 	private String name;
 	private HashMap<String, Integer> stats;
 	
-	public Sword(String name) {
+	public Dagger(String name) {
 		super();
 		this.name = name;
 	}

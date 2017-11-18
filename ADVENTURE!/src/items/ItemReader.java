@@ -9,6 +9,12 @@ import java.util.Scanner;
 
 import application.Main;
 import controller.Game;
+import items.potions.Elixer;
+import items.potions.StrengthBooster;
+import items.weapons.Dagger;
+import items.weapons.Mace;
+import items.weapons.Staff;
+import items.weapons.Sword;
 import objects.Items;
 import objects.NPC;
 import npc.*;

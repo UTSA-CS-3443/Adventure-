@@ -1,4 +1,4 @@
-package items;
+package items.potions;
 
 import java.util.HashMap;
 

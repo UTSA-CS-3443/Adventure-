@@ -1,4 +1,4 @@
-package items;
+package items.weapons;
 
 import java.util.HashMap;
 

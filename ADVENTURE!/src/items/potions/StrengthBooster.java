@@ -1,4 +1,4 @@
-package items;
+package items.potions;
 
 public class StrengthBooster extends Potion {
 	

@@ -1,4 +1,4 @@
-package items;
+package items.potions;
 
 public class Elixer extends Potion {
 	
