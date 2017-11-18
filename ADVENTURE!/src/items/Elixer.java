@@ -1,19 +1,12 @@
 package items;
 
-import objects.Items;
-
-public class Elixer implements Items {
+public class Elixer extends Potion {
 	
 	private String name;
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public void setName(String name) {
+	
+	public Elixer(String name) {
+		super();
 		this.name = name;
 	}
-
+	
 }

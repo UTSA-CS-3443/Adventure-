@@ -4,15 +4,17 @@ import java.util.HashMap;
 
 import objects.Items;
 
-public abstract class Weapon implements Items{
+public abstract class Potion implements Items{
 	
 	private String name;
 	private HashMap<String, Integer> stats;
 	
-	public int getAttackPower()
-	{
-		//TODO
-		return 0;
+	public HashMap<String, Integer> getStats() {
+		return stats;
+	}
+	
+	public void setStats(String s, Integer i){
+		stats.put(s, i);
 	}
 
 	@Override
@@ -23,15 +25,6 @@ public abstract class Weapon implements Items{
 	@Override
 	public void setName(String name) {
 		this.name = name;
-		
-	}
-
-	public HashMap<String, Integer> getStats() {
-		return stats;
-	}
-	
-	public void setStats(String s, Integer i) {
-		stats.put(s, i);
 	}
 	
 }

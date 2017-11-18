@@ -1,0 +1,10 @@
+WEAPON>Sword>Long Sword>1>2>3>4
+WEAPON>Sword>Short Sword>1>2>3>4
+WEAPON>Staff>Long Staff>1>2>3>4
+WEAPON>Staff>Short staff>1>2>3>4
+WEAPON>Dagger>Vampiric Dagger>1>2>3>4
+WEAPON>Mace>
+POTION>Elixer>
+POTION>StrengthBooster
+POTION>
+ENDITEM
