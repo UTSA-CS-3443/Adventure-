@@ -30,6 +30,7 @@ NORTH>Davenport
 SOUTH>The Man-at-Arms
 WEST>The Man-of-Steel
 EAST>Davenport Goods
+EVENT>Mage
 ENDLOC>
 
 LOC>The Man-at-Arms

@@ -125,7 +125,7 @@ public class ReadLocations {
 			//for every attribute we have for the particular location, parse it
 			else if(identifier[0].equals("EVENT"))
 			{
-				loc.setEvents(identifier[1]);
+				loc.setEvent(identifier[1]);
 				System.out.printf("%s, %s\n", identifier[0], identifier[1]);
 			}
 			

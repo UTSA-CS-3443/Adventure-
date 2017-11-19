@@ -15,7 +15,8 @@ public class Location {
 	private String locName; // Name of location
 	private String locDesc; // Description of location
 	private String locImage; // Image to use for the location
-	private ArrayList<String> locEvents; // Array of event attributes for a given location
+	private String locEvent; // An Event
+	private boolean hasEvent;
 	private String locWorldAttributes[]; // Array of world attributes for a particular location
 	public HashMap<String, String> relativeLoc = new HashMap<String, String>();
 	private Location prevLoc;
@@ -28,7 +29,8 @@ public class Location {
 		locDesc = "";
 		locImage = "";
 		prevLoc = null;
-		locEvents = new ArrayList<String>();
+		locEvent = "";
+		hasEvent = false;
 	}
 	
 	public void setImage(Image img)
@@ -41,66 +43,78 @@ public class Location {
 		return this.image;
 	}
 	
-	public  void setNorth(String value)
+	public void setNorth(String value)
 	{
 		relativeLoc.put("north", value);
 	}
 	
-	public  void setSouth(String value)
+	public void setSouth(String value)
 	{
 		relativeLoc.put("south", value);
 	}
-	public  void setEast(String value)
+	public void setEast(String value)
 	{
 		relativeLoc.put("east", value);
 
 	}
-	public  void setWest(String value)
+	public void setWest(String value)
 	{
 		relativeLoc.put("west", value);
 
 	}
-	public  void setWorldAttributes(String[] attr)
+	public void setWorldAttributes(String[] attr)
 	{
 		locWorldAttributes = attr;
 	}
 
-	public  void setEvents(String event)
+	public void setEvent(String event)
 	{
-		locEvents.add(event);
+		locEvent = event;
+		hasEvent = true;
 	}
 	
-	public  String[] getWorldAttributes()
+	public String getEvent()
+	{
+		return locEvent;
+	}
+	
+	public boolean hasEvent()
+	{
+		return hasEvent;
+	}
+	
+	public void setHasEvent(boolean status)
+	{
+		hasEvent = false;
+	}
+	
+	public String[] getWorldAttributes()
 	{
 		return locWorldAttributes;
 	}
 
-	public  ArrayList getEventAttributes()
-	{
-		return locEvents;
-	}
 
-	public  String getLocName() {
+	public String getLocName() {
 		return locName;
 	}
 
-	public  void setLocName(String locName) {
+	public void setLocName(String locName) {
 		this.locName = locName;
 	}
 
-	public  String getLocDesc() {
+	public String getLocDesc() {
 		return locDesc;
 	}
 
-	public  void setLocDesc(String locDesc) {
+	public void setLocDesc(String locDesc) {
 		this.locDesc = locDesc;
 	}
 
-	public  String getLocImage() {
+	public String getLocImage() {
 		return locImage;
 	}
 
-	public  void setLocImage(String locImage) {
+	public void setLocImage(String locImage) {
 		this.locImage = locImage;
 	}
 	

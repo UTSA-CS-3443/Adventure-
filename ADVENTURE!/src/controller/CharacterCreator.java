@@ -74,11 +74,11 @@ public class CharacterCreator extends Pane{
 			stats[i] += (stats[i]-10)/2;	// (stats[i]-10)/2 is the stat modifier bonus
 		}
 		
-		player.setStats("Strength", stats[0]);
-		player.setStats("Perception", stats[1]);
-		player.setStats("Intelligence", stats[2]);
-		player.setStats("Agility", stats[3]);
-		player.setStats("Luck", stats[4]);
+		player.setStats("STR", stats[0]);
+		player.setStats("PER", stats[1]);
+		player.setStats("INT", stats[2]);
+		player.setStats("AGI", stats[3]);
+		player.setStats("LUC", stats[4]);
 		player.setHp((stats[0]/2)+player.getHp()); // HP gets bonus modifier based on Strength/2
 		
 		STR.setText(Integer.toString(stats[0]));

@@ -9,13 +9,15 @@ import java.util.Scanner;
 
 public class EventReader	{
 
-	public HashMap<String, Event> eventsM = new HashMap<>();
+	public static HashMap<Integer, Event> eventsM = new HashMap<>();
+	public static HashMap<String, Integer> eventIndex = new HashMap<>();
 	
 	private Scanner in;
 	private String eventName;
 	private String eventDesc;
 	private String[] identifier;
 	private Event event;
+	private int eventNum;
 	
 	
 	public EventReader(URL events) {
@@ -54,7 +56,9 @@ public class EventReader	{
 			}
 			else if(identifier[0].equals("ENDEVENT"))
 			{
-				eventsM.put(event.getName(), event);
+				eventNum++;
+				eventsM.put(eventNum, event);
+				eventIndex.put(event.getName(), eventNum);
 			}
 		}
 	}

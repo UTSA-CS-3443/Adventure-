@@ -4,13 +4,16 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import events.EventReader;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,6 +21,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import locations.Location;
 import locations.ReadLocations;
 import objects.Player;
@@ -30,6 +35,7 @@ import objects.Player;
 public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	public static Player player;
 	Location loc;
+	Stage eventStage;
 	
 	
 	@FXML Text NAME;
@@ -52,6 +58,8 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	 */
 	public GameScreen(Player p) {
 		this.player = p;
+		eventStage = new Stage();
+		eventStage.initModality(Modality.APPLICATION_MODAL);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -62,11 +70,11 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		}
 		NAME.setText(this.player.getName());
 		HP.setText(Integer.toString(this.player.getHp()));
-		STR.setText(player.stats.get("Strength").toString());
-		PER.setText(player.stats.get("Perception").toString());
-		INT.setText(player.stats.get("Intelligence").toString());
-		AGI.setText(player.stats.get("Agility").toString());
-		LUC.setText(player.stats.get("Luck").toString());
+		STR.setText(player.stats.get("STR").toString());
+		PER.setText(player.stats.get("PER").toString());
+		INT.setText(player.stats.get("INT").toString());
+		AGI.setText(player.stats.get("AGI").toString());
+		LUC.setText(player.stats.get("LUC").toString());
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
@@ -120,6 +128,20 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		this.locName.setText(loc.getLocName() + "\n\n");
 		this.locDesc.setText(loc.getLocDesc());
 		IMAGE.setImage(loc.getImage());
+		
+		if(loc.hasEvent())
+		{
+			events.Event locEvent = EventReader.eventsM.get(EventReader.eventIndex.get(loc.getEvent()));
+			eventStage.setScene(new Scene(new EventController(locEvent, eventStage), 900, 600));
+			eventStage.showAndWait();
+			HP.setText(Integer.toString(player.getHp()));
+			STR.setText(player.stats.get("STR").toString());
+			PER.setText(player.stats.get("PER").toString());
+			INT.setText(player.stats.get("INT").toString());
+			AGI.setText(player.stats.get("AGI").toString());
+			LUC.setText(player.stats.get("LUC").toString());
+			loc.setHasEvent(false);
+		}
 		
 		Set set2 = loc.relativeLoc.entrySet();
 	      Iterator iterator2 = set2.iterator();

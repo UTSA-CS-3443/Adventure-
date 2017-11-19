@@ -33,6 +33,8 @@ public class Game {
 		Main.stage.show();
 		
 		//load locations
+		URL eventFile = Game.class.getResource("/events/Events.txt");
+		EventReader eventReader = new EventReader(eventFile);
 		initLoc();
 	}
 	

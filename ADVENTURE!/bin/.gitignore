@@ -1,13 +1,8 @@
-/application/
-/controller/
-/enemies/
-/events/
 /images/
 /items/
-/locations/
-/npc/
 /objects/
-/screens/
 /tests/
 /worldattributes/
-/weapons/
+/controller/
+/events/
+/locations/

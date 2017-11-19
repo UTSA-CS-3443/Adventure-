@@ -1,7 +1,7 @@
 EVENT>Donut
 DESC>"You find a half eaten donut on the ground. Do you take a bite?"
 CHOICE>Eat it>HP - 1~ROLL LUC 5~HP + 3
-CHOICE>Dont eat it
+CHOICE>Dont eat it> 
 ENDEVENT>
 
 EVENT>Tree Falling
@@ -13,18 +13,18 @@ ENDEVENT>
 EVENT>Found Sword
 DESC>"You've found a fairly nice sword laying about. It looks like it would help you out, but it might be someones. Will you take it?"
 CHOICE>Take the Sword>STR + 1
-CHOICE>Dont take the Sword
+CHOICE>Dont take the Sword> 
 ENDEVENT>
 
 EVENT>Good Book
 DESC>"A passing scholar shoves a book in your hand and encourages you to read it before running off, chasing someone else. Do you read it?"
 CHOICE>Read it>ROLL PER 10~INT + 1
-CHOICE>Forget Reading!
+CHOICE>Forget Reading!> 
 ENDEVENT>
 
 EVENT>Knight
 DESC>"A kid run pasts you down a hallway. You suddenly see a shining figure in the distance to find a massive, armor clad Knight approaching you. He asks if you've seen a thief nearby who has stolen his money"
-CHOICE>I'm not a Snitch!
+CHOICE>I'm not a Snitch!> 
 CHOICE>He went that way>LUC + 1
 ENDEVENT>
 
@@ -43,13 +43,13 @@ ENDEVENT>
 EVENT>Magic amulet
 DESC>"You find a magic amulet half buried in the ground! It may give you powers, or it could give you a curse."
 CHOICE>Pick it up>HP - 2~ROLL LUC 5~HP + 2~PER + 2
-CHOICE>Leave it
+CHOICE>Leave it> 
 ENDEVENT>
 
 EVENT>Coin Pouch
 DESC>"You find a lump of dirt that looks awfully suspicious. Do you investigate it?"
 CHOICE>You dig>ROLL LUC 8~MON + 25
-CHOICE>Forget it!
+CHOICE>Forget it!> 
 ENDEVENT>
 
 EVENT>Thief
@@ -61,5 +61,5 @@ ENDEVENT>
 EVENT>Donation
 DESC>"Youre sitting down for a few moments to rest when a man in fancy clothes walks by. He says to you, "Oh you poor thing, living out on the street. Let me help you!" and hands you 10 coins."
 CHOICE>Take it>MON + 10
-CHOICE>Im not homeless!
+CHOICE>Im not homeless!> 
 ENDEVENT>
