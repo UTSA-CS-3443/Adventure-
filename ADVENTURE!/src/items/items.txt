@@ -9,11 +9,11 @@ WEAPON>Dagger>Dual Daggers>0>0>0>12>0
 WEAPON>Mace>Heavy Mace>10>0>0>-3>0
 POTION>Weak Elixer
 POTION>Strong Elixer
-POTION>Strength Booster
-POTION>Speed Booster
-POTION>Intelligence Booster
-POTION>Perception Booster
-POTION>Luck Booster
+POTION>Strength Booster>5>0>0>0>0
+POTION>Speed Booster>0>0>0>5>0
+POTION>Intelligence Booster>0>0>5>0>0
+POTION>Perception Booster>0>5>0>0>0
+POTION>Luck Booster>0>0>0>0>5
 ENDITEM
 
 

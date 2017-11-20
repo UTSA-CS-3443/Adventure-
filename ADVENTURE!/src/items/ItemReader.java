@@ -51,36 +51,39 @@ public class ItemReader	{
 			if(identifier[0].equals("WEAPON")) {
 				if (identifier[1].equals("Sword")) {
 					itemName = identifier[2];
-					item = new Sword(itemName);
+					Sword item = new Sword(itemName);
 					for (int i = 3; i <= 7; i++) {
-						Sword.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+						item.setStats(statName[i-3], Integer.valueOf(identifier[i]));
 					}
 					
 				} else if (identifier[1].equals("Staff")) {
 					itemName = identifier[2];
-					item = new Staff(itemName);
+					Staff item = new Staff(itemName);
 					for (int i = 3; i <= 7; i++) {
-						Staff.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+						item.setStats(statName[i-3], Integer.valueOf(identifier[i]));
 					}
 					
 				} else if (identifier[1].equals("Mace")) {
 					itemName = identifier[2];
-					item = new Mace(itemName);
+					Mace item = new Mace(itemName);
 					for (int i = 3; i <= 7; i++) {
-						Mace.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+						item.setStats(statName[i-3], Integer.valueOf(identifier[i]));
 					}
 					
 				} else if (identifier[1].equals("Dagger")) {
 					itemName = identifier[2];
-					item = new Dagger(itemName);
+					Dagger item = new Dagger(itemName);
 					for (int i = 3; i <= 7; i++) {
-						Dagger.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+						item.setStats(statName[i-3], Integer.valueOf(identifier[i]));
 					}
 					
 				}
 			} else if(identifier[0].equals("POTION")) {
 				itemName = identifier[1];
-				item = new Potion(itemName);
+				Potion item = new Potion(itemName);
+				for (int i = 2; i <= 6; i++) {
+					item.setStats(statName[i-2], Integer.valueOf(identifier[i]));
+				}
 				
 			} else if(identifier[0].equals("ENDITEM")) {
 				Game.ItemM.put(identifier[0], item);
