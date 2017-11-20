@@ -1,8 +1,9 @@
-/images/
+/controller/
+/enemies/
+/events/
 /items/
+/locations/
+/npc/
 /objects/
 /tests/
 /worldattributes/
-/controller/
-/events/
-/locations/

@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 import application.Main;
 import controller.Game;
-import items.potions.Elixer;
-import items.potions.StrengthBooster;
+import items.potions.Potion;
 import items.weapons.Dagger;
 import items.weapons.Mace;
 import items.weapons.Staff;
 import items.weapons.Sword;
+import items.weapons.Weapon;
 import objects.Items;
 import objects.NPC;
 import npc.*;
@@ -23,16 +23,15 @@ public class ItemReader	{
 
 	private Scanner in;
 	private String itemName;
-	private String itemDesc;
 	private String[] identifier;
 	private Items item;
+	private String[] statName = {"STR", "PER", "INT", "AGI", "LUC"};
 	
 	
 	public ItemReader(URL items) {
 		
 		in = null;
 		itemName = "";
-		itemDesc = "";
 		identifier = new String[3];
 		item = null;
 		
@@ -51,29 +50,39 @@ public class ItemReader	{
 			
 			if(identifier[0].equals("WEAPON")) {
 				if (identifier[1].equals("Sword")) {
-					item = new Sword(identifier[2]);
+					itemName = identifier[2];
+					item = new Sword(itemName);
+					for (int i = 3; i <= 7; i++) {
+						Sword.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+					}
 					
 				} else if (identifier[1].equals("Staff")) {
-					item = new Staff(identifier[2]);
+					itemName = identifier[2];
+					item = new Staff(itemName);
+					for (int i = 3; i <= 7; i++) {
+						Staff.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+					}
 					
 				} else if (identifier[1].equals("Mace")) {
-					item = new Mace(identifier[2]);
+					itemName = identifier[2];
+					item = new Mace(itemName);
+					for (int i = 3; i <= 7; i++) {
+						Mace.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+					}
 					
 				} else if (identifier[1].equals("Dagger")) {
-					item = new Dagger(identifier[2]);
+					itemName = identifier[2];
+					item = new Dagger(itemName);
+					for (int i = 3; i <= 7; i++) {
+						Dagger.setStats(statName[i-3], Integer.valueOf(identifier[i]));
+					}
+					
 				}
-			}
-			
-			else if(identifier[0].equals("POTION")) {
-				if (identifier[1].equals("Elixer")) {
-					item = new Elixer("INSERT NAME HERE");   // Needs name
-				} else if (identifier[1].equals("StrengthBooster")) {
-					item = new StrengthBooster("INSERT NAME HERE"); // Needs name
-				}
-			}
-			
-			else if(identifier[0].equals("ENDITEM"))
-			{
+			} else if(identifier[0].equals("POTION")) {
+				itemName = identifier[1];
+				item = new Potion(itemName);
+				
+			} else if(identifier[0].equals("ENDITEM")) {
 				Game.ItemM.put(identifier[0], item);
 			}
 		}

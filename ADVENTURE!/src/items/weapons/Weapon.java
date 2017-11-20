@@ -7,7 +7,7 @@ import objects.Items;
 public abstract class Weapon implements Items{
 	
 	private String name;
-	private HashMap<String, Integer> stats;
+	private static HashMap<String, Integer> stats;
 	
 	public int getAttackPower()
 	{
@@ -30,7 +30,7 @@ public abstract class Weapon implements Items{
 		return stats;
 	}
 	
-	public void setStats(String s, Integer i) {
+	public static void setStats(String s, Integer i) {
 		stats.put(s, i);
 	}
 	

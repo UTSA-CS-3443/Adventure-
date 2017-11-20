@@ -1,10 +1,20 @@
-WEAPON>Sword>Long Sword>1>2>3>4
-WEAPON>Sword>Short Sword>1>2>3>4
-WEAPON>Staff>Long Staff>1>2>3>4
-WEAPON>Staff>Short staff>1>2>3>4
-WEAPON>Dagger>Vampiric Dagger>1>2>3>4
-WEAPON>Mace>
-POTION>Elixer>
-POTION>StrengthBooster
-POTION>
+WEAPON>Sword>Long Sword>7>0>0>0>0
+WEAPON>Sword>Short Sword>5>0>0>0>0
+WEAPON>Sword>Two-handed Sword>12>0>0>-5>0
+WEAPON>Sword>Rapier>3>0>4>7>0
+WEAPON>Staff>Long Staff>4>3>0>0>0
+WEAPON>Staff>Short staff>4>0>0>6>0
+WEAPON>Dagger>Vampiric Dagger>0>0>0>12>0
+WEAPON>Dagger>Dual Daggers>0>0>0>12>0
+WEAPON>Mace>Heavy Mace>10>0>0>-3>0
+POTION>Weak Elixer
+POTION>Strong Elixer
+POTION>Strength Booster
+POTION>Speed Booster
+POTION>Intelligence Booster
+POTION>Perception Booster
+POTION>Luck Booster
 ENDITEM
+
+
+STR>PER>INT>AGI>LUC   // This is here temporarily to remember stats

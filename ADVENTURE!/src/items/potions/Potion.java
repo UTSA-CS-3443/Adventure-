@@ -4,10 +4,14 @@ import java.util.HashMap;
 
 import objects.Items;
 
-public abstract class Potion implements Items{
+public class Potion implements Items{
 	
 	private String name;
 	private HashMap<String, Integer> stats;
+	
+	public Potion(String name) {
+		this.name = name;
+	}
 	
 	public HashMap<String, Integer> getStats() {
 		return stats;

@@ -2,6 +2,8 @@ package items.weapons;
 
 import java.util.HashMap;
 
+import objects.Items;
+
 public class Dagger extends Weapon {
 	
 	private String name;
