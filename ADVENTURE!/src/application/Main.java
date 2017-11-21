@@ -1,11 +1,14 @@
 package application;
 	
+import java.util.HashMap;
+
 import controller.Game;
 import controller.GameScreen;
 import controller.MainMenuController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import locations.ReadLocations;
+import objects.NPC;
 import javafx.scene.Scene;
 
 

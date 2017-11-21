@@ -7,6 +7,8 @@ import java.util.HashMap;
 import application.Main;
 import javafx.scene.Scene;
 import locations.Attribute;
+import npc.NPCReader;
+
 import java.util.HashMap;
 import locations.*;
 import events.*;
@@ -33,15 +35,29 @@ public class Game {
 		Main.stage.show();
 		
 		//load locations
-		URL eventFile = Game.class.getResource("/events/Events.txt");
-		EventReader eventReader = new EventReader(eventFile);
+		
+		initEvents();
+		initNPC();
 		initLoc();
+		
 	}
 	
 	public static void initLoc()
 	{
 		URL defaultFile = Game.class.getResource("/locations/Locations.txt");
 		LoadLocations loadLoc = new LoadLocations(defaultFile);
+	}
+	
+	public static void initNPC()
+	{
+		URL NPCFile = Game.class.getResource("/npc/NPCs.txt");
+		NPCReader npcReader = new NPCReader(NPCFile);
+	}
+	
+	public static void initEvents()
+	{
+		URL eventFile = Game.class.getResource("/events/Events.txt");
+		EventReader eventReader = new EventReader(eventFile);
 	}
 	
 	public static void gameLoop()
