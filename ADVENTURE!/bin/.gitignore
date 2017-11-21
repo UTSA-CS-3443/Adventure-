@@ -1,5 +1,12 @@
+/application/
 /controller/
-/npc/
-/screens/
-/objects/
+/enemies/
+/events/
 /images/
+/items/
+/locations/
+/npc/
+/objects/
+/screens/
+/tests/
+/worldattributes/

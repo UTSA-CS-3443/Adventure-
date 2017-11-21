@@ -3,7 +3,8 @@ DESC>He has that experienced look to 'em.
 SPEECH>What can I do for yeh?
 MERCHANT>1
 IMG>placeholderNPC.jpg
-INV>testSword>0
-INV>testSword>1
-INV>testSword>2
+INV>placeholdeSword1>0
+INV>placeholderSword2>1
+INV>PlaceholderSword3>2
+INV>PlaceholderSword4>2
 ENDNPC>
