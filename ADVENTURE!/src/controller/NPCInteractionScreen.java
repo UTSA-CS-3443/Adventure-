@@ -52,13 +52,13 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	@FXML Text INT;
 	@FXML Text LUC;
 	@FXML Text WALLET;
+	@FXML Button buy;
 	@FXML Pagination PAGINATION;
 	@FXML TextFlow DESC;
 	@FXML VBox CHOICES;
 	@FXML VBox stockImages;
 	@FXML ImageView IMAGE;
 	Text dialogue;
-
 	/**
 	 * Load up the NPC screen for interaction with by the player
 	 * 
@@ -92,9 +92,15 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		IMAGE.setImage(npc.getImage());
 
 		//initalize the pagination of item selections
-		if(npc.getMerchantStatus() == 1)
+		if(npc.getMerchantStatus() == 1 && npc.getInventoryLength() > 0)
 		{
 			createPagination();
+		}
+		else
+		{
+			buy.setVisible(false);
+			PAGINATION.setVisible(false);
+			list.add(new Text("\n\nI'm all sold out!"));
 		}
 	}
 
@@ -168,8 +174,14 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		//load file based on npc inventory and length
 		fName = npc.getItemFromInventory(index);
 		fName = String.format("/images/%s%s", fName, ".jpg");
-		Image f = new Image(fName);
-		inventoryImages.add(f);
+		try{
+			Image f = new Image(fName);
+			inventoryImages.add(f);
+		}
+		catch(Exception e)
+		{
+			System.out.printf("Unable to load image file: %s\n", fName);
+		}
 		try {
 			imageView.setImage(inventoryImages.get(index));
 			imageView.setFitWidth(200);
@@ -179,7 +191,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 			imageView.setCache(true);
 		} catch (Exception ex) {
 			//some exception handling
-			System.out.printf("Could not load image file: %s", fName);
+			System.out.printf("Could not display image: %s\n", fName);
 		}
 
 		VBox pageBox = new VBox();
