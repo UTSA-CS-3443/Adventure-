@@ -45,8 +45,8 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 
 	NPC npc;
 	Player player;
-	ArrayList<File> inventoryImages;
-	
+	ArrayList<Image> inventoryImages;
+
 	@FXML Text NAME;
 	@FXML Text PER;
 	@FXML Text INT;
@@ -58,7 +58,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	@FXML VBox stockImages;
 	@FXML ImageView IMAGE;
 	Text dialogue;
-		
+
 	/**
 	 * Load up the NPC screen for interaction with by the player
 	 * 
@@ -67,7 +67,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	public NPCInteractionScreen(Player p, NPC n) {
 		this.npc = n;
 		this.player = p;
-		this.inventoryImages = new ArrayList<File>();
+		this.inventoryImages = new ArrayList<Image>();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/NPCInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -76,16 +76,16 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
+
 		NAME.setText(this.player.getName());
 		PER.setText(this.player.stats.get("PER").toString());
 		INT.setText(this.player.stats.get("INT").toString());
 		LUC.setText(this.player.stats.get("LUC").toString());
 		WALLET.setText(String.valueOf(p.getWalletAmt())); 
-		
+
 		ObservableList<Node> list = DESC.getChildren();
-		
+
 		//add some information to the readout list descriptor
 		dialogue =  new Text("How can I help you?");
 		list.add(dialogue);
@@ -97,7 +97,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 			createPagination();
 		}
 	}
-	
+
 	/**
 	 * Exit to Desktop
 	 * @param e ActionEvent Quit button was clicked
@@ -107,41 +107,47 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	{	
 		Platform.exit();
 	}
-	
+
 	@Override
 	public void handle(ActionEvent event) {
 		Button b = (Button)event.getSource();
 		update( b.getText() );
 	}
-	
-	
+
+
 	@FXML
 	public void buy(ActionEvent event) {
 		Button b = (Button)event.getSource();
 		buyItem( b.getText() );
 	}
-	
+
 	@FXML
 	public void leave(ActionEvent event) 
 	{
 		Main.stage.setScene(Main.mainGame);
 		Main.stage.show();
 	}
-	
+
 	public void update(String text)
 	{
-		
+
 	}
-	
+
 	public void buyItem(String text)
 	{
 		int cost = 0;
+		cost = npc.getCost(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()));
 		player.setWalletAmt(player.getWalletAmt() - cost);
+		player.addItemToInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), cost);
+		npc.removeItemFromInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), PAGINATION.getCurrentPageIndex());
+		createPagination();
 	}
-	
+
 	public void createPagination()
 	{
-		PAGINATION = new Pagination(npc.getStockAmt());
+		PAGINATION.setMaxPageIndicatorCount(npc.getStockAmt());
+		PAGINATION.setCurrentPageIndex(0);
+		PAGINATION.setPageCount(npc.getStockAmt());
 		PAGINATION.setPageFactory(new Callback<Integer, Node>() 
 		{
 			@Override
@@ -151,37 +157,33 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 			}
 		});
 	}
-	
+
 	//load up the individual pages to put into the pagination of inventory
 	//example code found online and modified to suit our use case
 	public VBox createPage(int index)
 	{
 		ImageView imageView = new ImageView();
 		String fName = ""; 
-        //load our files into an array
-        for(int i = 0; i < npc.getInventoryLength(); i++)
-        {
-        	//load file based on npc inventory and length
-        	fName = npc.getItemFromInventory(i);
-        	fName = String.format("%s%s", fName, ".jpg");
-        	File f = new File(fName);
-        	inventoryImages.add(f);
-        }
-        try {
-            BufferedImage bufferedImage = ImageIO.read(inventoryImages.get(index));
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            imageView.setImage(image);
-            imageView.setFitWidth(400);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
-            imageView.setCache(true);
-        } catch (IOException ex) {
-            //some exception handling
-        	System.out.println("Could not load image file");
-        }
-         
-        VBox pageBox = new VBox();
-        pageBox.getChildren().add(imageView);
-        return pageBox;
-    }
+		//load our files into an array
+		//load file based on npc inventory and length
+		fName = npc.getItemFromInventory(index);
+		fName = String.format("/images/%s%s", fName, ".jpg");
+		Image f = new Image(fName);
+		inventoryImages.add(f);
+		try {
+			imageView.setImage(inventoryImages.get(index));
+			imageView.setFitWidth(200);
+			imageView.setFitHeight(200);
+			imageView.setPreserveRatio(true);
+			imageView.setSmooth(true);
+			imageView.setCache(true);
+		} catch (Exception ex) {
+			//some exception handling
+			System.out.printf("Could not load image file: %s", fName);
+		}
+
+		VBox pageBox = new VBox();
+		pageBox.getChildren().add(imageView);
+		return pageBox;
+	}
 }

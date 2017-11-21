@@ -16,7 +16,7 @@
       <ImageView fx:id="IMAGE" fitHeight="213.0" fitWidth="513.0" layoutX="-1.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
       <Separator layoutX="513.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="215.0" prefWidth="9.0" />
       <Separator layoutX="-1.0" layoutY="213.0" prefHeight="0.0" prefWidth="518.0" />
-      <Pagination fx:id="PAGINATION" layoutX="517.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
+      <Pagination fx:id="PAGINATION" layoutX="517.0" layoutY="14.0" pageCount="10" prefHeight="200.0" prefWidth="200.0" />
       <Button layoutX="792.0" layoutY="45.0" mnemonicParsing="false" onAction="#buy" text="Buy" />
       <Button layoutX="787.0" layoutY="154.0" mnemonicParsing="false" onAction="#leave" text="Leave" />
       <TextFlow fx:id="DESC" layoutY="212.0" lineSpacing="10.0" prefHeight="278.0" prefWidth="513.0">

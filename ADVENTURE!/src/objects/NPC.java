@@ -76,6 +76,13 @@ public abstract class NPC implements Entity {
 		return this.InventoryItems.get(i);
 	}
 	
+	public void removeItemFromInventory(String item, int index)
+	{
+		this.Inventory.remove(item);
+		this.InventoryItems.remove(index);
+		stockAmt--;
+	}
+	
 	public void addInventoryItems(String name)
 	{
 		InventoryItems.add(name); 

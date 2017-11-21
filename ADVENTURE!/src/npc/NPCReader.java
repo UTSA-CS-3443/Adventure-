@@ -60,6 +60,7 @@ public class NPCReader	{
 				//read into inventory
 				npc.addItemToInventory(identifier[1], Integer.valueOf(identifier[2]));
 				npc.addInventoryItems(identifier[1]);
+				npc.setStockAmt(npc.getStockAmt() + 1);
 			}
 			else if(identifier[0].equals("IMG"))
 			{
