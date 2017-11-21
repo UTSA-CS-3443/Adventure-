@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -52,7 +53,7 @@ public class EnemyInteractionScreen<S> extends AnchorPane implements EventHandle
 	 */
 	public EnemyInteractionScreen(Player p, S keeper) {
 		this.player = p;
-		int[] initStats = player.getStats();
+		HashMap<String, Integer> initStats = player.getStats();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -64,11 +65,13 @@ public class EnemyInteractionScreen<S> extends AnchorPane implements EventHandle
 		}
 		NAME.setText(this.player.getName());
 		HP.setText(Integer.toString(this.player.getHp()));
-		STR.setText(Integer.toString(initStats[0]));
-		PER.setText(Integer.toString(initStats[1]));
-		INT.setText(Integer.toString(initStats[2]));
-		AGI.setText(Integer.toString(initStats[3]));
-		LUC.setText(Integer.toString(initStats[4]));
+		STR.setText(Integer.toString(initStats.get(STR)));
+		PER.setText(Integer.toString(initStats.get(PER)));
+		INT.setText(Integer.toString(initStats.get(INT)));
+		AGI.setText(Integer.toString(initStats.get(AGI)));
+		LUC.setText(Integer.toString(initStats.get(LUC)));
+//		LUC.setText(Integer.toString(initStats[4]));
+
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
