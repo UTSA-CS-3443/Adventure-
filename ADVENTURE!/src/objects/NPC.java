@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public abstract class NPC implements Entity {
 	
-	protected int stockAmt = 0;
-	protected int isMerchant = 0;
-	protected String name;
-	protected int hp;
-	protected Image image;
-	protected String description;
-	protected String speech;
+	private int stockAmt = 0;
+	private int isMerchant = 0;
+	private String name;
+	private int hp;
+	private Image image;
+	private String description;
+	private String speech;
 	ArrayList<String> InventoryItems = new ArrayList<String>();
 	HashMap<String, Integer> Inventory = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> stats;
