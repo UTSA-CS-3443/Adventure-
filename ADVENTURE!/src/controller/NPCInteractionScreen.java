@@ -163,6 +163,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
         {
         	//load file based on npc inventory and length
         	fName = npc.getItemFromInventory(i);
+        	fName = String.format("%s%s", fName, ".jpg");
         	File f = new File(fName);
         	inventoryImages.add(f);
         }
