@@ -1,4 +1,4 @@
-NPC>Gillian>Shopkeeper
+NPC>Gilan the InnKeeper>Shopkeeper
 DESC>He has that experienced look to 'em.
 SPEECH>What can I do for yeh?
 MERCHANT>1
@@ -6,4 +6,4 @@ IMG>placeholderNPC.jpg
 INV>testSword>0
 INV>testSword>1
 INV>testSword>2
-ENDNPC
+ENDNPC>

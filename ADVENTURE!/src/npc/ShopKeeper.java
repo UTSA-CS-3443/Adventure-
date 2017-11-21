@@ -13,5 +13,6 @@ public class ShopKeeper extends NPC {
 	public ShopKeeper(String name) {
 		super();
 		this.name = name;
+		super.setName(name);
 	}
 }

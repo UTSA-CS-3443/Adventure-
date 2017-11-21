@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import application.Main;
 import events.EventReader;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -33,7 +34,7 @@ import objects.Player;
  *
  */
 public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
-	public static Player player;
+	public Player player;
 	Location loc;
 	Stage eventStage;
 	
@@ -123,6 +124,14 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	
 	public void update(String text)
 	{
+		
+		if(Game.NPCM.containsKey(text))
+		{
+			Main.stage.setScene(new Scene(new NPCInteractionScreen(player, Game.NPCM.get(text))));
+			Main.stage.show();
+			return;
+		}
+		
 		CHOICES.getChildren().clear();
 		loc = ReadLocations.locations.get(ReadLocations.locationIndex.get(text));
 		this.locName.setText(loc.getLocName() + "\n\n");
@@ -142,6 +151,12 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 			LUC.setText(player.stats.get("LUC").toString());
 			loc.setHasEvent(false);
 		}
+		
+		if(HP.equals("0"))
+		{
+			//Main.stage.setScene(new Scene());
+		}
+		
 		
 		Set set2 = loc.relativeLoc.entrySet();
 	      Iterator iterator2 = set2.iterator();

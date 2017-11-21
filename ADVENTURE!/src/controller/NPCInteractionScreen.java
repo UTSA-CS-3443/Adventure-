@@ -19,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
@@ -77,21 +78,17 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		}
 		
 		
-		NAME.setText(p.getName());
-		PER.setText(p.stats.get("Perception").toString());
-		INT.setText(p.stats.get("Intelligence").toString());
-		LUC.setText(p.stats.get("Luck").toString());
+		NAME.setText(this.player.getName());
+		PER.setText(this.player.stats.get("PER").toString());
+		INT.setText(this.player.stats.get("INT").toString());
+		LUC.setText(this.player.stats.get("LUC").toString());
 		WALLET.setText(String.valueOf(p.getWalletAmt())); 
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
 		//add some information to the readout list descriptor
-		dialogue.setText("How can I help you?");
+		dialogue =  new Text("How can I help you?");
 		list.add(dialogue);
-		list.add(NAME);
-		list.add(PER);
-		list.add(LUC);
-		list.add(WALLET);
 		IMAGE.setImage(npc.getImage());
 
 		//initalize the pagination of item selections
@@ -128,6 +125,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	public void leave(ActionEvent event) 
 	{
 		Main.stage.setScene(Main.mainGame);
+		Main.stage.show();
 	}
 	
 	public void update(String text)

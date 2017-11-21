@@ -48,9 +48,9 @@ public class NPCReader	{
 			//NPC>NAME
 			if(identifier[0].equals("NPC"))
 			{
-				if(identifier[2].equals("ShopKeeper"))
+				if(identifier[2].equals("Shopkeeper"))
 					npc = new ShopKeeper(identifier[1]);
-				else if(identifier[2].equals("ShopKeeper"))
+				else if(identifier[2].equals("Shopkeeper"))
 					npc = new ShopKeeper(identifier[1]);
 			}
 			//figure out if we have inventory data
@@ -71,7 +71,7 @@ public class NPCReader	{
 			//set whether or not the npc is a merchant
 			else if(identifier[0].equals("MERCHANT"))
 			{
-				npc.setMerchantStatus(Integer.valueOf(identifier[2]));
+				npc.setMerchantStatus(Integer.valueOf(identifier[1]));
 			}
 			//add the description of the character if provided
 			else if(identifier[0].equals("DESC"))
@@ -86,7 +86,7 @@ public class NPCReader	{
 			//finally, add the npc to the map of npcs
 			else if(identifier[0].equals("ENDNPC"))
 			{
-				Game.NPCM.put(identifier[0], npc);
+				Game.NPCM.put(npc.getName(), npc);
 			}
 		}
 	}

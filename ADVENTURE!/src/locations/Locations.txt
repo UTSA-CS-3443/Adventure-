@@ -2,8 +2,6 @@ LOC>The Winding Road
 DESC>"You arrive along an old stone road. The village on the eastern horizon begins to slide into view and for a brief moment the fatigue from your arduous journey seems to melt away. ... But only briefly."
 IMG>placeholder2.jpg
 EAST>Davenport
-ATTR>hasEnemies
-ATTR>hasEvent\EventType
 ENDLOC>
 
 LOC>Davenport
