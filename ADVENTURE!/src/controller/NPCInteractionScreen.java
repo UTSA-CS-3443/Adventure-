@@ -51,11 +51,11 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	@FXML Text INT;
 	@FXML Text LUC;
 	@FXML Text WALLET;
-	@FXML Pagination stock;
+	@FXML Pagination PAGINATION;
 	@FXML TextFlow DESC;
 	@FXML VBox CHOICES;
 	@FXML VBox stockImages;
-	@FXML ImageView image;
+	@FXML ImageView IMAGE;
 	Text dialogue;
 		
 	/**
@@ -92,7 +92,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		list.add(PER);
 		list.add(LUC);
 		list.add(WALLET);
-		image.setImage(npc.getImage());
+		IMAGE.setImage(npc.getImage());
 
 		//initalize the pagination of item selections
 		if(npc.getMerchantStatus() == 1)
@@ -117,11 +117,14 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		update( b.getText() );
 	}
 	
+	
+	@FXML
 	public void buy(ActionEvent event) {
 		Button b = (Button)event.getSource();
 		buyItem( b.getText() );
 	}
 	
+	@FXML
 	public void leave(ActionEvent event) 
 	{
 		Main.stage.setScene(Main.mainGame);
@@ -140,8 +143,8 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	
 	public void createPagination()
 	{
-		stock = new Pagination(npc.getStockAmt());
-		stock.setPageFactory(new Callback<Integer, Node>() 
+		PAGINATION = new Pagination(npc.getStockAmt());
+		PAGINATION.setPageFactory(new Callback<Integer, Node>() 
 		{
 			@Override
 			public Node call(Integer pageIndex) 

@@ -1,5 +1,6 @@
 package objects;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 /**
  * The player character
@@ -12,6 +13,8 @@ public class Player implements Entity{
 	
 	public HashMap<String, Integer> stats;
 	public HashMap<String, Integer> statMods;
+	ArrayList<String> InventoryItems = new ArrayList<String>();
+	HashMap<String, Integer> Inventory = new HashMap<String, Integer>(); 
 	private String name;
 	private int hp;
 	private int walletAmt;
@@ -24,6 +27,27 @@ public class Player implements Entity{
 		statMods = new HashMap<>();
 	}
 
+	public void addItemToInventory(String name, int cost)
+	{
+		Inventory.put(name, cost);
+	}
+	
+	public int getInventoryLength()
+	{
+		return this.Inventory.size();
+	}
+
+	public String getItemFromInventory(int i)
+	{
+		return this.InventoryItems.get(i);
+	}
+	
+	public void addInventoryItems(String name)
+	{
+		InventoryItems.add(name); 
+	}
+	
+	
 	public String getName() {
 		return name;
 	}

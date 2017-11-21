@@ -1,36 +1,51 @@
 package controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
+
+import application.Main;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Pagination;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Callback;
 import locations.Location;
 import locations.ReadLocations;
 import npc.ShopKeeper;
+import objects.Enemy;
+import objects.NPC;
 import objects.Player;
 
 /**
  * Loads Game Screen scene and handles player actions. This is where the game is played
- * @author JASON
+ * @author Tyler Rasmussen and Jason Morales
  *
  */
-public class EnemyInteractionScreen<S> extends AnchorPane implements EventHandler<ActionEvent>{
+public class EnemyInteractionScreen extends AnchorPane implements EventHandler<ActionEvent>{
+
+	Enemy enemy;
 	Player player;
-	Location loc;
-	
+	ArrayList<File> inventoryImages;
 	
 	@FXML Text NAME;
 	@FXML Text HP;
@@ -39,63 +54,49 @@ public class EnemyInteractionScreen<S> extends AnchorPane implements EventHandle
 	@FXML Text INT;
 	@FXML Text AGI;
 	@FXML Text LUC;
-	Text locName;
-	Text locDesc;
-	
+	@FXML Pagination PAGINATION;
 	@FXML TextFlow DESC;
 	@FXML VBox CHOICES;
+	@FXML VBox stockImages;
+	@FXML ImageView IMAGE;
 	
+	Text dialogue;
+		
 	/**
-	 * Load up the shopkeeper screen for interaction with by the player
+	 * Load up the NPC screen for interaction with by the player
 	 * 
-	 * S is the generic shopkeeper (shopkeeper, armorer, armsman, etc.)
+	 * N is the generic NPC
 	 */
-	public EnemyInteractionScreen(Player p, S keeper) {
+	public EnemyInteractionScreen(Player p, Enemy e) {
+		this.enemy = e;
 		this.player = p;
-		int[] initStats = player.getStats();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
+		this.inventoryImages = new ArrayList<File>();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/EnemyInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
-		
 		try {
 			loader.load();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
+		
+		
 		NAME.setText(this.player.getName());
 		HP.setText(Integer.toString(this.player.getHp()));
-		STR.setText(Integer.toString(initStats[0]));
-		PER.setText(Integer.toString(initStats[1]));
-		INT.setText(Integer.toString(initStats[2]));
-		AGI.setText(Integer.toString(initStats[3]));
-		LUC.setText(Integer.toString(initStats[4]));
+		STR.setText(player.stats.get("STR").toString());
+		PER.setText(player.stats.get("PER").toString());
+		INT.setText(player.stats.get("INT").toString());
+		AGI.setText(player.stats.get("AGI").toString());
+		LUC.setText(player.stats.get("LUC").toString());
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
-		loc = ReadLocations.locations.get(1);
-		System.out.println(ReadLocations.locations.get(1));
-		System.out.println(loc.getLocName());
+		//add some information to the readout list descriptor
+		dialogue.setText("How can I help you?");
+		list.add(dialogue);
 		
-		locName = new Text(loc.getLocName() + "\n\n");
-		locDesc = new Text(loc.getLocDesc());
-		list.add(locName);
-		list.add(locDesc);
-		
-		Set set = loc.relativeLoc.entrySet();
-	      Iterator iterator = set.iterator();
-	      while(iterator.hasNext()) {
-	          Map.Entry mentry = (Map.Entry)iterator.next();
-	          Button button = new Button("" + mentry.getValue());
-	          CHOICES.getChildren().add(button);
-	          button.setOnAction(new EventHandler<ActionEvent>() {
+		IMAGE.setImage(enemy.getImage());
 
-				@Override
-				public void handle(ActionEvent event) {
-					Button b = (Button)event.getSource();
-					update( b.getText() );
-				}
-	          });
-	      }
 	}
 	
 	/**
@@ -116,25 +117,57 @@ public class EnemyInteractionScreen<S> extends AnchorPane implements EventHandle
 	
 	public void update(String text)
 	{
-		CHOICES.getChildren().clear();
-		loc = ReadLocations.locations.get(ReadLocations.locationIndex.get(text));
-		this.locName.setText(loc.getLocName() + "\n\n");
-		this.locDesc.setText(loc.getLocDesc());
 		
-		Set set2 = loc.relativeLoc.entrySet();
-	      Iterator iterator2 = set2.iterator();
-	      while(iterator2.hasNext()) {
-	          Map.Entry mentry2 = (Map.Entry)iterator2.next();
-	          Button button2 = new Button("" + mentry2.getValue());
-	          CHOICES.getChildren().add(button2);
-	          button2.setOnAction(new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent event) {
-						Button b = (Button)event.getSource();
-						update( b.getText() );
-					}
-		          });
-	      }
 	}
+	
+	public void buyItem(String text)
+	{
+		int cost = 0;
+		player.setWalletAmt(player.getWalletAmt() - cost);
+	}
+	
+	public void createPagination()
+	{
+		PAGINATION = new Pagination(player.getInventoryLength());
+		PAGINATION.setPageFactory(new Callback<Integer, Node>() 
+		{
+			@Override
+			public Node call(Integer pageIndex) 
+			{
+				return createPage(pageIndex);
+			}
+		});
+	}
+	
+	//load up the individual pages to put into the pagination of inventory
+	//example code found online and modified to suit our use case
+	public VBox createPage(int index)
+	{
+		ImageView imageView = new ImageView();
+		String fName = ""; 
+        //load our files into an array
+        for(int i = 0; i < player.getInventoryLength(); i++)
+        {
+        	//load file based on npc inventory and length
+        	fName = player.getItemFromInventory(i);
+        	File f = new File(fName);
+        	inventoryImages.add(f);
+        }
+        try {
+            BufferedImage bufferedImage = ImageIO.read(inventoryImages.get(index));
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+            imageView.setFitWidth(400);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+        } catch (IOException ex) {
+            //some exception handling
+        	System.out.println("Could not load image file");
+        }
+         
+        VBox pageBox = new VBox();
+        pageBox.getChildren().add(imageView);
+        return pageBox;
+    }
 }
