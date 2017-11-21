@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import application.Main;
 import controller.Game;
+import javafx.scene.image.Image;
 import objects.NPC;
 import npc.*;
 
@@ -18,6 +19,8 @@ public class NPCReader	{
 	private String npcName;
 	private String npcDesc;
 	private String[] identifier;
+	private String directory;
+	Image img;
 	private NPC npc;
 	
 	
@@ -57,6 +60,13 @@ public class NPCReader	{
 				//read into inventory
 				npc.addItemToInventory(identifier[1], Integer.valueOf(identifier[2]));
 				npc.addInventoryItems(identifier[1]);
+			}
+			else if(identifier[0].equals("IMG"))
+			{
+				//read into inventory
+				directory = String.format("/images/%s", identifier[1]);
+				img = new Image(directory);
+				npc.setImage(img);
 			}
 			//set whether or not the npc is a merchant
 			else if(identifier[0].equals("MERCHANT"))

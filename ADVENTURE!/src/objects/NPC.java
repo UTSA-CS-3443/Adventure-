@@ -1,6 +1,10 @@
 package objects;
 
 import java.util.HashMap;
+
+import javafx.scene.image.Image;
+
+import java.io.File;
 import java.util.ArrayList;
 
 public abstract class NPC implements Entity {
@@ -9,6 +13,7 @@ public abstract class NPC implements Entity {
 	protected int isMerchant = 0;
 	protected String name;
 	protected int hp;
+	protected Image image;
 	protected String description;
 	protected String speech;
 	ArrayList<String> InventoryItems = new ArrayList<String>();
@@ -21,18 +26,31 @@ public abstract class NPC implements Entity {
 		
 	}
 	
+	public void setImage(Image img)
+	{
+		this.image = img;
+	}
+	
+	public Image getImage()
+	{
+		return this.image;
+	}
+	
 	public int getCost(String item)
 	{
 		return Inventory.get(item);
 	}
+	
 	public void addItemToInventory(String name, int cost)
 	{
 		Inventory.put(name, cost);
 	}
+	
 	public int getMerchantStatus()
 	{
 		return isMerchant;
 	}
+	
 	public void setMerchantStatus(int i)
 	{
 		isMerchant = i;

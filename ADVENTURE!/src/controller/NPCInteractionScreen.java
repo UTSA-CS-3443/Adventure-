@@ -3,6 +3,7 @@ package controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -43,6 +44,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 
 	NPC npc;
 	Player player;
+	ArrayList<File> inventoryImages;
 	
 	@FXML Text NAME;
 	@FXML Text PER;
@@ -53,6 +55,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	@FXML TextFlow DESC;
 	@FXML VBox CHOICES;
 	@FXML VBox stockImages;
+	@FXML ImageView image;
 	Text dialogue;
 		
 	/**
@@ -63,6 +66,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	public NPCInteractionScreen(Player p, NPC n) {
 		this.npc = n;
 		this.player = p;
+		this.inventoryImages = new ArrayList<File>();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/NPCInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -88,6 +92,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		list.add(PER);
 		list.add(LUC);
 		list.add(WALLET);
+		image.setImage(npc.getImage());
 
 		//initalize the pagination of item selections
 		if(npc.getMerchantStatus() == 1)
@@ -152,17 +157,16 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	{
 		ImageView imageView = new ImageView();
 		String fName = ""; 
-        File[] inventoryImages = null;
         //load our files into an array
         for(int i = 0; i < npc.getInventoryLength(); i++)
         {
         	//load file based on npc inventory and length
         	fName = npc.getItemFromInventory(i);
-        	//TODO still need to load image0
+        	File f = new File(fName);
+        	inventoryImages.add(f);
         }
-		File file = inventoryImages[index];
         try {
-            BufferedImage bufferedImage = ImageIO.read(file);
+            BufferedImage bufferedImage = ImageIO.read(inventoryImages.get(index));
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             imageView.setImage(image);
             imageView.setFitWidth(400);
@@ -171,6 +175,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
             imageView.setCache(true);
         } catch (IOException ex) {
             //some exception handling
+        	System.out.println("Could not load image file");
         }
          
         VBox pageBox = new VBox();
