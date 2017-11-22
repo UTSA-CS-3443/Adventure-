@@ -152,9 +152,10 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 			loc.setHasEvent(false);
 		}
 		
-		if(HP.equals("0"))
+		if(player.getHp() <= 0)
 		{
-			//Main.stage.setScene(new Scene());
+			Main.stage.setScene(Main.death);
+			return;
 		}
 		
 		

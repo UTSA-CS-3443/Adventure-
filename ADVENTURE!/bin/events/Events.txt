@@ -6,14 +6,14 @@ ENDEVENT>
 
 EVENT>Tree Falling
 DESC>"Tree falls on you in a forest. You can either dodge and hope it misses, or you can try to push it off of you if you're strong enough."
-CHOICE>Roll for Agil>HP - 2~ROLL AGI 10~HP + 2
-CHOICE>Roll for strth>HP - 4~ROLL STR 10~HP + 4
+CHOICE>Roll for AGI>HP - 2~ROLL AGI 10~HP + 2
+CHOICE>Roll for STR>HP - 4~ROLL STR 10~HP + 4
 ENDEVENT>
 
 EVENT>Found Sword
-DESC>"You've found a fairly nice sword laying about. It looks like it would help you out, but it might be someones. Will you take it?"
+DESC>"You've found a fairly nice sword laying about. It looks like it would help you out, but it might be belong to somebody. Will you take it?"
 CHOICE>Take the Sword>STR + 1
-CHOICE>Dont take the Sword> 
+CHOICE>Don't take the Sword> 
 ENDEVENT>
 
 EVENT>Good Book
@@ -59,9 +59,9 @@ CHOICE>Accept the loss>MON - 5
 ENDEVENT>
 
 EVENT>Donation
-DESC>"Youre sitting down for a few moments to rest when a man in fancy clothes walks by. He says to you, "Oh you poor thing, living out on the street. Let me help you!" and hands you 10 coins."
+DESC>"You're sitting down for a few moments to rest when a man in fancy clothes walks by. He says to you, "Oh you poor thing, living out on the street. Let me help you!" and hands you 10 coins."
 CHOICE>Take it>MON + 10
-CHOICE>Im not homeless!> 
+CHOICE>I'm not homeless!> 
 ENDEVENT>
 
 EVENT>Ambush
@@ -69,4 +69,9 @@ DESC>"While generally safer, faster, and easier to traverse, the roads are not w
 CHOICE>Try to dodge it>HP - 8~ROLL AGI 10~HP + 8
 CHOICE>Catch it and intimidate him into forfeiting his ill gotten gains to you>HP - 10~ROLL AGI 15~HP + 10~MON + 20
 CHOICE>Offer him 10 ducats to pass>MON - 10
+ENDEVENT>
+
+EVENT>DEATHTEST
+DESC>"A pain begins to ache in your chest and you find it harder to breath. It's not long before you realize you are having a heart attack."
+CHOICE>What a way to go>HP - 1000
 ENDEVENT>

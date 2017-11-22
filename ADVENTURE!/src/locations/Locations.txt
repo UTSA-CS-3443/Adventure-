@@ -55,5 +55,12 @@ ENDLOC>
 LOC>The Davenport Docks
 DESC>"The docks appear to be very busy. Tradeships, warships, and fishing vessels deftly maneuver in and out of port and around each other. For a fee, some captains will happily ferry passengers along with them to their destinations.
 IMG>placeholder5.jpg
+NORTH>Fangwood Forest
 WEST>Davenport
+ENDLOC>
+
+LOC>Fangwood Forest
+DESC> The light seems to dim the further you travel and you are surrounded by towering trees. Fangwood Forest supplies Davenport with high quality lumber fit for building the sturdiest of ships and crafting some of the most beautiful homes and furniture. The tight and relatively darker environment facilitates amiable conditions for unscrupulous activities, however. Stay on your guard.
+SOUTH>Davenport
+EVENT>Ambush
 ENDLOC>
