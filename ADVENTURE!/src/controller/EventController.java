@@ -110,10 +110,14 @@ public class EventController extends AnchorPane{
 					if(operation[1].equals("+"))
 					{
 						player.setStats(operation[0], stats.get(operation[0]) + Integer.valueOf(operation[2]));
+						if(operation[0].equals("STR"))
+							player.setMaxHP((stats.get(operation[0])/2)+10);
 					}
 					else if(operation[0].equals("-"))
 					{
 						player.setStats(operation[0], stats.get(operation[0]) - Integer.valueOf(operation[2]));
+						if(operation[0].equals("STR"))
+							player.setMaxHP((stats.get(operation[0])/2)+10);
 					}
 					else
 						break;
@@ -123,6 +127,8 @@ public class EventController extends AnchorPane{
 					if(operation[1].equals("+"))
 					{
 						player.setHp(hp + Integer.valueOf(operation[2]));
+						if(player.getHp() > player.getMaxHP())
+							player.setHp(hp - Integer.valueOf(operation[2]));
 					}
 					else if(operation[1].equals("-"))
 					{

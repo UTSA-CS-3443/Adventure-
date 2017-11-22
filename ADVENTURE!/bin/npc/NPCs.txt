@@ -1,10 +1,21 @@
 NPC>Gilan the InnKeeper>Shopkeeper
 DESC>He has that experienced look to 'em.
-SPEECH>What can I do for yeh?
+SPEECH>Welcome to the Dungeons & Flagons. Need a room, food? We also hold weekly tabletop nights!
 MERCHANT>1
 IMG>placeholderNPC.jpg
-INV>placeholderSword1>0
-INV>placeholderSword2>1
-INV>PlaceholderSword3>2
-INV>PlaceholderSword4>2
+INV>placeholderSword1>5
+INV>placeholderSword2>10
+INV>PlaceholderSword3>15
+INV>PlaceholderSword4>20
+ENDNPC>
+
+NPC>Harry the Blacksmith>Shopkeeper
+DESC>An apron clad, moderately built, middle aged fellow
+SPEECH>Welcome to the Man-at-Arms, friend! The finest arms this side of the Emerald Sea.
+MERCHANT>1
+IMG>placeholderNPC.jpg
+INV>placeholderSword1>5
+INV>placeholderSword2>10
+INV>PlaceholderSword3>15
+INV>PlaceholderSword4>20
 ENDNPC>

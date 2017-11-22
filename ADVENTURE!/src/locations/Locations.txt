@@ -18,7 +18,6 @@ DESC>"The inn seems to be alive and well. The booming economy of Davenport has d
 IMG>placeholder3.jpg
 NORTH>Gilan the InnKeeper
 SOUTH>Davenport
-EVENT>Donut
 ENDLOC>
 
 LOC>Davenport Market
@@ -28,7 +27,6 @@ NORTH>Davenport
 SOUTH>The Man-at-Arms
 WEST>The Man-of-Steel
 EAST>Davenport Goods
-EVENT>Mage
 ENDLOC>
 
 LOC>The Man-at-Arms

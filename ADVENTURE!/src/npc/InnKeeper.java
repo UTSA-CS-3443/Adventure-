@@ -13,5 +13,6 @@ public class InnKeeper extends NPC {
 	public InnKeeper(String name) {
 		super();
 		this.name = name;
+		super.setName(name);
 	}
 }

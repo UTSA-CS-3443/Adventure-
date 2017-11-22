@@ -80,6 +80,7 @@ public class CharacterCreator extends Pane{
 		player.setStats("AGI", stats[3]);
 		player.setStats("LUC", stats[4]);
 		player.setHp((stats[0]/2)+player.getHp()); // HP gets bonus modifier based on Strength/2
+		player.setMaxHP((stats[0]/2)+player.getHp());
 		
 		STR.setText(Integer.toString(stats[0]));
 		PER.setText(Integer.toString(stats[1]));

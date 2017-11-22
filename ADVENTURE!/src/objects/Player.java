@@ -17,12 +17,15 @@ public class Player implements Entity{
 	HashMap<String, Integer> Inventory = new HashMap<String, Integer>(); 
 	private String name;
 	private int hp;
+	private int maxHP;
 	private int walletAmt;
 	
 	public Player()
 	{
 		name = "";
 		hp = 10;
+		maxHP = 10;
+		walletAmt = 5;
 		stats = new HashMap<String, Integer>();
 		statMods = new HashMap<>();
 	}
@@ -62,6 +65,16 @@ public class Player implements Entity{
 
 	public void setHp(int hp) {
 		this.hp = hp;
+	}
+	
+	public int getMaxHP()
+	{
+		return this.maxHP;
+	}
+	
+	public void setMaxHP(int max)
+	{
+		this.maxHP = max;
 	}
 
 	public HashMap<String, Integer> getStats() {

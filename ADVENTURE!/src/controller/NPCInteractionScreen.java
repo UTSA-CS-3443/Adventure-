@@ -48,10 +48,13 @@ public class NPCInteractionScreen extends AnchorPane {
 	ArrayList<Image> inventoryImages;
 
 	@FXML Text NAME;
+	@FXML Text HP;
+	@FXML Text STR;
 	@FXML Text PER;
 	@FXML Text INT;
+	@FXML Text AGI;
 	@FXML Text LUC;
-	@FXML Text WALLET;
+	@FXML Text MONEY;
 	@FXML Button buy;
 	@FXML Pagination PAGINATION;
 	@FXML TextFlow DESC;
@@ -80,14 +83,18 @@ public class NPCInteractionScreen extends AnchorPane {
 
 
 		NAME.setText(this.player.getName());
-		PER.setText(this.player.stats.get("PER").toString());
-		INT.setText(this.player.stats.get("INT").toString());
-		LUC.setText(this.player.stats.get("LUC").toString());
-		WALLET.setText(String.valueOf(p.getWalletAmt())); 
+		
+		HP.setText(Integer.toString(this.player.getHp()));
+		STR.setText(player.stats.get("STR").toString());
+		PER.setText(player.stats.get("PER").toString());
+		INT.setText(player.stats.get("INT").toString());
+		AGI.setText(player.stats.get("AGI").toString());
+		LUC.setText(player.stats.get("LUC").toString());
+		MONEY.setText(Integer.toString(player.getWalletAmt()));
 
 		list = DESC.getChildren();
 		//add some information to the readout list descriptor
-		dialogue =  new Text("How can I help you?");
+		dialogue =  new Text(npc.getSpeech());
 		list.add(dialogue);
 		IMAGE.setImage(npc.getImage());
 
@@ -102,6 +109,7 @@ public class NPCInteractionScreen extends AnchorPane {
 			PAGINATION.setVisible(false);
 			list.add(new Text("\n\nI'm all sold out!"));
 		}
+		
 	}
 
 	/**
@@ -124,6 +132,13 @@ public class NPCInteractionScreen extends AnchorPane {
 	@FXML
 	public void leave(ActionEvent event) 
 	{
+		Main.gs.HP.setText(Integer.toString(this.player.getHp()));
+		Main.gs.STR.setText(player.stats.get("STR").toString());
+		Main.gs.PER.setText(player.stats.get("PER").toString());
+		Main.gs.INT.setText(player.stats.get("INT").toString());
+		Main.gs.AGI.setText(player.stats.get("AGI").toString());
+		Main.gs.LUC.setText(player.stats.get("LUC").toString());
+		Main.gs.MONEY.setText(Integer.toString(player.getWalletAmt()));
 		Main.stage.setScene(Main.mainGame);
 		Main.stage.show();
 	}
@@ -133,6 +148,7 @@ public class NPCInteractionScreen extends AnchorPane {
 		if(npc.getMerchantStatus() == 1 && npc.getInventoryLength() > 0)
 		{
 			createPagination();
+			dialogue.setText("Anything else?");
 		}
 		else
 		{
@@ -140,12 +156,25 @@ public class NPCInteractionScreen extends AnchorPane {
 			PAGINATION.setVisible(false);
 			list.add(new Text("\n\nI'm all sold out!"));
 		}
+		
+		HP.setText(Integer.toString(this.player.getHp()));
+		STR.setText(player.stats.get("STR").toString());
+		PER.setText(player.stats.get("PER").toString());
+		INT.setText(player.stats.get("INT").toString());
+		AGI.setText(player.stats.get("AGI").toString());
+		LUC.setText(player.stats.get("LUC").toString());
+		MONEY.setText(Integer.toString(player.getWalletAmt()));
 	}
 
 	public void buyItem(String text)
 	{
 		int cost = 0;
 		cost = npc.getCost(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()));
+		if(cost > player.getWalletAmt())
+		{
+			dialogue.setText("You don't have the coin for that, friend.");
+			return;
+		}
 		player.setWalletAmt(player.getWalletAmt() - cost);
 		player.addItemToInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), cost);
 		npc.removeItemFromInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), PAGINATION.getCurrentPageIndex());

@@ -46,6 +46,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	@FXML Text INT;
 	@FXML Text AGI;
 	@FXML Text LUC;
+	@FXML Text MONEY;
 	@FXML ImageView IMAGE;
 	Text locName;
 	Text locDesc;
@@ -76,6 +77,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		INT.setText(player.stats.get("INT").toString());
 		AGI.setText(player.stats.get("AGI").toString());
 		LUC.setText(player.stats.get("LUC").toString());
+		MONEY.setText(Integer.toString(player.getWalletAmt()));
 		
 		ObservableList<Node> list = DESC.getChildren();
 		
@@ -149,6 +151,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 			INT.setText(player.stats.get("INT").toString());
 			AGI.setText(player.stats.get("AGI").toString());
 			LUC.setText(player.stats.get("LUC").toString());
+			MONEY.setText(Integer.toString(player.getWalletAmt()));
 			loc.setHasEvent(false);
 		}
 		
