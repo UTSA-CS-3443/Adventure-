@@ -41,7 +41,7 @@ import objects.Player;
  * @author Tyler Rasmussen and Jason Morales
  *
  */
-public class NPCInteractionScreen extends AnchorPane implements EventHandler<ActionEvent>{
+public class NPCInteractionScreen extends AnchorPane {
 
 	NPC npc;
 	Player player;
@@ -59,6 +59,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 	@FXML VBox stockImages;
 	@FXML ImageView IMAGE;
 	Text dialogue;
+	ObservableList<Node> list;
 	/**
 	 * Load up the NPC screen for interaction with by the player
 	 * 
@@ -84,8 +85,7 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		LUC.setText(this.player.stats.get("LUC").toString());
 		WALLET.setText(String.valueOf(p.getWalletAmt())); 
 
-		ObservableList<Node> list = DESC.getChildren();
-
+		list = DESC.getChildren();
 		//add some information to the readout list descriptor
 		dialogue =  new Text("How can I help you?");
 		list.add(dialogue);
@@ -114,12 +114,6 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		Platform.exit();
 	}
 
-	@Override
-	public void handle(ActionEvent event) {
-		Button b = (Button)event.getSource();
-		update( b.getText() );
-	}
-
 
 	@FXML
 	public void buy(ActionEvent event) {
@@ -134,9 +128,18 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		Main.stage.show();
 	}
 
-	public void update(String text)
+	public void update()
 	{
-
+		if(npc.getMerchantStatus() == 1 && npc.getInventoryLength() > 0)
+		{
+			createPagination();
+		}
+		else
+		{
+			buy.setVisible(false);
+			PAGINATION.setVisible(false);
+			list.add(new Text("\n\nI'm all sold out!"));
+		}
 	}
 
 	public void buyItem(String text)
@@ -146,7 +149,8 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		player.setWalletAmt(player.getWalletAmt() - cost);
 		player.addItemToInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), cost);
 		npc.removeItemFromInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), PAGINATION.getCurrentPageIndex());
-		createPagination();
+		inventoryImages.remove(PAGINATION.getCurrentPageIndex());
+		update();
 	}
 
 	public void createPagination()
@@ -172,16 +176,20 @@ public class NPCInteractionScreen extends AnchorPane implements EventHandler<Act
 		String fName = ""; 
 		//load our files into an array
 		//load file based on npc inventory and length
-		fName = npc.getItemFromInventory(index);
-		fName = String.format("/images/%s%s", fName, ".jpg");
-		try{
-			Image f = new Image(fName);
-			inventoryImages.add(f);
-		}
-		catch(Exception e)
+		for(int i=0;i<npc.getStockAmt();i++)
 		{
-			System.out.printf("Unable to load image file: %s\n", fName);
+			fName = npc.getItemFromInventory(i);
+			fName = String.format("/images/%s%s", fName, ".jpg");
+			try{
+				Image f = new Image(fName);
+				inventoryImages.add(f);
+			}
+			catch(Exception e)
+			{
+				System.out.printf("Unable to load image file: %s\n", fName);
+			}
 		}
+		
 		try {
 			imageView.setImage(inventoryImages.get(index));
 			imageView.setFitWidth(200);
