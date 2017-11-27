@@ -177,6 +177,13 @@ public class NPCInteractionScreen extends AnchorPane {
 		}
 		player.setWalletAmt(player.getWalletAmt() - cost);
 		player.addItemToInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), cost);
+		String itemPic = npc.getItemFromInventory(PAGINATION.getCurrentPageIndex());
+		itemPic = String.format("/images/%s%s", itemPic, ".jpg");
+		Image itemPicImg = new Image(itemPic);
+		ImageView inv = new ImageView(itemPicImg);
+		inv.setFitWidth(70);
+		inv.setFitHeight(70);
+		Main.gs.INV.getChildren().add(inv);
 		npc.removeItemFromInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), PAGINATION.getCurrentPageIndex());
 		inventoryImages.remove(PAGINATION.getCurrentPageIndex());
 		update();

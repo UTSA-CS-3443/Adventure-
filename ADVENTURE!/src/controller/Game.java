@@ -21,6 +21,7 @@ public class Game {
 	public static HashMap<String, Attribute> attributeMap = new HashMap<String, Attribute>();
 	public static HashMap<String, NPC> NPCM = new HashMap<String, NPC>();
 	public static HashMap<String, Items> ItemM = new HashMap<String, Items>();
+	public static HashMap<String, Enemy> enemiesM = new HashMap<>();
 	public Game() {
 		//initialize the game
 		init();

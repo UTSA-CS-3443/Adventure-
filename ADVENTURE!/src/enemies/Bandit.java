@@ -1,50 +1,25 @@
 package enemies;
 
 import java.util.HashMap;
-
 import objects.Enemy;
+import javafx.scene.image.Image;
 
 public class Bandit extends Enemy {
 	
 	private String name;
 	private int hp;
 	private HashMap<String, Integer> stats;
+	private Image image = new Image("/images/placeHolderHighwayman.jpg");
 	
-	public Bandit(String name) {
-		super();
-		this.name = name;
+	public Bandit() {
+		super.setMoney(10);
+		super.setHp(10);
+		super.setStats("STR", 8);
+		super.setStats("PER", 10);
+		super.setStats("INT", 7);
+		super.setStats("AGI", 15);
+		super.setStats("LUC", 7);
+		super.setImage(image);
 	}
-
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public int getHp() {
-		return this.hp;
-	}
-
-	@Override
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
-
-	@Override
-	public HashMap<String, Integer> getStats() {
-		return this.stats;
-	}
-
-	@Override
-	public void setStats(String s, int i) {
-		stats.put(s, i);
-		
-	}
-
 
 }

@@ -14,13 +14,17 @@ public abstract class Enemy implements Entity{
 	private String name;
 	private int hp;
 	private Image image;
+	private int money;
 
-	private HashMap<String, Integer> stats;
+	public HashMap<String, Integer> stats;
+	public HashMap<String, Integer> statMods;
 	
 	public Enemy()
 	{
 		name = "";
 		hp = 5;
+		stats = new HashMap<>();
+		statMods = new HashMap<>();
 	}
 	
 	public void setImage(Image img)
@@ -33,14 +37,52 @@ public abstract class Enemy implements Entity{
 		return this.image;
 	}
 	
-	public abstract String getName();
+	public String getName()
+	{
+		return name;
+	}
 	
-	public abstract void setName(String name);
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 
-	public abstract int getHp();
+	public int getHp()
+	{
+		return hp;
+	}
 	
-	public abstract void setHp(int hp);
+	public void setHp(int hp)
+	{
+		this.hp = hp;
+	}
 	
-	public abstract HashMap<String, Integer> getStats();
+	public HashMap<String, Integer> getStats()
+	{
+		return stats;
+	}
+	
+	public void setStats(String s, int i) {
+		if(stats.containsKey(s))
+		{
+			stats.replace(s, i);
+			statMods.replace(s, ((i - 10)/2));
+		}
+		else
+		{
+			stats.put(s, i);
+			statMods.put(s, ((i - 10)/2));
+		}
+	}
+	
+	public int getMoney()
+	{
+		return this.money;
+	}
+	
+	public void setMoney(int mon)
+	{
+		this.money = mon;
+	}
 		
 }

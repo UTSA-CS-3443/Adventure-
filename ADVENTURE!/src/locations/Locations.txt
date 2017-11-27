@@ -14,7 +14,7 @@ EAST>The Davenport Docks
 ENDLOC>
 
 LOC>Dungeons and Flagons
-DESC>"The inn seems to be alive and well. The booming economy of Davenport has drawn people from all over the country and it shows. The main room is filled to the brim with folks from a wide range of professions, be they farmers, sailors, tailors, or bakers. Rooms here cost 5 ducats.
+DESC>"The inn seems to be alive and well. The booming economy of Davenport has drawn people from all over the country and it shows. The main room is filled to the brim with folks from a wide range of professions, be they farmers, sailors, tailors, or bakers. Rooms here cost 5 gold.
 IMG>placeholder3.jpg
 NORTH>Gilan the InnKeeper
 SOUTH>Davenport
@@ -59,6 +59,13 @@ ENDLOC>
 
 LOC>Fangwood Forest
 DESC> The light seems to dim the further you travel and you are surrounded by towering trees. Fangwood Forest supplies Davenport with high quality lumber fit for building the sturdiest of ships and crafting some of the most beautiful homes and furniture. The tight and relatively darker environment facilitates amiable conditions for unscrupulous activities, however. Stay on your guard.
+IMG>fangWoodForest.jpg
+NORTH>Incredibly Spooky Cave
 SOUTH>Davenport
 EVENT>Ambush
+ENDLOC>
+
+LOC>Incredibly Spooky Cave
+DESC>"It is the scariest thing you have ever seen in your entire life..."
+EVENT>DEATHTEST
 ENDLOC>

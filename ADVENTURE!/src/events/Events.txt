@@ -66,9 +66,9 @@ ENDEVENT>
 
 EVENT>Ambush
 DESC>"While generally safer, faster, and easier to traverse, the roads are not without danger. The qualities that make them preferable for travel are the same that make it ripe for harassment by highwaymen, thieves, some wildlife, and, in times of war, soldiers. As you walk down the path, you hear the crunch of a branch to your left and spot a bandit just about to release an arrow!"
-CHOICE>Try to dodge it>HP - 8~ROLL AGI 10~HP + 8
+CHOICE>Try to dodge it>HP - 8~ROLL AGI 7~HP + 8~ENCOUNTER BANDIT
 CHOICE>Catch it and intimidate him into forfeiting his ill gotten gains to you>HP - 10~ROLL AGI 15~HP + 10~MON + 20
-CHOICE>Offer him 10 ducats to pass>MON - 10
+CHOICE>Offer him 10 gold to pass>MON - 10
 ENDEVENT>
 
 EVENT>DEATHTEST

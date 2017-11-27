@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -48,6 +49,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 	@FXML Text LUC;
 	@FXML Text MONEY;
 	@FXML ImageView IMAGE;
+	@FXML HBox INV;
 	Text locName;
 	Text locDesc;
 	

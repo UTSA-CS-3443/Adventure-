@@ -14,13 +14,17 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import objects.Enemy;
 import objects.Player;
+import controller.Game;
+import enemies.*;
 
 public class EventController extends AnchorPane{
 	@FXML VBox CHOICES;
@@ -34,6 +38,7 @@ public class EventController extends AnchorPane{
 	HashMap<String, Integer> statMods = new HashMap<>();
 	private int hp;
 	Player player;
+	Enemy enemy;
 	private boolean failedCheck;
 	
 	
@@ -109,6 +114,8 @@ public class EventController extends AnchorPane{
 				{
 					if(operation[1].equals("+"))
 					{
+						if(failedCheck)
+							break;
 						player.setStats(operation[0], stats.get(operation[0]) + Integer.valueOf(operation[2]));
 						if(operation[0].equals("STR"))
 							player.setMaxHP((stats.get(operation[0])/2)+10);
@@ -126,6 +133,8 @@ public class EventController extends AnchorPane{
 				{
 					if(operation[1].equals("+"))
 					{
+						if(failedCheck)
+							break;
 						player.setHp(hp + Integer.valueOf(operation[2]));
 						if(player.getHp() > player.getMaxHP())
 							player.setHp(hp - Integer.valueOf(operation[2]));
@@ -144,24 +153,46 @@ public class EventController extends AnchorPane{
 					if(die == 20)
 					{
 						failedCheck = false;
+						continue;
 					}
 					else if(die == 1)
 					{
 						failedCheck = true;
-						break;
+						continue;
 					}
 					else if(die + statMods.get(operation[1]) < Integer.valueOf(operation[2]))
 					{
 						failedCheck = true;
-						break;
+						continue;
 					}
 					else
+					{
 						failedCheck = false;
+						continue;
+					}
+				}
+				else if(operation[0].equals("ENCOUNTER"))
+				{
+					if(operation[1].equals("BANDIT"))
+					{
+						enemy = new Bandit();
+					}
+					else if(operation[1].equals("GOBLIN"))
+					{
+						enemy = new Goblin();
+					}
+					else if(operation[1].equals("ORC"))
+					{
+						enemy = new Orc();
+					}
+					else if(operation[1].equals("WILDBEAST"))
+					{
+						enemy = new WildBeast();
+					}
+					Main.stage.setScene(new Scene(new EnemyInteractionScreen(player, enemy)));
+					Main.stage.show();
 				}
 			}
-			
-			if(failedCheck)
-				break;
 		}
 		
 		

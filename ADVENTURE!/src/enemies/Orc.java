@@ -10,40 +10,15 @@ public class Orc extends Enemy {
 	private int hp;
 	private HashMap<String, Integer> stats;
 	
-	public Orc(String name) {
+	public Orc() {
 		super();
-		this.name = name;
+		super.setMoney(30);
+		super.setHp(25);
+		super.setStats("STR", 15);
+		super.setStats("PER", 5);
+		super.setStats("INT", 4);
+		super.setStats("AGI", 8);
+		super.setStats("LUC", 5);
 	}
-
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public int getHp() {
-		return this.hp;
-	}
-
-	@Override
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
-
-	@Override
-	public void setStats(String s, int i) {
-		stats.put(s, i);
-	}
-
-	@Override
-	public HashMap<String, Integer> getStats() {
-		return this.stats;
-	}
-
 
 }

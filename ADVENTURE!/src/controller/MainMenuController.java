@@ -1,6 +1,7 @@
 package controller;
 
 import application.Main;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,12 @@ public class MainMenuController extends AnchorPane{
 	protected void handleNewGame(ActionEvent e)
 	{	
 		Main.game = new Game();
+	}
+	
+	@FXML
+	protected void handleQuit(ActionEvent e)
+	{	
+		Platform.exit();
 	}
 
 }

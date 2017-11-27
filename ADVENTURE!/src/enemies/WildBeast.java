@@ -10,39 +10,15 @@ public class WildBeast extends Enemy {
 	private int hp;
 	private HashMap<String, Integer> stats;
 	
-	public WildBeast(String name) {
+	public WildBeast() {
 		super();
-		this.name = name;
+		super.setMoney(3);
+		super.setHp(10);
+		super.setStats("STR", 12);
+		super.setStats("PER", 10);
+		super.setStats("INT", 4);
+		super.setStats("AGI", 10);
+		super.setStats("LUC", 3);
 	}
-
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public int getHp() {
-		return this.hp;
-	}
-
-	@Override
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
-
-	@Override
-	public void setStats(String s, int i) {
-		stats.put(s, i);
-	}
-
-	@Override
-	public HashMap<String, Integer> getStats() {
-		return this.stats;
-	}
-
+	
 }
