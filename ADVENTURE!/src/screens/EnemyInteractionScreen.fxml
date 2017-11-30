@@ -46,7 +46,7 @@
          <children>
             <Button fx:id="ATTACK" mnemonicParsing="false" onAction="#attack" prefWidth="74.0" text="Attack" />
             <Button fx:id="PARRY" mnemonicParsing="false" onAction="#parry" prefWidth="74.0" text="Parry" />
-            <Button fx:id="USE" mnemonicParsing="false" onAction="#usePotion" text="Use Potion" />
+            <Button fx:id="USEHEALTH" mnemonicParsing="false" onAction="#usePotion" text="Use Health Potion" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="RUN" mnemonicParsing="false" onAction="#runAway" prefWidth="74.0" text="Flee">
                <opaqueInsets>
                   <Insets />

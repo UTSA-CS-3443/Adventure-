@@ -53,6 +53,7 @@ public class CharacterCreator extends Pane{
 	protected void handleBegin(ActionEvent e)
 	{
 		player.setName(NAME.getText());
+		player.addHealthPotion(1);
 		Main.gs = new GameScreen(player);
 		Main.mainGame = new Scene(Main.gs);
 		Main.stage.setScene(Main.mainGame);

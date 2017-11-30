@@ -15,6 +15,7 @@ public class Player implements Entity{
 	public HashMap<String, Integer> statMods;
 	ArrayList<String> InventoryItems = new ArrayList<String>();
 	HashMap<String, Integer> Inventory = new HashMap<String, Integer>(); 
+	int[] potions = new int[2]; //Implied item at index: [0] - number of health potions; [1] - other potion?
 	private String name;
 	private int hp;
 	private int maxHP;
@@ -45,11 +46,29 @@ public class Player implements Entity{
 		return this.InventoryItems.get(i);
 	}
 	
+	public void addHealthPotion(int val)
+	{
+		this.potions[0]++;
+	}
+	
+	public int getHealthPotionAmt()
+	{
+		return potions[0];
+	}
+	
+	public int useHealthPotion()
+	{
+		if(potions[0] <= 0)
+			return 0;
+		this.potions[0]--;
+		
+		return 1;
+	}
+	
 	public void addInventoryItems(String name)
 	{
 		InventoryItems.add(name); 
 	}
-	
 	
 	public String getName() {
 		return name;

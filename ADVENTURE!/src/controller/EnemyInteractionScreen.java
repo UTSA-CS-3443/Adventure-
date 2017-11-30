@@ -70,7 +70,7 @@ public class EnemyInteractionScreen extends AnchorPane {
 	@FXML ImageView IMAGE;
 	@FXML Button ATTACK;
 	@FXML Button PARRY;
-	@FXML Button USE;
+	@FXML Button USEHEALTH;
 	@FXML Button RUN;
 	@FXML Button END;
 	@FXML Button LOOT;
@@ -163,11 +163,16 @@ public class EnemyInteractionScreen extends AnchorPane {
 		EAGI.setText(enemy.stats.get("AGI").toString());
 		ELUC.setText(enemy.stats.get("LUC").toString());
 		
+		if(player.getHp() == player.getMaxHP() || player.getHealthPotionAmt() <= 0)
+			USEHEALTH.setDisable(true);
+		else
+			USEHEALTH.setDisable(false);
+		
 		if(enemy.getHp() <= 0)
 		{
 			ATTACK.setDisable(true);
 			PARRY.setDisable(true);
-			USE.setDisable(true);
+			USEHEALTH.setDisable(true);
 			RUN.setDisable(true);
 			LOOT.setDisable(false);
 			END.setDisable(false);
@@ -187,7 +192,7 @@ public class EnemyInteractionScreen extends AnchorPane {
 		{
 			ATTACK.setDisable(true);
 			PARRY.setDisable(true);
-			USE.setDisable(true);
+			USEHEALTH.setDisable(true);
 			RUN.setDisable(true);
 			LOOT.setDisable(true);
 			END.setDisable(false);
@@ -238,7 +243,7 @@ public class EnemyInteractionScreen extends AnchorPane {
 			{
 				ATTACK.setDisable(true);
 				PARRY.setDisable(true);
-				USE.setDisable(true);
+				USEHEALTH.setDisable(true);
 				RUN.setDisable(true);
 				LOOT.setDisable(true);
 				END.setDisable(false);
@@ -335,7 +340,7 @@ public class EnemyInteractionScreen extends AnchorPane {
 			{
 				ATTACK.setDisable(true);
 				PARRY.setDisable(true);
-				USE.setDisable(true);
+				USEHEALTH.setDisable(true);
 				RUN.setDisable(true);
 				LOOT.setDisable(true);
 				END.setDisable(false);
@@ -353,7 +358,7 @@ public class EnemyInteractionScreen extends AnchorPane {
 			{
 				ATTACK.setDisable(true);
 				PARRY.setDisable(true);
-				USE.setDisable(true);
+				USEHEALTH.setDisable(true);
 				RUN.setDisable(true);
 				LOOT.setDisable(false);
 				END.setDisable(false);
@@ -367,7 +372,12 @@ public class EnemyInteractionScreen extends AnchorPane {
 	@FXML
 	public void usePotion()
 	{
-		
+		if(player.useHealthPotion() > 0)
+		{
+			player.setHp(player.getHp() + 10);
+			if(player.getHp() > player.getMaxHP())
+				player.setHp(player.getMaxHP());
+		}
 	}
 	
 	@FXML
@@ -375,7 +385,7 @@ public class EnemyInteractionScreen extends AnchorPane {
 	{
 		ATTACK.setDisable(true);
 		PARRY.setDisable(true);
-		USE.setDisable(true);
+		USEHEALTH.setDisable(true);
 		RUN.setDisable(true);
 		END.setDisable(false);
 		pDodgeDie = (int) (Math.random()*20+1);
