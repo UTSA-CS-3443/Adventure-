@@ -84,7 +84,8 @@ public class NPCInteractionScreen extends AnchorPane {
 
 		NAME.setText(this.player.getName());
 		
-		HP.setText(Integer.toString(this.player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		HP.setText(formattedHP);
 		STR.setText(player.stats.get("STR").toString());
 		PER.setText(player.stats.get("PER").toString());
 		INT.setText(player.stats.get("INT").toString());
@@ -132,7 +133,8 @@ public class NPCInteractionScreen extends AnchorPane {
 	@FXML
 	public void leave(ActionEvent event) 
 	{
-		Main.gs.HP.setText(Integer.toString(this.player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		Main.gs.HP.setText(formattedHP);
 		Main.gs.STR.setText(player.stats.get("STR").toString());
 		Main.gs.PER.setText(player.stats.get("PER").toString());
 		Main.gs.INT.setText(player.stats.get("INT").toString());
@@ -157,7 +159,8 @@ public class NPCInteractionScreen extends AnchorPane {
 			list.add(new Text("\n\nI'm all sold out!"));
 		}
 		
-		HP.setText(Integer.toString(this.player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		HP.setText(formattedHP);
 		STR.setText(player.stats.get("STR").toString());
 		PER.setText(player.stats.get("PER").toString());
 		INT.setText(player.stats.get("INT").toString());

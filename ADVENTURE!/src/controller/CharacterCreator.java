@@ -1,6 +1,7 @@
 package controller;
 
 import application.Main;
+import items.potions.HealthPotion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +54,10 @@ public class CharacterCreator extends Pane{
 	protected void handleBegin(ActionEvent e)
 	{
 		player.setName(NAME.getText());
-		player.addHealthPotion(1);
+		HealthPotion p = new HealthPotion();
+		player.addHealthPotion(p);
+		p = new HealthPotion();
+		player.addHealthPotion(p);
 		Main.gs = new GameScreen(player);
 		Main.mainGame = new Scene(Main.gs);
 		Main.stage.setScene(Main.mainGame);
@@ -88,7 +92,8 @@ public class CharacterCreator extends Pane{
 		INT.setText(Integer.toString(stats[2]));
 		AGI.setText(Integer.toString(stats[3]));
 		LUC.setText(Integer.toString(stats[4]));
-		HP.setText(Integer.toString(player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		HP.setText(formattedHP);
 	}
 	
 	/**

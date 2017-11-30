@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import application.Main;
 import controller.Game;
+import items.potions.HealthPotion;
 import items.potions.Potion;
 import items.weapons.Dagger;
 import items.weapons.Mace;
@@ -19,6 +20,10 @@ import objects.Items;
 import objects.NPC;
 import npc.*;
 
+/**
+@author JASON, TYLER. BRYLAND
+*/
+
 public class ItemReader	{
 
 	private Scanner in;
@@ -26,7 +31,6 @@ public class ItemReader	{
 	private String[] identifier;
 	private Items item;
 	private String[] statName = {"STR", "PER", "INT", "AGI", "LUC"};
-	
 	
 	public ItemReader(URL items) {
 		
@@ -78,14 +82,19 @@ public class ItemReader	{
 					}
 					
 				}
-			} else if(identifier[0].equals("POTION")) {
+			} 
+			else if(identifier[0].equals("HEALTHPOTION")) 
+			{
 				itemName = identifier[1];
-				Potion item = new Potion(itemName);
-				for (int i = 2; i <= 6; i++) {
+				HealthPotion item = new HealthPotion();
+				for (int i = 2; i <= 6; i++) 
+				{
 					item.setStats(statName[i-2], Integer.valueOf(identifier[i]));
 				}
 				
-			} else if(identifier[0].equals("ENDITEM")) {
+			} 
+			else if(identifier[0].equals("ENDITEM")) 
+			{
 				Game.ItemM.put(identifier[0], item);
 			}
 		}

@@ -73,7 +73,8 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 			e.printStackTrace();
 		}
 		NAME.setText(this.player.getName());
-		HP.setText(Integer.toString(this.player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		HP.setText(formattedHP);
 		STR.setText(player.stats.get("STR").toString());
 		PER.setText(player.stats.get("PER").toString());
 		INT.setText(player.stats.get("INT").toString());
@@ -147,7 +148,8 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 			events.Event locEvent = EventReader.eventsM.get(EventReader.eventIndex.get(loc.getEvent()));
 			eventStage.setScene(new Scene(new EventController(locEvent, eventStage), 900, 600));
 			eventStage.showAndWait();
-			HP.setText(Integer.toString(player.getHp()));
+			String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+			HP.setText(formattedHP);
 			STR.setText(player.stats.get("STR").toString());
 			PER.setText(player.stats.get("PER").toString());
 			INT.setText(player.stats.get("INT").toString());

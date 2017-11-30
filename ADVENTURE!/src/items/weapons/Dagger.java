@@ -14,4 +14,16 @@ public class Dagger extends Weapon {
 		this.name = name;
 	}
 
+	@Override
+	public int getWorth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setWorth(int val) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

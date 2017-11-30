@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 
 /**
  * Launches the game and begins at the Main Menu
- * @author JASON, TYLER
+ * @author JASON, TYLER, CHANDLER, BRYLAND
  *
  */
 public class Main extends Application {

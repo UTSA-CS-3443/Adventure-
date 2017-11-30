@@ -2,6 +2,9 @@ package objects;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import items.potions.HealthPotion;
+import items.potions.Potion;
 /**
  * The player character
  * @author JASON
@@ -15,7 +18,7 @@ public class Player implements Entity{
 	public HashMap<String, Integer> statMods;
 	ArrayList<String> InventoryItems = new ArrayList<String>();
 	HashMap<String, Integer> Inventory = new HashMap<String, Integer>(); 
-	int[] potions = new int[2]; //Implied item at index: [0] - number of health potions; [1] - other potion?
+	ArrayList<Potion> potions = new ArrayList<Potion>(); //Implied item at index: [0] - number of health potions; [1] - other potion?
 	private String name;
 	private int hp;
 	private int maxHP;
@@ -46,23 +49,28 @@ public class Player implements Entity{
 		return this.InventoryItems.get(i);
 	}
 	
-	public void addHealthPotion(int val)
+	public void addHealthPotion(Potion val)
 	{
-		this.potions[0]++;
+		this.potions.add(val);
 	}
 	
 	public int getHealthPotionAmt()
 	{
-		return potions[0];
+		return potions.size();
 	}
 	
-	public int useHealthPotion()
+	public HealthPotion getHealthPotion()
 	{
-		if(potions[0] <= 0)
-			return 0;
-		this.potions[0]--;
+		for(Potion i : potions)
+		{
+			if(i.getName().equals("Health Potion"))
+			{
+				this.potions.remove(i);
+				return (HealthPotion) i;
+			}
+		}
 		
-		return 1;
+		return null;
 	}
 	
 	public void addInventoryItems(String name)

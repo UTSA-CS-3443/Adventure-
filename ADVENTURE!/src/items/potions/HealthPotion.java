@@ -1,5 +1,9 @@
 package items.potions;
 
+/**
+@author JASON, TYLER. BRYLAND
+*/
+
 public class HealthPotion extends Potion{
 	
 	public HealthPotion(){

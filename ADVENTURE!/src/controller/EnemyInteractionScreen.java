@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.imageio.ImageIO;
 
 import application.Main;
+import items.potions.HealthPotion;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -121,8 +122,8 @@ public class EnemyInteractionScreen extends AnchorPane {
 			ex.printStackTrace();
 		}
 		
-		
-		HP.setText(Integer.toString(this.player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		HP.setText(formattedHP);
 		STR.setText(player.stats.get("STR").toString());
 		PER.setText(player.stats.get("PER").toString());
 		INT.setText(player.stats.get("INT").toString());
@@ -135,6 +136,10 @@ public class EnemyInteractionScreen extends AnchorPane {
 		EINT.setText(enemy.stats.get("INT").toString());
 		EAGI.setText(enemy.stats.get("AGI").toString());
 		ELUC.setText(enemy.stats.get("LUC").toString());
+		
+		int potionAmt = player.getHealthPotionAmt();
+		String formatString = String.format("Use Health Potion (%d)", potionAmt);
+		USEHEALTH.setText(formatString);
 		
 		list = BATTLELOG.getChildren();
 		
@@ -149,7 +154,8 @@ public class EnemyInteractionScreen extends AnchorPane {
 	
 	public void update()
 	{	
-		HP.setText(Integer.toString(this.player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		HP.setText(formattedHP);
 		STR.setText(player.stats.get("STR").toString());
 		PER.setText(player.stats.get("PER").toString());
 		INT.setText(player.stats.get("INT").toString());
@@ -162,6 +168,10 @@ public class EnemyInteractionScreen extends AnchorPane {
 		EINT.setText(enemy.stats.get("INT").toString());
 		EAGI.setText(enemy.stats.get("AGI").toString());
 		ELUC.setText(enemy.stats.get("LUC").toString());
+		
+		int potionAmt = player.getHealthPotionAmt();
+		String formatString = String.format("Use Health Potion (%d)", potionAmt);
+		USEHEALTH.setText(formatString);
 		
 		if(player.getHp() == player.getMaxHP() || player.getHealthPotionAmt() <= 0)
 			USEHEALTH.setDisable(true);
@@ -200,7 +210,8 @@ public class EnemyInteractionScreen extends AnchorPane {
 			return;
 		}
 		
-		HP.setText(Integer.toString(this.player.getHp()));
+		formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		HP.setText(formattedHP);
 		STR.setText(player.stats.get("STR").toString());
 		PER.setText(player.stats.get("PER").toString());
 		INT.setText(player.stats.get("INT").toString());
@@ -319,7 +330,8 @@ public class EnemyInteractionScreen extends AnchorPane {
 		else
 		{
 			player.setHp(player.getHp() - (enemy.statMods.get("STR") + eAtkDie));
-			HP.setText(Integer.toString(this.player.getHp()));
+			String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+			HP.setText(formattedHP);
 			playerHit = new Text("You were hit.\n");
 			list.add(playerHit);
 		}
@@ -333,7 +345,8 @@ public class EnemyInteractionScreen extends AnchorPane {
 		if(who == 0)
 		{
 			player.setHp(player.getHp() - (enemy.statMods.get("STR") + eAtkDie));
-			HP.setText(Integer.toString(this.player.getHp()));
+			String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+			HP.setText(formattedHP);
 			playerHit = new Text("You were hit.\n");
 			list.add(playerHit);
 			if(player.getHp() <= 0)
@@ -372,11 +385,14 @@ public class EnemyInteractionScreen extends AnchorPane {
 	@FXML
 	public void usePotion()
 	{
-		if(player.useHealthPotion() > 0)
+		HealthPotion p = player.getHealthPotion();
+		if(p != null)
 		{
-			player.setHp(player.getHp() + 10);
+			player.setHp(player.getHp() + p.getStatHPInc());
 			if(player.getHp() > player.getMaxHP())
 				player.setHp(player.getMaxHP());
+			String formatted = String.format("Used Potion. Health +%d\n", p.getStatHPInc());
+			list.add(new Text(formatted));
 		}
 		
 		update();
@@ -423,7 +439,8 @@ public class EnemyInteractionScreen extends AnchorPane {
 			Main.stage.show();
 			return;
 		}
-		Main.gs.HP.setText(Integer.toString(this.player.getHp()));
+		String formattedHP = String.format("%d/%d", player.getHp(), player.getMaxHP());
+		Main.gs.HP.setText(formattedHP);
 		Main.gs.STR.setText(player.stats.get("STR").toString());
 		Main.gs.PER.setText(player.stats.get("PER").toString());
 		Main.gs.INT.setText(player.stats.get("INT").toString());

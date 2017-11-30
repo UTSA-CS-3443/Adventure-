@@ -1,5 +1,9 @@
 package items.potions;
 
+/**
+@author JASON, TYLER. BRYLAND
+*/
+
 import java.util.HashMap;
 
 import objects.Items;
@@ -10,12 +14,7 @@ public abstract class Potion implements Items{
 	private static HashMap<String, Integer> stats;
 	private int worth = 0;
 	private int statHPInc = 0;
-	private int statLUCInc = 0;
-	private int statPERInc = 0;
-	private int statSTRInc = 0;
-	private int statAGIInc = 0;
-	private int statINTInc = 0;
-
+	
 	public Potion() {
 		this.name = "";
 	}
@@ -25,7 +24,14 @@ public abstract class Potion implements Items{
 	}
 	
 	public static void setStats(String s, Integer i){
-		stats.put(s, i);
+		if(stats.containsKey(s))
+		{
+			stats.replace(s, i);
+		}
+		else
+		{
+			stats.put(s, i);
+		}
 	}
 
 	@Override
@@ -48,7 +54,7 @@ public abstract class Potion implements Items{
 		this.worth = val;
 	}
 	
-	public void setStatHPInc(int val)
+	public void setStatHPInc(int val) 
 	{
 		this.statHPInc = val;
 	}
@@ -58,53 +64,28 @@ public abstract class Potion implements Items{
 		return this.statHPInc;
 	}
 	
-	public void setStatLUCInc(int val)
-	{
-		this.statLUCInc = val;
-	}
-	
 	public int getStatLUCInc() 
 	{
-		return this.statLUCInc;
-	}
-	
-	public void setStatPERInc(int val)
-	{
-		this.statPERInc = val;
+		return this.stats.get("LUC");
 	}
 	
 	public int getStatPERInc() 
 	{
-		return this.statPERInc;
-	}
-	
-	public void setStatAGIInc(int val)
-	{
-		this.statAGIInc = val;
+		return this.stats.get("PER");
 	}
 	
 	public int getStatAGIInc() 
 	{
-		return this.statAGIInc;
-	}
-	
-	public void setStatINTInc(int val)
-	{
-		this.statINTInc = val;
+		return this.stats.get("AGI");
 	}
 	
 	public int getStatINTInc() 
 	{
-		return this.statINTInc;
-	}
-	
-	public void setStatSTRInc(int val)
-	{
-		this.statSTRInc = val;
+		return this.stats.get("INT");
 	}
 	
 	public int getStatSTRInc() 
 	{
-		return this.statSTRInc;
+		return this.stats.get("STR");
 	}
 }
