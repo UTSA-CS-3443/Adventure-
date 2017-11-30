@@ -378,6 +378,8 @@ public class EnemyInteractionScreen extends AnchorPane {
 			if(player.getHp() > player.getMaxHP())
 				player.setHp(player.getMaxHP());
 		}
+		
+		update();
 	}
 	
 	@FXML
