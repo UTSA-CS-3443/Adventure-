@@ -11,6 +11,8 @@ import java.util.Set;
 import javax.imageio.ImageIO;
 
 import application.Main;
+import items.potions.HealthPotion;
+import items.potions.Potion;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -179,6 +181,22 @@ public class NPCInteractionScreen extends AnchorPane {
 			return;
 		}
 		player.setWalletAmt(player.getWalletAmt() - cost);
+		if(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()).equals("Inn Room"))
+		{
+			dialogue.setText("You feel fully rejuvinated");
+			player.setHp(player.getMaxHP());
+			update();
+			return;
+		}
+		if(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()).equals("Health Potion"))
+		{
+			Potion health = new HealthPotion();
+			player.addHealthPotion(health);
+			npc.removeItemFromInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), PAGINATION.getCurrentPageIndex());
+			inventoryImages.remove(PAGINATION.getCurrentPageIndex());
+			update();
+			return;
+		}
 		player.addItemToInventory(npc.getItemFromInventory(PAGINATION.getCurrentPageIndex()), cost);
 		String itemPic = npc.getItemFromInventory(PAGINATION.getCurrentPageIndex());
 		itemPic = String.format("/images/%s%s", itemPic, ".jpg");

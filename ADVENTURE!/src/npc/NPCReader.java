@@ -50,8 +50,8 @@ public class NPCReader	{
 			{
 				if(identifier[2].equals("Shopkeeper"))
 					npc = new ShopKeeper(identifier[1]);
-				else if(identifier[2].equals("Shopkeeper"))
-					npc = new ShopKeeper(identifier[1]);
+				else if(identifier[2].equals("InnKeeper"))
+					npc = new InnKeeper(identifier[1]);
 			}
 			//figure out if we have inventory data
 			//INV>referenceName>cost

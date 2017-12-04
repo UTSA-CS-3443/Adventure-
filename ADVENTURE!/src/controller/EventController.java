@@ -114,7 +114,7 @@ public class EventController extends AnchorPane{
 				{
 					if(operation[1].equals("+"))
 					{
-						if(failedCheck)
+						if(failedCheck == true)
 							break;
 						player.setStats(operation[0], stats.get(operation[0]) + Integer.valueOf(operation[2]));
 						if(operation[0].equals("STR"))
@@ -133,7 +133,7 @@ public class EventController extends AnchorPane{
 				{
 					if(operation[1].equals("+"))
 					{
-						if(failedCheck)
+						if(failedCheck == true)
 							break;
 						player.setHp(hp + Integer.valueOf(operation[2]));
 						if(player.getHp() > player.getMaxHP())

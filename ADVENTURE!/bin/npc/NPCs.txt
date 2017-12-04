@@ -1,19 +1,38 @@
-NPC>Gilan the InnKeeper>Shopkeeper
+NPC>Gilan the InnKeeper>InnKeeper
 DESC>He has that experienced look to 'em.
 SPEECH>Welcome to the Dungeons & Flagons. Need a room, food? We also hold weekly tabletop nights!
 MERCHANT>1
-IMG>placeholderNPC.jpg
-INV>placeholderSword1>5
-INV>placeholderSword2>10
-INV>PlaceholderSword3>15
-INV>PlaceholderSword4>20
+IMG>Gilan.jpg
+INV>Inn Room>5
 ENDNPC>
 
 NPC>Harry the Blacksmith>Shopkeeper
 DESC>An apron clad, moderately built, middle aged fellow
 SPEECH>Welcome to the Man-at-Arms, friend! The finest arms this side of the Emerald Sea.
 MERCHANT>1
-IMG>placeholderNPC.jpg
+IMG>Harry.jpg
+INV>placeholderSword1>5
+INV>placeholderSword2>10
+INV>PlaceholderSword3>15
+INV>PlaceholderSword4>20
+ENDNPC>
+
+NPC>Ingrid the Shopkeep>Shopkeeper
+DESC>An apron clad, moderately built, middle aged fellow
+SPEECH>Welcome to Davenport Goods! We got a little bit of everything, but if you want quality equipment, you'll want Harry and Barry.
+MERCHANT>1
+IMG>Ingrid.jpg
+INV>Health Potion>3
+INV>Health Potion>3
+INV>Health Potion>3
+INV>Health Potion>3
+ENDNPC>
+
+NPC>Barry the Armorer>Shopkeeper
+DESC>An apron clad, moderately built, middle aged fellow
+SPEECH>Welcome to the Man-of-Steel, friend! The finest armor this side of the Emerald Sea.
+MERCHANT>1
+IMG>Barry.jpg
 INV>placeholderSword1>5
 INV>placeholderSword2>10
 INV>PlaceholderSword3>15
