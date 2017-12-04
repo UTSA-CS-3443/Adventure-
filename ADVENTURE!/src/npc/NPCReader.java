@@ -48,7 +48,7 @@ public class NPCReader	{
 			//NPC>NAME
 			if(identifier[0].equals("NPC"))
 			{
-				if(identifier[2].equals("Shopkeeper"))
+				if(identifier[2].equals("ShopKeeper"))
 					npc = new ShopKeeper(identifier[1]);
 				else if(identifier[2].equals("InnKeeper"))
 					npc = new InnKeeper(identifier[1]);

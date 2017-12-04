@@ -1,0 +1,20 @@
+To create your own Events for a custom adventure, follow this format
+
+EVENT>event_name
+DESC>"description of event"
+CHOICE>choice_name>result(s)
+ENDEVENT>
+
+Notes:
+- You may add as many CHOICE options as you want
+- multiple results must follow this format
+	result~result~result~etc.
+- results rely on the following keywords
+	HP, ROLL, STR, PER, INT, AGI, LUC, MON (Health, Skill Check, Strength, Perception, Intelligence, Agility, Luck, Money)
+- Examples of results:
+	HP - 3
+	HP - 3~ROLL AGI 10~HP +3  // If the player fails to roll a 20 sided die + their agility modifier resulting in a 10 or higher
+								 they lose 3 health, otherwise they don't take damage.
+	STR + 1
+	MON - 5~ROLL LUC 15~MON + 10
+	ROLL STR 8~MON + 3	

@@ -106,6 +106,11 @@ public class NPCInteractionScreen extends AnchorPane {
 		{
 			createPagination();
 		}
+		else if(npc.getMerchantStatus() == 0 && npc.getInventoryLength() > 0)
+		{
+			PAGINATION.setVisible(false);
+			buy.setText("Rent Room");
+		}
 		else
 		{
 			buy.setVisible(false);
@@ -113,16 +118,6 @@ public class NPCInteractionScreen extends AnchorPane {
 			list.add(new Text("\n\nI'm all sold out!"));
 		}
 		
-	}
-
-	/**
-	 * Exit to Desktop
-	 * @param e ActionEvent Quit button was clicked
-	 */
-	@FXML
-	protected void handleQuit(ActionEvent e)
-	{	
-		Platform.exit();
 	}
 
 

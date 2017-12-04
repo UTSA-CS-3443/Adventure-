@@ -1,12 +1,12 @@
 NPC>Gilan the InnKeeper>InnKeeper
 DESC>He has that experienced look to 'em.
 SPEECH>Welcome to the Dungeons & Flagons. Need a room, food? We also hold weekly tabletop nights!
-MERCHANT>1
+MERCHANT>0
 IMG>Gilan.jpg
 INV>Inn Room>5
 ENDNPC>
 
-NPC>Harry the Blacksmith>Shopkeeper
+NPC>Harry the Blacksmith>ShopKeeper
 DESC>An apron clad, moderately built, middle aged fellow
 SPEECH>Welcome to the Man-at-Arms, friend! The finest arms this side of the Emerald Sea.
 MERCHANT>1
@@ -17,8 +17,8 @@ INV>PlaceholderSword3>15
 INV>PlaceholderSword4>20
 ENDNPC>
 
-NPC>Ingrid the Shopkeep>Shopkeeper
-DESC>An apron clad, moderately built, middle aged fellow
+NPC>Ingrid the Shopkeep>ShopKeeper
+DESC>A hearty Norse woman greets you as you enter the shop.
 SPEECH>Welcome to Davenport Goods! We got a little bit of everything, but if you want quality equipment, you'll want Harry and Barry.
 MERCHANT>1
 IMG>Ingrid.jpg

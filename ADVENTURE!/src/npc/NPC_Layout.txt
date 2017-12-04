@@ -1,0 +1,19 @@
+To create NPCs for a custom adventure, follow this format
+
+NPC>name>type
+DESC>"description here"
+SPEECH>"NPC dialogue here"
+MERCHANT>0 or 1
+IMG>img_name.jpg
+INV>item>cost
+ENDNPC>
+
+Notes:
+- You may repeat INV>item>cost as many times as you wish to add more items
+- MERCHANT sets whether or the character sells item. 1 meaning yes, 0 meaning no
+- You may currently add items to a non MERCHANT character, but this is not advisable. Doing so
+would allow players to buy items but not see what they are buying. The only time an item should be added to
+a non MERCHANT character is for InnKeeper types.
+- If you want an InnKeeper to allow players to sleep at an inn, set MERCHANT to 0 and add INV>Inn Room>cost
+	- resting at an inn fully heals the player.
+- Currently, the only types of NPCs are ShopKeeper and InnKeeper
