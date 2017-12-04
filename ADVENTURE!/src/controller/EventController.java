@@ -21,9 +21,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import model.Game;
 import objects.Enemy;
 import objects.Player;
-import controller.Game;
 import enemies.*;
 
 public class EventController extends AnchorPane{
@@ -54,7 +54,7 @@ public class EventController extends AnchorPane{
 		eventTitle = new Text("");
 		eventDesc = new Text("");
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/EventWindow.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EventWindow.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		try {

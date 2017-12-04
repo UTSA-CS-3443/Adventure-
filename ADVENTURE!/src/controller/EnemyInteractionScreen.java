@@ -113,7 +113,7 @@ public class EnemyInteractionScreen extends AnchorPane {
 		looted = new Text("You looted " + enemyMoney + "gold");
 		this.player = p;
 		this.inventoryImages = new ArrayList<File>();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/EnemyInteractionScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EnemyInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		try {

@@ -6,13 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Game;
 import objects.Player;
 
 public class DeathScreen extends AnchorPane{
 	
 	public DeathScreen() {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/DeathScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DeathScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		try {

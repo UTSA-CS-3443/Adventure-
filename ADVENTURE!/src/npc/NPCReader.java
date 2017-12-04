@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import application.Main;
-import controller.Game;
 import javafx.scene.image.Image;
+import model.Game;
 import objects.NPC;
 import npc.*;
 

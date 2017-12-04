@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import application.Main;
-import controller.Game;
 import items.potions.HealthPotion;
 import items.potions.Potion;
 import items.weapons.Dagger;
@@ -16,6 +15,7 @@ import items.weapons.Mace;
 import items.weapons.Staff;
 import items.weapons.Sword;
 import items.weapons.Weapon;
+import model.Game;
 import objects.Items;
 import objects.NPC;
 import npc.*;

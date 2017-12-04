@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import model.Game;
 
 /**
  * Loads the Main Menu screen and handles the buttons. This is the Main Menu.
@@ -20,7 +21,7 @@ public class MainMenuController extends AnchorPane{
 	 */
 	public MainMenuController()
 	{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MainMenu.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainMenu.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		

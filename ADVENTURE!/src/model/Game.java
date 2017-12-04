@@ -1,10 +1,11 @@
-package controller;
+package model;
 
 import java.io.FileReader;
 import java.net.URL;
 import java.util.HashMap;
 
 import application.Main;
+import controller.CharacterCreator;
 import javafx.scene.Scene;
 import locations.Attribute;
 import npc.NPCReader;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import locations.*;
 import events.*;
 import objects.*;
-import screens.*;
+import view.*;
 import worldattributes.*;
 
 public class Game {

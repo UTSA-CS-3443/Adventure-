@@ -74,7 +74,7 @@ public class NPCInteractionScreen extends AnchorPane {
 		this.npc = n;
 		this.player = p;
 		this.inventoryImages = new ArrayList<Image>();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/NPCInteractionScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/NPCInteractionScreen.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		try {

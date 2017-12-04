@@ -27,6 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import locations.Location;
 import locations.ReadLocations;
+import model.Game;
 import objects.Player;
 
 /**
@@ -64,7 +65,7 @@ public class GameScreen extends AnchorPane implements EventHandler<ActionEvent>{
 		this.player = p;
 		eventStage = new Stage();
 		eventStage.initModality(Modality.APPLICATION_MODAL);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/GameScreenV2.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GameScreenV2.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		try {

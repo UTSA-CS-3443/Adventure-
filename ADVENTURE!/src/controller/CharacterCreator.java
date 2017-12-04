@@ -35,7 +35,7 @@ public class CharacterCreator extends Pane{
 	{
 		player = new Player();
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/CharacterCreator.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CharacterCreator.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
 		
