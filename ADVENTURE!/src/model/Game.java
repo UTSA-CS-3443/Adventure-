@@ -61,10 +61,5 @@ public class Game {
 		URL eventFile = Game.class.getResource("/events/Events.txt");
 		EventReader eventReader = new EventReader(eventFile);
 	}
-	
-	public static void gameLoop()
-	{
-		//primary game loop
-	}
 
 }

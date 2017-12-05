@@ -68,11 +68,10 @@ public class ReadLocations {
 		while (in.hasNext()) 
 		{
 			//create a new location based on the read in data
-			//we will manually read in the north, south, east, west, name, and description based on regex patterns then we will use another
-			//while loop to keep going as long as the next line contains ATTR at the start, then we put the stuff in
+			//we will manually read in the event, north, south, east, west, name, and description based on regex patterns
 			//the location and then start again at the top
 			
-			//all print lines are for debug purposes and should be removed when finished
+			//all print lines are for debug purposes
 			String line = in.nextLine();
 			identifier = line.split(">");
 			if(identifier[0].equals("LOC"))
@@ -122,7 +121,6 @@ public class ReadLocations {
 				System.out.printf("%s, %s\n", identifier[0], identifier[1] );
 			}
 				
-			//for every attribute we have for the particular location, parse it
 			else if(identifier[0].equals("EVENT"))
 			{
 				loc.setEvent(identifier[1]);
@@ -146,9 +144,6 @@ public class ReadLocations {
 			}
 			
 		}
-			
-			//use location.setNorth, etc to set the attributes of the location, then load locations into a hashmap of locationName, Location then return that to LoadLocations
-			//close the file
 		in.close();
 	}
 }

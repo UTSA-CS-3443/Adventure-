@@ -19,12 +19,6 @@ public abstract class NPC implements Entity {
 	ArrayList<String> InventoryItems = new ArrayList<String>();
 	HashMap<String, Integer> Inventory = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> stats;
-
-	
-	public void interact(Player player)
-	{
-		
-	}
 	
 	public void setImage(Image img)
 	{
