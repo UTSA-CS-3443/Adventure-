@@ -26,7 +26,6 @@ public class Game {
 	public Game() {
 		//initialize the game
 		init();
-		//gameLoop();
 	}
 	
 	public static void init()

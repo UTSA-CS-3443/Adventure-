@@ -21,7 +21,7 @@ import objects.NPC;
 import npc.*;
 
 /**
-@author JASON, TYLER. BRYLAND
+@author TYLER, BRYLAND
 */
 
 public class ItemReader	{
